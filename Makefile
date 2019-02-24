@@ -64,7 +64,7 @@ package-check:
 ##		make package-publish - publish the current dist dir
 ##
 package-publish:
-	cd ./dist && $(NPM) publish
+	cd ./dist && $(NPM) publish --access=public
 
 ##
 ##
