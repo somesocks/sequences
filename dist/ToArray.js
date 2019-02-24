@@ -26,9 +26,10 @@ function ToArray(source) {
 ToArray.prototype = Object.create(Sequence.prototype);
 
 ToArray.prototype.read = function read(recycle) {
+
 	let val, res, loop;
 
-	if (!this.source) { return this.END; }
+	if (!this._source) { return this.END; }
 
 	if (Array.isArray(recycle)) {
 		res = recycle;
@@ -48,9 +49,7 @@ ToArray.prototype.read = function read(recycle) {
 		}
 	}
 
-	if (res.length === 0) {
-		this._source = null;
-	}
+	this._source = null;
 
 	return res;
 }

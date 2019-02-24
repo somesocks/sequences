@@ -4,12 +4,18 @@ var Sequence = require('./Sequence');
 /**
 *
 * ```javascript
-* // array of [ 0, 1, 2, 3 ]
-* const integers = Count()
-*    .pipe(Slice, 0, 4)
-*    .pipe(ToArray)
-*    .read();
-* ```
+* 
+* let Count = require('@somesocks/sequences/Count');
+* let Slice = require('@somesocks/sequences/Slice');
+* let ToArray = require('@somesocks/sequences/ToArray');
+*
+* // val is [ 0, 1, 2, 3 ]
+* let val = Count()
+*   .pipe(Slice, 0, 4)
+*   .pipe(ToArray)
+*   .read();
+*
+*```
 * `Count` is a sequence constructor that builds a sequence that counts integers upward
 * `Count` never terminates, so make sure to add a terminating sequence like a `Slice` somewhere after it.
 * @name Count

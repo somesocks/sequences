@@ -99,18 +99,25 @@ pipe assumes the constructor takes a source sequence as its first argument
 
 ### sequences.Assert ⇒ <code>Sequence</code>
 ```javascript
-// works
-var integers = From(1, 2, 3, 4)
-   .pipe(Slice, 0, 10)
-   .pipe(Assert, (val, i) => Number.isInteger(val))
-   .pipe(ToArray)
-   .read();
 
-// throws error
-var integers = From(1, 2, 3, "4")
-   .pipe(Assert, (val, i) => Number.isInteger(val))
-   .pipe(ToArray)
-   .read();
+let Assert = require('@somesocks/sequences/Assert');
+let From = require('@somesocks/sequences/From');
+let ToArray = require('@somesocks/sequences/ToArray');
+
+let isInteger = (val) => Number.isInteger(val);
+
+// val is [ 1, 2, 3, 4 ]
+let val = From(1, 2, 3, 4)
+  .pipe(Assert, isInteger)
+  .pipe(ToArray)
+  .read();
+
+// throws an assertion error
+let val2 = From(1, 2, 3, "4")
+  .pipe(Assert, isInteger)
+  .pipe(ToArray)
+  .read();
+
 ```
 `Assert` is a sequence varructor that builds a sequence to run an assertion against every value in the sequence
 
@@ -128,11 +135,17 @@ var integers = From(1, 2, 3, "4")
 
 ### sequences.Count ⇒ <code>Sequence</code>
 ```javascript
-// array of [ 0, 1, 2, 3 ]
-const integers = Count()
-   .pipe(Slice, 0, 4)
-   .pipe(ToArray)
-   .read();
+
+let Count = require('@somesocks/sequences/Count');
+let Slice = require('@somesocks/sequences/Slice');
+let ToArray = require('@somesocks/sequences/ToArray');
+
+// val is [ 0, 1, 2, 3 ]
+let val = Count()
+  .pipe(Slice, 0, 4)
+  .pipe(ToArray)
+  .read();
+
 ```
 `Count` is a sequence constructor that builds a sequence that counts integers upward
 `Count` never terminates, so make sure to add a terminating sequence like a `Slice` somewhere after it.

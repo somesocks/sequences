@@ -8,18 +8,25 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 /**
 *
 * ```javascript
-* // works
-* var integers = From(1, 2, 3, 4)
-*    .pipe(Slice, 0, 10)
-*    .pipe(Assert, (val, i) => Number.isInteger(val))
-*    .pipe(ToArray)
-*    .read();
 *
-* // throws error
-* var integers = From(1, 2, 3, "4")
-*    .pipe(Assert, (val, i) => Number.isInteger(val))
-*    .pipe(ToArray)
-*    .read();
+* let Assert = require('@somesocks/sequences/Assert');
+* let From = require('@somesocks/sequences/From');
+* let ToArray = require('@somesocks/sequences/ToArray');
+*
+* let isInteger = (val) => Number.isInteger(val);
+*
+* // val is [ 1, 2, 3, 4 ]
+* let val = From(1, 2, 3, 4)
+*   .pipe(Assert, isInteger)
+*   .pipe(ToArray)
+*   .read();
+*
+* // throws an assertion error
+* let val2 = From(1, 2, 3, "4")
+*   .pipe(Assert, isInteger)
+*   .pipe(ToArray)
+*   .read();
+*
 * ```
 * `Assert` is a sequence varructor that builds a sequence to run an assertion against every value in the sequence
 * @name Assert

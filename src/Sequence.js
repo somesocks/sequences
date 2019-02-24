@@ -52,7 +52,7 @@ Sequence.prototype.pipe = function pipe() {
 	return sequenceConstructor.apply(sequenceConstructor, arguments);
 };
 
-Sequence.prototype.END = {};
+Sequence.prototype.END = { 'Sequence.prototype.END': true };
 
 
 module.exports = Sequence;

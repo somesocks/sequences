@@ -29,7 +29,6 @@ Splice.prototype = Object.create(Sequence.prototype);
 Splice.prototype.read = function read(recycle) {
 	while (true) {
 		if (this._index >= this._sequences.length) {
-			this.close();
 			return this.END;
 		}
 

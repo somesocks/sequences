@@ -1,8 +1,9 @@
-/* eslint-env mocha */
+/* eslint-env node, mocha */
 
 const {
 	Assert,
 	Count,
+	Each,
 	Slice,
 	ToArray,
 	Drain,
@@ -17,7 +18,9 @@ describe(
 				.pipe(Assert, (val) => Number.isInteger(val))
 				.pipe(Slice, 0, 99)
 				.pipe(Assert, (val) => Number.isInteger(val))
+				// .pipe(Each, console.log)
 				.pipe(ToArray)
+				// .pipe(Each, console.log)
 				.pipe(Assert, (val) => Array.isArray(val))
 				.pipe(Assert, (val) => val.length === 99)
 				.pipe(Drain)
