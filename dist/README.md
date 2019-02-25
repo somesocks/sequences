@@ -1,5 +1,42 @@
 # sequences
 
+## About
+
+`sequences` is a collection of utilities for working with lazily-evaluated
+sequences of data in a functional way.  Working with a lazily-evaluated sequence
+can often be faster than other ways of working with data, as it minimizes intermediate
+memory allocations where possible.
+
+```javascript
+
+// temporary arrays are created by filter and map,
+let val = [-3, -2, -1, 0, 1, 2, 3]
+	.filter((val) => val > 0)
+	.map((val) => val + 1)
+	.reduce((sum, val) => sum + val, 0);
+
+// no temporary arrays
+let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
+	.pipe(Filter, (val) => val > 0)
+	.pipe(Map, (val) => val + 1)
+	.pipe(Reduce, (sum, val) => sum + val, 0)
+	.read();
+
+```
+
+
+## Why not ES6 Iterators?
+
+- ES6 Iterators require a temporary `{ done, value }` object to be created with every call, which hurts performance.
+
+- `Sequence#read` accepts a 'recycle' parameter when called, which allows you to re-use values when possible for even better performance.
+
+
+## Why ES6 Iterators?
+
+- You want to use the Iterable protocol
+
+
 ## API
 
 <a name="sequences"></a>
