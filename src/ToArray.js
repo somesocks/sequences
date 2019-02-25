@@ -9,7 +9,11 @@ const Sequence = require('./Sequence');
 *    .pipe(ToArray)
 *    .read();
 * ```
-* `ToArray` converts a sequence into an array
+* `ToArray` converts a sequence into an array.
+*
+* NOTE: `ToArray` will always return exactly once. If the source sequence is empty,
+* `ToArray` will return an empty array.
+*
 * @name ToArray
 * @param {Sequence} source - the source sequence
 * @returns {Sequence}

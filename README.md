@@ -19,13 +19,18 @@
     * [.Filter](#sequences.Filter) ⇒ <code>Sequence</code>
     * [.FromArray](#sequences.FromArray) ⇒ <code>Sequence</code>
     * [.FromBlocks](#sequences.FromBlocks) ⇒ <code>Sequence</code>
+    * [.FromIterator](#sequences.FromIterator) ⇒ <code>Sequence</code>
     * [.From](#sequences.From) ⇒ <code>Sequence</code>
+    * [.FromObject](#sequences.FromObject) ⇒ <code>Sequence</code>
+    * [.FromSet](#sequences.FromSet) ⇒ <code>Sequence</code>
     * [.Map](#sequences.Map) ⇒ <code>Sequence</code>
     * [.Reduce](#sequences.Reduce) ⇒ <code>Sequence</code>
     * [.Slice](#sequences.Slice) ⇒ <code>Sequence</code>
     * [.Splice](#sequences.Splice) ⇒ <code>Sequence</code>
     * [.ToArray](#sequences.ToArray) ⇒ <code>Sequence</code>
     * [.ToBlocks](#sequences.ToBlocks) ⇒ <code>Sequence</code>
+    * [.ToObject](#sequences.ToObject) ⇒ <code>Sequence</code>
+    * [.ToSet](#sequences.ToSet) ⇒ <code>Sequence</code>
 
 
 * * *
@@ -266,6 +271,21 @@ Useful for sequences with side-effects.
 
 * * *
 
+<a name="sequences.FromIterator"></a>
+
+### sequences.FromIterator ⇒ <code>Sequence</code>
+```javascript
+```
+`FromIterator` builds a sequence from an iterator
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- iterator <code>Iterator</code> - iterator to convert into a sequence
+
+
+* * *
+
 <a name="sequences.From"></a>
 
 ### sequences.From ⇒ <code>Sequence</code>
@@ -281,6 +301,40 @@ Useful for sequences with side-effects.
 **Params**
 
 - ...values <code>\*</code> - values to return in the sequence, in order
+
+
+* * *
+
+<a name="sequences.FromObject"></a>
+
+### sequences.FromObject ⇒ <code>Sequence</code>
+```javascript
+ // res is [{ key: 'a', value: 1 }, { key: 'b', value: 2 }]:
+ let res = FromObject({ a: 1, b: 2 })
+   .pipe(ToArray)
+   .read();
+```
+`FromObject` builds a sequence of key-value pairs from an object.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- obj <code>object</code> - object from which to return a sequence of key-value pairs
+
+
+* * *
+
+<a name="sequences.FromSet"></a>
+
+### sequences.FromSet ⇒ <code>Sequence</code>
+```javascript
+```
+`FromSet` builds a sequence from a Set
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- set <code>Set</code> - set to convert into a sequence
 
 
 * * *
@@ -379,7 +433,10 @@ Useful for sequences with side-effects.
    .pipe(ToArray)
    .read();
 ```
-`ToArray` converts a sequence into an array
+`ToArray` converts a sequence into an array.
+
+NOTE: `ToArray` will always return exactly once. If the source sequence is empty,
+`ToArray` will return an empty array.
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
 **Params**
@@ -406,6 +463,48 @@ Useful for sequences with side-effects.
 
 - source <code>Sequence</code> - the source sequence
 - size <code>number</code> - the size of blocks to emit
+
+
+* * *
+
+<a name="sequences.ToObject"></a>
+
+### sequences.ToObject ⇒ <code>Sequence</code>
+```javascript
+ // res is { a: 1, b: 2 }:
+ let res = From({ key: 'a', value: 1 }, { key: 'b', value: 2 })
+   .pipe(ToObject)
+   .read();
+```
+`ToObject` converts a sequence into an object
+The sequence must be a sequence of key-value pairs,
+structured as an object with a 'key' and a 'value' property.
+
+NOTE: `ToObject` will always return exactly once. If the source sequence is empty,
+`ToObject` will return an empty object.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
+
+
+* * *
+
+<a name="sequences.ToSet"></a>
+
+### sequences.ToSet ⇒ <code>Sequence</code>
+```javascript
+```
+`ToSet` converts a sequence into a Set
+
+NOTE: `ToSet` will always return exactly once. If the source sequence is empty,
+`ToSet` will return an empty Set.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
 
 
 * * *
