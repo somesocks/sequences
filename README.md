@@ -83,7 +83,7 @@ seq = Assert(seq, (val, i) => Number.isInteger(val));
 seq = ToArray(seq);
 
 // is equivalent to this
-const seq = From(1, 2, 3, "4")
+const seq = From(1, 2, 3, 4)
    .pipe(Slice, 0, 10)
    .pipe(Assert, (val, i) => Number.isInteger(val))
    .pipe(ToArray);
