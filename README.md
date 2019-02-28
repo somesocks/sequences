@@ -67,6 +67,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.Splice](#sequences.Splice) ⇒ <code>Sequence</code>
     * [.ToArray](#sequences.ToArray) ⇒ <code>Sequence</code>
     * [.ToBlocks](#sequences.ToBlocks) ⇒ <code>Sequence</code>
+    * [.ToIterator](#sequences.ToIterator) ⇒ <code>Iterator</code>
     * [.ToObject](#sequences.ToObject) ⇒ <code>Sequence</code>
     * [.ToSet](#sequences.ToSet) ⇒ <code>Sequence</code>
 
@@ -501,6 +502,28 @@ NOTE: `ToArray` will always return exactly once. If the source sequence is empty
 
 - source <code>Sequence</code> - the source sequence
 - size <code>number</code> - the size of blocks to emit
+
+
+* * *
+
+<a name="sequences.ToIterator"></a>
+
+### sequences.ToIterator ⇒ <code>Iterator</code>
+```javascript
+ // res is [1, 2, 3]:
+ let res = From(1, 2, 3)
+   .pipe(Map, (x) => x + 1)
+   .pipe(ToIterator);
+
+ console.log(res.next()); // { value: 2, done: false }
+
+```
+`ToIterator` converts a sequence into an iterator, if you need one
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
 
 
 * * *

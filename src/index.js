@@ -9,6 +9,7 @@ module.exports = {
 	From: require('./From'),
 	FromArray: require('./FromArray'),
 	FromBlocks: require('./FromBlocks'),
+	FromIterator: require('./FromIterator'),
 	FromObject: require('./FromObject'),
 	FromSet: require('./FromSet'),
 	Map: require('./Map'),
@@ -18,6 +19,7 @@ module.exports = {
 	Splice: require('./Splice'),
 	ToArray: require('./ToArray'),
 	ToBlocks: require('./ToBlocks'),
+	ToIterator: require('./ToIterator'),
 	ToObject: require('./ToObject'),
 	ToSet: require('./ToSet'),
 };
