@@ -1,8 +1,8 @@
 /* eslint-env node */
 
-// let Assert = require('@somesocks/sequences/Assert');
-// let From = require('@somesocks/sequences/From');
-// let ToArray = require('@somesocks/sequences/ToArray');
+// let Assert = require('sequences/Assert');
+// let From = require('sequences/From');
+// let ToArray = require('sequences/ToArray');
 
 let Assert = require('./Assert');
 let From = require('./From');

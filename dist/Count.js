@@ -5,9 +5,9 @@ var Sequence = require('./Sequence');
 *
 * ```javascript
 * 
-* let Count = require('@somesocks/sequences/Count');
-* let Slice = require('@somesocks/sequences/Slice');
-* let ToArray = require('@somesocks/sequences/ToArray');
+* let Count = require('sequences/Count');
+* let Slice = require('sequences/Slice');
+* let ToArray = require('sequences/ToArray');
 *
 * // val is [ 0, 1, 2, 3 ]
 * let val = Count()

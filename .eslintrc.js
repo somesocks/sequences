@@ -4,6 +4,7 @@ module.exports = {
 		'esnext'
 	],
 	rules: {
+		'eqeqeq': ["error", "smart"],
 		'import/no-commonjs': [ 'off' ],
 		'no-console': [ 'warn' ],
 		'no-else-return': [ 'off' ],

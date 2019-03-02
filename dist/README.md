@@ -51,6 +51,8 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [sequence.read(recycle)](#sequences.Sequence+read)
         * [sequence.pipe(sequenceConstructor, ...args)](#sequences.Sequence+pipe)
     * [.Assert](#sequences.Assert) ⇒ <code>Sequence</code>
+    * [.FromHex](#sequences.FromHex) ⇒ <code>Sequence</code>
+    * [.ToHex](#sequences.ToHex) ⇒ <code>Sequence</code>
     * [.Count](#sequences.Count) ⇒ <code>Sequence</code>
     * [.Drain](#sequences.Drain) ⇒ <code>Sequence</code>
     * [.Each](#sequences.Each) ⇒ <code>Sequence</code>
@@ -62,6 +64,10 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.FromObject](#sequences.FromObject) ⇒ <code>Sequence</code>
     * [.FromSet](#sequences.FromSet) ⇒ <code>Sequence</code>
     * [.Map](#sequences.Map) ⇒ <code>Sequence</code>
+    * [.RandomInt](#sequences.RandomInt) ⇒ <code>Sequence</code>
+    * [.Random](#sequences.Random) ⇒ <code>Sequence</code>
+    * [.RandomSelection](#sequences.RandomSelection) ⇒ <code>Sequence</code>
+    * [.XORShift32](#sequences.XORShift32) ⇒ <code>Sequence</code>
     * [.Reduce](#sequences.Reduce) ⇒ <code>Sequence</code>
     * [.Slice](#sequences.Slice) ⇒ <code>Sequence</code>
     * [.Splice](#sequences.Splice) ⇒ <code>Sequence</code>
@@ -70,6 +76,8 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.ToIterator](#sequences.ToIterator) ⇒ <code>Iterator</code>
     * [.ToObject](#sequences.ToObject) ⇒ <code>Sequence</code>
     * [.ToSet](#sequences.ToSet) ⇒ <code>Sequence</code>
+    * [.bytes](#sequences.bytes) : <code>object</code>
+    * [.random](#sequences.random) : <code>object</code>
 
 
 * * *
@@ -144,9 +152,9 @@ pipe assumes the constructor takes a source sequence as its first argument
 ### sequences.Assert ⇒ <code>Sequence</code>
 ```javascript
 
-let Assert = require('@somesocks/sequences/Assert');
-let From = require('@somesocks/sequences/From');
-let ToArray = require('@somesocks/sequences/ToArray');
+let Assert = require('sequences/Assert');
+let From = require('sequences/From');
+let ToArray = require('sequences/ToArray');
 
 let isInteger = (val) => Number.isInteger(val);
 
@@ -163,7 +171,7 @@ let val2 = From(1, 2, 3, "4")
   .read();
 
 ```
-`Assert` is a sequence varructor that builds a sequence to run an assertion against every value in the sequence
+`Assert` is a sequence wrapper that builds a sequence to run an assertion against every value in the sequence
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
 **Params**
@@ -175,14 +183,54 @@ let val2 = From(1, 2, 3, "4")
 
 * * *
 
+<a name="sequences.FromHex"></a>
+
+### sequences.FromHex ⇒ <code>Sequence</code>
+```javascript
+
+let FromHex = require('sequences/bytes/FromHex');
+*
+```
+`FromHex` converts a hex string into a Sequence of bytes
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- hex <code>string</code>
+
+
+* * *
+
+<a name="sequences.ToHex"></a>
+
+### sequences.ToHex ⇒ <code>Sequence</code>
+```javascript
+ // res is '000102':
+ let res = From(1, 2, 3)
+   .pipe(ToHex)
+   .read();
+```
+`ToHex` converts a sequence into an array.
+
+NOTE: `ToHex` will always return exactly once. If the source sequence is empty,
+`ToHex` will return an empty string.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
+
+
+* * *
+
 <a name="sequences.Count"></a>
 
 ### sequences.Count ⇒ <code>Sequence</code>
 ```javascript
 
-let Count = require('@somesocks/sequences/Count');
-let Slice = require('@somesocks/sequences/Slice');
-let ToArray = require('@somesocks/sequences/ToArray');
+let Count = require('sequences/Count');
+let Slice = require('sequences/Slice');
+let ToArray = require('sequences/ToArray');
 
 // val is [ 0, 1, 2, 3 ]
 let val = Count()
@@ -400,6 +448,87 @@ Useful for sequences with side-effects.
 
 * * *
 
+<a name="sequences.RandomInt"></a>
+
+### sequences.RandomInt ⇒ <code>Sequence</code>
+```javascript
+
+let RandomInt = require('sequences/random/RandomInt');
+*
+```
+`RandomInt` is a Sequence pseudo-random number generator that returns a random int between min and max, inclusive.
+RandomInt returns in the range [0, 1] by default.
+RandomInt has 32 bits of precision.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- min <code>number</code> - the minimum possible integer to return
+- max <code>number</code> - the maximum possible integer to return
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
+<a name="sequences.Random"></a>
+
+### sequences.Random ⇒ <code>Sequence</code>
+```javascript
+
+let Random = require('sequences/random/Random');
+*
+```
+`Random` is a Sequence pseudo-random number generator that returns a random number between min and max, inclusive.
+Random returns in the range [0, 1] by default.
+Random has 32 bits of precision.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- min <code>number</code>
+- max <code>number</code>
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
+<a name="sequences.RandomSelection"></a>
+
+### sequences.RandomSelection ⇒ <code>Sequence</code>
+```javascript
+
+let RandomSelection = require('sequences/random/RandomSelection');
+*
+```
+`RandomSelection` is a Sequence generator that returns a random relection from the choices.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- choices <code>Array</code> - the selection choices
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
+<a name="sequences.XORShift32"></a>
+
+### sequences.XORShift32 ⇒ <code>Sequence</code>
+```javascript
+
+let XORShift32 = require('sequences/random/XORShift32');
+*
+```
+`XORShift32` is a Sequence implementation of the XORShift32 PRNG algorithm
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
 <a name="sequences.Reduce"></a>
 
 ### sequences.Reduce ⇒ <code>Sequence</code>
@@ -567,6 +696,20 @@ NOTE: `ToSet` will always return exactly once. If the source sequence is empty,
 
 - source <code>Sequence</code> - the source sequence
 
+
+* * *
+
+<a name="sequences.bytes"></a>
+
+### sequences.bytes : <code>object</code>
+**Kind**: static namespace of [<code>sequences</code>](#sequences)  
+
+* * *
+
+<a name="sequences.random"></a>
+
+### sequences.random : <code>object</code>
+**Kind**: static namespace of [<code>sequences</code>](#sequences)  
 
 * * *
 

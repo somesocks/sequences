@@ -22,4 +22,7 @@ module.exports = {
 	ToIterator: require('./ToIterator'),
 	ToObject: require('./ToObject'),
 	ToSet: require('./ToSet'),
+
+	bytes: require('./bytes'),
+	random: require('./random'),
 };

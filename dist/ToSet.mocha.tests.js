@@ -17,9 +17,9 @@ describe(
 
 		it('test 1', () => {
 			From(1, 2, 3)
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.pipe(ToSet)
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.read();
 		});
 

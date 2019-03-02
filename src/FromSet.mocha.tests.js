@@ -20,9 +20,9 @@ describe(
 
 		it('test 1', () => {
 			FromSet(new Set([1, 2, 3]))
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.pipe(ToArray)
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.read();
 		});
 

@@ -9,9 +9,9 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 *
 * ```javascript
 *
-* let Assert = require('@somesocks/sequences/Assert');
-* let From = require('@somesocks/sequences/From');
-* let ToArray = require('@somesocks/sequences/ToArray');
+* let Assert = require('sequences/Assert');
+* let From = require('sequences/From');
+* let ToArray = require('sequences/ToArray');
 *
 * let isInteger = (val) => Number.isInteger(val);
 *
@@ -28,7 +28,7 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 *   .read();
 *
 * ```
-* `Assert` is a sequence varructor that builds a sequence to run an assertion against every value in the sequence
+* `Assert` is a sequence wrapper that builds a sequence to run an assertion against every value in the sequence
 * @name Assert
 * @param {Sequence} source - a source sequence
 * @param {function} assert - an assertion function
