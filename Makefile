@@ -1,5 +1,7 @@
-
 NPM=pnpm
+
+TASKS=./tasks
+NODE_BIN=./node_modules/.bin
 
 .PHONY: default setup help
 
@@ -23,32 +25,21 @@ help:
 ##		make setup - setup for local development
 ##
 setup:
-	$(NPM) install
-
-build-src:
-	$(NPM) run cmd-build-src
-
-build-pack: build-src
-	cp ./.npmignore ./dist
-	cp ./package.json ./dist
-
-build-docs:
-	$(NPM) run cmd-build-docs
-	cp ./README.md ./dist
-	cp ./LICENSE ./dist
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/install.sh
 
 
 ##		make build - build the package
 ##
-build: build-src build-pack build-docs
+build:
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/build.sh
 
 
 
 test-cases:
-	$(NPM) run cmd-test-cases -- $(MOCHA)
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/test-cases.sh
 
 test-eslint:
-	$(NPM) run cmd-test-eslint -- $(ESLINT)
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/test-eslint.sh
 
 ##		make test - run test cases against the built package
 ##
@@ -59,12 +50,12 @@ test: test-cases test-eslint
 ##		make package-check - list the files that will be present in the package
 ##
 package-check:
-	cd ./dist && $(NPM) publish --dry-run
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/package-check.sh
 
 ##		make package-publish - publish the current dist dir
 ##
 package-publish:
-	cd ./dist && $(NPM) publish --access=public
+	@PATH=$(NODE_BIN):$(PATH) sh $(TASKS)/package-publish.sh
 
 ##
 ##

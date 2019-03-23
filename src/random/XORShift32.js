@@ -12,7 +12,7 @@ var Sequence = require('../Sequence');
 * @name XORShift32
 * @param {number} seed - an optional 32 bit seed
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.random
 */
 function XORShift32(seed) {
 	var self = this instanceof XORShift32 ? this : Object.create(XORShift32.prototype);

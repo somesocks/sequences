@@ -20,7 +20,7 @@ var Map = require('../Map');
 * @param {number} max - the maximum possible integer to return
 * @param {number} seed - an optional 32 bit seed
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.random
 */
 function RandomInt(min, max, seed) {
 	min = min || 0;

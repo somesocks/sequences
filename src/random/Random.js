@@ -22,7 +22,7 @@ var CONST = Math.pow(2, -32);
 * @param {number} max
 * @param {number} seed - an optional 32 bit seed
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.random
 */
 function Random(min, max, seed) {
 	min = min || 0;

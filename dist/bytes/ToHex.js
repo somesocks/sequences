@@ -26,7 +26,7 @@ for (let i = 0; i < 255; i++) {
 * @name ToHex
 * @param {Sequence} source - the source sequence
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.bytes
 */
 function ToHex(source) {
 	const self = this instanceof ToHex ? this : Object.create(ToHex.prototype);

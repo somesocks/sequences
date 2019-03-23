@@ -34,17 +34,6 @@ function FromBlocks(source) {
 
 FromBlocks.prototype = Object.create(Sequence.prototype);
 
-//eslint-disable-next-line no-empty-function
-FromBlocks.prototype.open = function open() { };
-
-FromBlocks.prototype.close = function close() {
-	this._block = null;
-	this._index = null;
-
-	this._source.close();
-	this._source = null;
-};
-
 //eslint-disable-next-line no-unused-vars
 FromBlocks.prototype.read = function read(recycle) {
 	if (!this._block || this._index >= this._block.length) {

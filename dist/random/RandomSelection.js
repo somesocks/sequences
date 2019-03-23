@@ -17,7 +17,7 @@ var Map = require('../Map');
 * @param {Array} choices - the selection choices
 * @param {number} seed - an optional 32 bit seed
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.random
 */
 function RandomSelection(choices, seed) {
 	var min = 0;

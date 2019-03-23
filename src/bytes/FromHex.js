@@ -12,7 +12,7 @@ var Sequence = require('../Sequence');
 * @name FromHex
 * @param {string} hex
 * @returns {Sequence}
-* @memberof sequences
+* @memberof sequences.bytes
 */
 function FromHex(hex) {
 	var self = this instanceof FromHex ? this : Object.create(FromHex.prototype);
