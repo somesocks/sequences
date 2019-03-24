@@ -76,7 +76,8 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [.ToHex](#sequences.bytes.ToHex) ⇒ <code>Sequence</code>
         * [.ToWords](#sequences.bytes.ToWords) ⇒ <code>Sequence</code>
     * [.random](#sequences.random) : <code>object</code>
-        * [.RandomInt](#sequences.random.RandomInt) ⇒ <code>Sequence</code>
+        * [.RandomBoolean](#sequences.random.RandomBoolean) ⇒ <code>Sequence</code>
+        * [.RandomInteger](#sequences.random.RandomInteger) ⇒ <code>Sequence</code>
         * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
         * [.RandomSelection](#sequences.random.RandomSelection) ⇒ <code>Sequence</code>
         * [.XORShift32](#sequences.random.XORShift32) ⇒ <code>Sequence</code>
@@ -684,7 +685,8 @@ NOTE: `ToHex` will always return exactly once. If the source sequence is empty,
 **Kind**: static namespace of [<code>sequences</code>](#sequences)  
 
 * [.random](#sequences.random) : <code>object</code>
-    * [.RandomInt](#sequences.random.RandomInt) ⇒ <code>Sequence</code>
+    * [.RandomBoolean](#sequences.random.RandomBoolean) ⇒ <code>Sequence</code>
+    * [.RandomInteger](#sequences.random.RandomInteger) ⇒ <code>Sequence</code>
     * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
     * [.RandomSelection](#sequences.random.RandomSelection) ⇒ <code>Sequence</code>
     * [.XORShift32](#sequences.random.XORShift32) ⇒ <code>Sequence</code>
@@ -692,17 +694,35 @@ NOTE: `ToHex` will always return exactly once. If the source sequence is empty,
 
 * * *
 
-<a name="sequences.random.RandomInt"></a>
+<a name="sequences.random.RandomBoolean"></a>
 
-#### random.RandomInt ⇒ <code>Sequence</code>
+#### random.RandomBoolean ⇒ <code>Sequence</code>
 ```javascript
 
-let RandomInt = require('sequences/random/RandomInt');
+let RandomBoolean = require('sequences/random/RandomBoolean');
 *
 ```
-`RandomInt` is a Sequence pseudo-random number generator that returns a random int between min and max, inclusive.
-RandomInt returns in the range [0, 1] by default.
-RandomInt has 32 bits of precision.
+`RandomBoolean` is a Sequence pseudo-random number generator that returns a random boolean.
+
+**Kind**: static property of [<code>random</code>](#sequences.random)  
+**Params**
+
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
+<a name="sequences.random.RandomInteger"></a>
+
+#### random.RandomInteger ⇒ <code>Sequence</code>
+```javascript
+
+let RandomInteger = require('sequences/random/RandomInteger');
+*
+```
+`RandomInteger` is a Sequence pseudo-random number generator that returns a random int between min and max, inclusive.
+RandomInteger returns in the range [0, 1] by default.
+RandomInteger has 32 bits of precision.
 
 **Kind**: static property of [<code>random</code>](#sequences.random)  
 **Params**

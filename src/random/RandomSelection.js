@@ -1,7 +1,7 @@
 
 var Sequence = require('../Sequence');
 
-var RandomInt = require('./RandomInt');
+var RandomInteger = require('./RandomInteger');
 
 var Map = require('../Map');
 
@@ -23,7 +23,7 @@ function RandomSelection(choices, seed) {
 	var min = 0;
 	var max = choices.length - 1;
 
-	return RandomInt(min, max, seed)
+	return RandomInteger(min, max, seed)
 		.pipe(Map, (x) => choices[x]);
 }
 

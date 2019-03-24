@@ -3,6 +3,7 @@
 module.exports = {
 	XORShift32: require('./XORShift32'),
 	Random: require('./Random'),
-	RandomInt: require('./RandomInt'),
+	RandomBoolean: require('./RandomBoolean'),
+	RandomInteger: require('./RandomInteger'),
 	RandomSelection: require('./RandomSelection'),
 };

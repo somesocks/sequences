@@ -38,6 +38,6 @@ Drain.prototype.read = function read(recycle) {
 	}
 
 	return this.END;
-}
+};
 
 module.exports = Drain;

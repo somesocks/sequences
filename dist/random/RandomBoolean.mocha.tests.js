@@ -9,23 +9,24 @@ const {
 	Drain,
 } = require('../');
 
-const RandomInt = require('./RandomInt');
+const RandomBoolean = require('./RandomBoolean');
 
 describe(
-	'sequences.random.RandomInt',
+	'sequences.random.RandomBoolean',
 	() => {
 
 		it('test 1', () => {
-			RandomInt(0, 3)
-				.pipe(Slice, 0, 9)
-				// .pipe(Each, console.log)
+			RandomBoolean()
+				.pipe(Slice, 0, 19)
+				.pipe(Each, console.log)
 				.pipe(Drain)
 				.read();
 		});
 
 		it('performance 1', () => {
-			RandomInt()
+			RandomBoolean()
 				.pipe(Slice, 1, 1000000)
+				// .pipe(Slice, 1, 10)
 				.pipe(Drain)
 				.read();
 		});
