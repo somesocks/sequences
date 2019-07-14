@@ -1,4 +1,5 @@
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
 * `Sequence` is the base sequence class.
 * it should always be subclassed.
@@ -8,10 +9,10 @@
 * @constructor
 * @memberof sequences
 */
-function Sequence() {
-	return this;
+function BaseSequence() {
+    return this;
 }
-
+exports.default = BaseSequence;
 /**
 * read is the core method of a sequence.  read should return the next value in the sequence.
 * if there are no more values to read, read should return Sequence.END
@@ -19,8 +20,7 @@ function Sequence() {
 * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
 * @memberof sequences.Sequence#
 */
-Sequence.prototype.read = function read(recycle) { };
-
+BaseSequence.prototype.read = function read(recycle) { };
 /**
 * ```javascript
 * // this
@@ -42,17 +42,11 @@ Sequence.prototype.read = function read(recycle) { };
 * @param {...*} args - any number of additional args to pass into sequenceConstructor
 * @memberof sequences.Sequence#
 */
-Sequence.prototype.pipe = function pipe() {
-	var sequenceConstructor = arguments[0];
-
-	// trick to avoid having to spread or slice the arguments
-	arguments[0] = this;
-	arguments.length = arguments.length < 1 ? 1 : arguments.length;
-
-	return sequenceConstructor.apply(sequenceConstructor, arguments);
+BaseSequence.prototype.pipe = function pipe() {
+    var sequenceConstructor = arguments[0];
+    // trick to avoid having to spread or slice the arguments
+    arguments[0] = this;
+    arguments.length = arguments.length < 1 ? 1 : arguments.length;
+    return sequenceConstructor.apply(sequenceConstructor, arguments);
 };
-
-Sequence.prototype.END = { 'Sequence.prototype.END': true };
-
-
-module.exports = Sequence;
+BaseSequence.prototype.END = { 'Sequence.prototype.END': true };

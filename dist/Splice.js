@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -15,33 +17,30 @@ const Sequence = require('./Sequence');
 * @returns {Sequence}
 * @memberof sequences
 */
-function Splice(...sequences) {
-	const self = this instanceof Splice ? this : Object.create(Splice.prototype);
-
-	self._sequences = sequences;
-	self._index = 0;
-
-	return self;
+function Splice() {
+    var sequences = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        sequences[_i] = arguments[_i];
+    }
+    var self = this instanceof Splice ? this : Object.create(Splice.prototype);
+    self._sequences = sequences;
+    self._index = 0;
+    return self;
 }
-
-Splice.prototype = Object.create(Sequence.prototype);
-
+Splice.prototype = Object.create(Sequence_1.default.prototype);
 Splice.prototype.read = function read(recycle) {
-	while (true) {
-		if (this._index >= this._sequences.length) {
-			return this.END;
-		}
-
-		const sequence = this._sequences[this._index];
-		const val = sequence.read(recycle);
-
-		if (val === sequence.END) {
-			this._index++;
-		} else {
-			return val;
-		}
-
-	}
-}
-
+    while (true) {
+        if (this._index >= this._sequences.length) {
+            return this.END;
+        }
+        var sequence = this._sequences[this._index];
+        var val = sequence.read(recycle);
+        if (val === sequence.END) {
+            this._index++;
+        }
+        else {
+            return val;
+        }
+    }
+};
 module.exports = Splice;

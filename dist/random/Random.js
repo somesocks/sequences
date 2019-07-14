@@ -1,12 +1,10 @@
-
-var Sequence = require('../Sequence');
-
-var XORShift32 = require('./XORShift32');
-
-var Map = require('../Map');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var XORShift32_1 = __importDefault(require("./XORShift32"));
+var Map_1 = __importDefault(require("../Map"));
 var CONST = Math.pow(2, -32);
-
 /**
 *
 * ```javascript
@@ -25,10 +23,9 @@ var CONST = Math.pow(2, -32);
 * @memberof sequences.random
 */
 function Random(min, max, seed) {
-	min = min || 0;
-	max = max || 1;
-	return XORShift32(seed)
-		.pipe(Map, (x) => ((x * CONST) * (max - min) + min))
+    var _min = min != null ? min : 0;
+    var _max = max != null ? max : 1;
+    return XORShift32_1.default(seed)
+        .pipe(Map_1.default, function (x) { return ((x * CONST) * (_max - _min) + _min); });
 }
-
 module.exports = Random;

@@ -1,9 +1,10 @@
-
-const Sequence = require('./Sequence');
-const Assert = require('./Assert');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
+var Assert_1 = __importDefault(require("./Assert"));
 function isKVP(val) { return val && ('key' in val) && ('value' in val); }
-
 /**
 *
 * ```javascript
@@ -25,41 +26,33 @@ function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 * @memberof sequences
 */
 function ToObject(source) {
-	const self = this instanceof ToObject ? this : Object.create(ToObject.prototype);
-
-	self._source = Assert(source, isKVP);
-
-	return self;
+    var self = this instanceof ToObject ? this : Object.create(ToObject.prototype);
+    self._source = Assert_1.default(source, isKVP);
+    return self;
 }
-
-ToObject.prototype = Object.create(Sequence.prototype);
-
+ToObject.prototype = Object.create(Sequence_1.default.prototype);
 ToObject.prototype.read = function read(recycle) {
-
-	let val, res, loop;
-
-	if (!this._source) { return this.END; }
-
-	if (recycle) {
-		res = recycle;
-	} else {
-		res = {};
-	}
-
-	loop = (val !== this._source.END);
-
-	while (loop) {
-		val = this._source.read(val);
-		if (val !== this._source.END) {
-			res[val.key] = val.value;
-		} else {
-			loop = false;
-		}
-	}
-
-	this._source = null;
-
-	return res;
-}
-
+    var val, res, loop;
+    if (!this._source) {
+        return this.END;
+    }
+    if (recycle) {
+        res = recycle;
+    }
+    else {
+        res = {};
+    }
+    loop = (val !== this._source.END);
+    while (loop) {
+        val = this._source.read(val);
+        if (val !== this._source.END) {
+            res[val.key] = val.value;
+        }
+        else {
+            loop = false;
+        }
+    }
+    this._source = null;
+    return res;
+};
 module.exports = ToObject;

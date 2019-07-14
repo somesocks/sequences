@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -16,24 +18,20 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function FromArray(array) {
-	const self = this instanceof FromArray ? this : Object.create(FromArray.prototype);
-
-	self._array = array;
-	self._index = 0;
-
-	return self;
+    var self = this instanceof FromArray ? this : Object.create(FromArray.prototype);
+    self._array = array;
+    self._index = 0;
+    return self;
 }
-
-FromArray.prototype = Object.create(Sequence.prototype);
-
+FromArray.prototype = Object.create(Sequence_1.default.prototype);
 FromArray.prototype.read = function read(recycle) {
-	if (this._index < this._array.length) {
-		const res = this._array[this._index];
-		this._index++;
-		return res;
-	} else {
-		return this.END;
-	}
-}
-
+    if (this._index < this._array.length) {
+        var res = this._array[this._index];
+        this._index++;
+        return res;
+    }
+    else {
+        return this.END;
+    }
+};
 module.exports = FromArray;

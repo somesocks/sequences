@@ -1,10 +1,12 @@
-
-var Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
-* 
+*
 * let Count = require('sequences/Count');
 * let Slice = require('sequences/Slice');
 * let ToArray = require('sequences/ToArray');
@@ -24,20 +26,14 @@ var Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Count(start) {
-	const self = this instanceof Count ? this : Object.create(Count.prototype);
-
-	self._index = start || 0;
-
-	return self;
+    var self = this instanceof Count ? this : Object.create(Count.prototype);
+    self._index = start || 0;
+    return self;
 }
-
-Count.prototype = Object.create(Sequence.prototype);
-
+Count.prototype = Object.create(Sequence_1.default.prototype);
 Count.prototype.read = function read(recycle) {
-	const val = this._index;
-	this._index++;
-
-	return val;
-}
-
+    var val = this._index;
+    this._index++;
+    return val;
+};
 module.exports = Count;

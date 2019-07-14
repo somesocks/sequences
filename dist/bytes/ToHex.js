@@ -1,15 +1,17 @@
-
-const Sequence = require('../Sequence');
-
-const LOOKUP_TABLE = [];
-for (let i = 0; i < 255; i++) {
-  if (i < 16) {
-    LOOKUP_TABLE[i] = '0' + i.toString(16).toUpperCase();
-  } else {
-    LOOKUP_TABLE[i] = i.toString(16).toUpperCase();
-  }
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("../Sequence"));
+var LOOKUP_TABLE = [];
+for (var i = 0; i < 255; i++) {
+    if (i < 16) {
+        LOOKUP_TABLE[i] = '0' + i.toString(16).toUpperCase();
+    }
+    else {
+        LOOKUP_TABLE[i] = i.toString(16).toUpperCase();
+    }
 }
-
 /**
 *
 * ```javascript
@@ -29,37 +31,29 @@ for (let i = 0; i < 255; i++) {
 * @memberof sequences.bytes
 */
 function ToHex(source) {
-	const self = this instanceof ToHex ? this : Object.create(ToHex.prototype);
-
-	self._source = source;
-
-	return self;
+    var self = this instanceof ToHex ? this : Object.create(ToHex.prototype);
+    self._source = source;
+    return self;
 }
-
-ToHex.prototype = Object.create(Sequence.prototype);
-
+ToHex.prototype = Object.create(Sequence_1.default.prototype);
 ToHex.prototype.read = function read(recycle) {
-
-	let val, loop;
-	let res = '';
-
-	if (!this._source) { return this.END; }
-
-	loop = (val !== this._source.END);
-
-	while (loop) {
-		val = this._source.read(val);
-		if (val !== this._source.END) {
-			val = LOOKUP_TABLE[val];
-			res += val;
-		} else {
-			loop = false;
-		}
-	}
-
-	this._source = null;
-
-	return res;
-}
-
+    var val, loop;
+    var res = '';
+    if (!this._source) {
+        return this.END;
+    }
+    loop = (val !== this._source.END);
+    while (loop) {
+        val = this._source.read(val);
+        if (val !== this._source.END) {
+            val = LOOKUP_TABLE[val];
+            res += val;
+        }
+        else {
+            loop = false;
+        }
+    }
+    this._source = null;
+    return res;
+};
 module.exports = ToHex;

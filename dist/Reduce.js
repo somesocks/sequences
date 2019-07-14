@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -19,32 +21,26 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Reduce(source, reducer, state) {
-	const self = this instanceof Reduce ? this : Object.create(Reduce.prototype);
-
-	self._source = source;
-	self._reducer = reducer;
-	self._index = 0;
-	self._state = state;
-
-	return self;
+    var self = this instanceof Reduce ? this : Object.create(Reduce.prototype);
+    self._source = source;
+    self._reducer = reducer;
+    self._index = 0;
+    self._state = state;
+    return self;
 }
-
-Reduce.prototype = Object.create(Sequence.prototype);
-
+Reduce.prototype = Object.create(Sequence_1.default.prototype);
 Reduce.prototype.read = function read(recycle) {
-	if (!this._source) { return this.END; }
-
-	let val = this._source.read();
-
-	while (val !== this._source.END) {
-		this._state = this._reducer(this._state, val, this._index);
-		this._index++;
-		val = this._source.read(val);
-	}
-
-	const res = this._state;
-	this._source = null;
-	return res;
-}
-
+    if (!this._source) {
+        return this.END;
+    }
+    var val = this._source.read();
+    while (val !== this._source.END) {
+        this._state = this._reducer(this._state, val, this._index);
+        this._index++;
+        val = this._source.read(val);
+    }
+    var res = this._state;
+    this._source = null;
+    return res;
+};
 module.exports = Reduce;

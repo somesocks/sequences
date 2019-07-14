@@ -1,9 +1,8 @@
-
-const Sequence = require('./Sequence');
-const Assert = require('./Assert');
-
-function isKVP(val) { return val && ('key' in val) && ('value' in val); }
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -19,42 +18,34 @@ function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 * @memberof sequences
 */
 function ToSet(source) {
-	const self = this instanceof ToSet ? this : Object.create(ToSet.prototype);
-
-	self._source = source;
-
-	return self;
+    var self = this instanceof ToSet ? this : Object.create(ToSet.prototype);
+    self._source = source;
+    return self;
 }
-
-ToSet.prototype = Object.create(Sequence.prototype);
-
+ToSet.prototype = Object.create(Sequence_1.default.prototype);
 ToSet.prototype.read = function read(recycle) {
-
-	let val, res, loop;
-
-	if (!this._source) { return this.END; }
-
-	if (recycle) {
-		res = recycle;
-		res.clear();
-	} else {
-		res = new Set();
-	}
-
-	loop = (val !== this._source.END);
-
-	while (loop) {
-		val = this._source.read(val);
-		if (val !== this._source.END) {
-			res.add(val);
-		} else {
-			loop = false;
-		}
-	}
-
-	this._source = null;
-
-	return res;
-}
-
+    var val, res, loop;
+    if (!this._source) {
+        return this.END;
+    }
+    if (recycle) {
+        res = recycle;
+        res.clear();
+    }
+    else {
+        res = new Set();
+    }
+    loop = (val !== this._source.END);
+    while (loop) {
+        val = this._source.read(val);
+        if (val !== this._source.END) {
+            res.add(val);
+        }
+        else {
+            loop = false;
+        }
+    }
+    this._source = null;
+    return res;
+};
 module.exports = ToSet;

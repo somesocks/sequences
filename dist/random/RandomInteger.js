@@ -1,10 +1,9 @@
-
-var Sequence = require('../Sequence');
-
-var Random = require('./Random');
-
-var Map = require('../Map');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Map_1 = __importDefault(require("../Map"));
+var Random_1 = __importDefault(require("./Random"));
 /**
 *
 * ```javascript
@@ -23,10 +22,9 @@ var Map = require('../Map');
 * @memberof sequences.random
 */
 function RandomInteger(min, max, seed) {
-	min = min || 0;
-	max = max || 1;
-	return Random(min, max + 1, seed)
-		.pipe(Map, (x) => Math.floor(x));
+    min = min || 0;
+    max = max || 1;
+    return Random_1.default(min, max + 1, seed)
+        .pipe(Map_1.default, function (x) { return Math.floor(x); });
 }
-
 module.exports = RandomInteger;

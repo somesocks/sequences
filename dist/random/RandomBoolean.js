@@ -1,12 +1,9 @@
-
-var Sequence = require('../Sequence');
-
-var Random = require('./Random');
-
-var Each = require('../Each');
-
-var Map = require('../Map');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Random_1 = __importDefault(require("./Random"));
+var Map_1 = __importDefault(require("../Map"));
 /**
 *
 * ```javascript
@@ -21,8 +18,7 @@ var Map = require('../Map');
 * @memberof sequences.random
 */
 function RandomBoolean(seed) {
-	return Random(0, 1, seed)
-		.pipe(Map, (x) => (x < 0.5));
+    return Random_1.default(0, 1, seed)
+        .pipe(Map_1.default, function (x) { return (x < 0.5); });
 }
-
 module.exports = RandomBoolean;

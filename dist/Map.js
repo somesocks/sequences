@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -19,26 +21,19 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Map(source, mapper) {
-	const self = this instanceof Map ? this : Object.create(Map.prototype);
-
-	self._source = source;
-	self._map = mapper;
-	self._index = 0;
-
-	return self;
+    var self = this instanceof Map ? this : Object.create(Map.prototype);
+    self._source = source;
+    self._map = mapper;
+    self._index = 0;
+    return self;
 }
-
-Map.prototype = Object.create(Sequence.prototype);
-
+Map.prototype = Object.create(Sequence_1.default.prototype);
 Map.prototype.read = function read(recycle) {
-	let val = this._source.read(recycle);
-
-	if (val !== this._source.END) {
-		val = this._map(val, this._index);
-		this._index++;
-	}
-
-	return val;
-}
-
+    var val = this._source.read(recycle);
+    if (val !== this._source.END) {
+        val = this._map(val, this._index);
+        this._index++;
+    }
+    return val;
+};
 module.exports = Map;

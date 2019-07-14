@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -23,28 +25,22 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Each(source, each) {
-	const self = this instanceof Each ? this : Object.create(Each.prototype);
-
-	self._source = source;
-	self._each = each;
-	self._index = 0;
-
-	return self;
+    var self = this instanceof Each ? this : Object.create(Each.prototype);
+    self._source = source;
+    self._each = each;
+    self._index = 0;
+    return self;
 }
-
-Each.prototype = Object.create(Sequence.prototype);
-
+Each.prototype = Object.create(Sequence_1.default.prototype);
 Each.prototype.read = function read(recycle) {
-	const val = this._source.read(recycle);
-
-	if (val !== this._source.END) {
-		this._each(val, this._index);
-		this._index++;
-		return val;
-	} else {
-		return this.END;
-	}
-
-}
-
+    var val = this._source.read(recycle);
+    if (val !== this._source.END) {
+        this._each(val, this._index);
+        this._index++;
+        return val;
+    }
+    else {
+        return this.END;
+    }
+};
 module.exports = Each;

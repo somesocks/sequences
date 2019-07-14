@@ -1,6 +1,8 @@
-
-var Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -18,26 +20,19 @@ var Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Drain(source) {
-	var self = this instanceof Drain ? this : Object.create(Drain.prototype);
-
-	self._source = source;
-
-	return self;
+    var self = this instanceof Drain ? this : Object.create(Drain.prototype);
+    self._source = source;
+    return self;
 }
-
-Drain.prototype = Object.create(Sequence.prototype);
-
+Drain.prototype = Object.create(Sequence_1.default.prototype);
 Drain.prototype.read = function read(recycle) {
-	let val, loop;
-
-	val = recycle;
-	loop = (val !== this._source.END);
-	while (loop) {
-		val = this._source.read(val);
-		loop = (val !== this._source.END);
-	}
-
-	return this.END;
+    var val, loop;
+    val = recycle;
+    loop = (val !== this._source.END);
+    while (loop) {
+        val = this._source.read(val);
+        loop = (val !== this._source.END);
+    }
+    return this.END;
 };
-
 module.exports = Drain;

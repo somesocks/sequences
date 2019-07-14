@@ -1,10 +1,10 @@
-
-var Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 var DEFAULT_ASSERT = function (val, index) { return true; };
-
-var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val} at index ${index} failed assertion`); };
-
+var DEFAULT_ERROR = function (val, index) { return new Error("Assert: val " + val + " at index " + index + " failed assertion"); };
 /**
 *
 * ```javascript
@@ -37,30 +37,23 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 * @memberof sequences
 */
 function Assert(source, assert, error) {
-	var self = this instanceof Assert ? this : Object.create(Assert.prototype);
-
-	self._source = source;
-	self._assert = assert || DEFAULT_ASSERT;
-	self._error = error || DEFAULT_ERROR;
-	self._index = 0;
-
-	return self;
+    var self = this instanceof Assert ? this : Object.create(Assert.prototype);
+    self._source = source;
+    self._assert = assert || DEFAULT_ASSERT;
+    self._error = error || DEFAULT_ERROR;
+    self._index = 0;
+    return self;
 }
-
-Assert.prototype = Object.create(Sequence.prototype);
-
+Assert.prototype = Object.create(Sequence_1.default.prototype);
 Assert.prototype.read = function read(recycle) {
-	var val = this._source.read(recycle);
-
-	if (val === this._source.END) { return this.END; }
-
-	if (!this._assert(val, this._index)) {
-		throw this._error(val, this._index);
-	}
-
-	this._index++;
-
-	return val;
-}
-
+    var val = this._source.read(recycle);
+    if (val === this._source.END) {
+        return this.END;
+    }
+    if (!this._assert(val, this._index)) {
+        throw this._error(val, this._index);
+    }
+    this._index++;
+    return val;
+};
 module.exports = Assert;

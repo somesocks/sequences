@@ -1,7 +1,8 @@
-
-// const Sequence = require('./Sequence');
-const FromIterator = require('./FromIterator');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var FromIterator_1 = __importDefault(require("./FromIterator"));
 /**
 *
 * ```javascript
@@ -13,9 +14,7 @@ const FromIterator = require('./FromIterator');
 * @memberof sequences
 */
 function FromSet(set) {
-	var iterator = set.values();
-
-	return FromIterator(iterator);
+    var iterator = set.values();
+    return FromIterator_1.default(iterator);
 }
-
 module.exports = FromSet;

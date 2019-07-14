@@ -1,0 +1,20 @@
+import { Sequence } from './Sequence';
+/**
+*
+* ```javascript
+*  // res is [1, 2, 3]:
+*  let res = From(1, 2, 3)
+*    .pipe(ToArray)
+*    .read();
+* ```
+* `From` builds a sequence from its arguments.
+* @name From
+* @param {...*} values - values to return in the sequence, in order
+* @returns {Sequence}
+* @memberof sequences
+*/
+declare function From(this: any, ...args: any[]): Sequence;
+declare namespace From {
+    var prototype: any;
+}
+export = From;

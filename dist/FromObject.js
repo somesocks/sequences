@@ -1,7 +1,8 @@
-
-const Sequence = require('./Sequence');
-const FromArray = require('./FromArray');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var FromArray_1 = __importDefault(require("./FromArray"));
 /**
 *
 * ```javascript
@@ -17,18 +18,14 @@ const FromArray = require('./FromArray');
 * @memberof sequences
 */
 function FromObject(obj) {
-	const self = this instanceof FromObject ? this : Object.create(FromObject.prototype);
-
-	var entries = [];
-
-	for (var key in obj) {
-		if(obj.hasOwnProperty(key)) {
-			var value = obj[key];
-			entries.push({ key, value });
-		}
-	}
-
-	return FromArray(entries);
+    var self = this instanceof FromObject ? this : Object.create(FromObject.prototype);
+    var entries = [];
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            var value = obj[key];
+            entries.push({ key: key, value: value });
+        }
+    }
+    return FromArray_1.default(entries);
 }
-
 module.exports = FromObject;

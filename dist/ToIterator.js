@@ -1,6 +1,4 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
 /**
 *
 * ```javascript
@@ -20,20 +18,17 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function ToIterator(source) {
-	const self = this instanceof ToIterator ? this : Object.create(ToIterator.prototype);
-
-	self._source = source;
-
-	return self;
+    var self = this instanceof ToIterator ? this : Object.create(ToIterator.prototype);
+    self._source = source;
+    return self;
 }
-
 ToIterator.prototype.next = function next() {
-	var value = this._source.read();
-	if (value === this._source.END) {
-		return { done: true, value: undefined };
-	} else {
-		return { done: false, value };
-	}
+    var value = this._source.read();
+    if (value === this._source.END) {
+        return { done: true, value: undefined };
+    }
+    else {
+        return { done: false, value: value };
+    }
 };
-
 module.exports = ToIterator;

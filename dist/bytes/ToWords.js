@@ -1,6 +1,8 @@
-
-const Sequence = require('../Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("../Sequence"));
 /**
 *
 * ```javascript
@@ -17,67 +19,50 @@ const Sequence = require('../Sequence');
 * @returns {Sequence} - a sequence of bytes
 * @memberof sequences.bytes
 */
-function ToWords(source, isLittleEndian = true) {
-	return isLittleEndian ? FromLittleEndianWords(source) : FromBigEndianWords(source);
+function ToWords(source, isLittleEndian) {
+    if (isLittleEndian === void 0) { isLittleEndian = true; }
+    return isLittleEndian ? ToLittleEndianWords(source) : ToBigEndianWords(source);
 }
-
-function FromLittleEndianWords(source) {
-	const self = this instanceof FromLittleEndianWords ? this : Object.create(FromLittleEndianWords.prototype);
-
-	self._source = source;
-	self._buffer = 0x00;
-	self._left = 0;
-
-	return self;
+function ToLittleEndianWords(source) {
+    var self = this instanceof ToLittleEndianWords ? this : Object.create(ToLittleEndianWords.prototype);
+    self._source = source;
+    self._buffer = 0x00;
+    self._left = 0;
+    return self;
 }
-
-FromLittleEndianWords.prototype = Object.create(Sequence.prototype);
-
-FromLittleEndianWords.prototype.read = function read(recycle) {
-	if (this._left === 0) {
-		this._buffer = this._source.read(this._buffer);
-		this._left = 4;
-	}
-
-	if (this._buffer === this._source.END) { return this.END; }
-
-	const byte = (this._buffer & 0xFF) >>> 0;
-
-	this._buffer >>= 8;
-	this._left--;
-
-	return byte;
+ToLittleEndianWords.prototype = Object.create(Sequence_1.default.prototype);
+ToLittleEndianWords.prototype.read = function read(recycle) {
+    if (this._left === 0) {
+        this._buffer = this._source.read(this._buffer);
+        this._left = 4;
+    }
+    if (this._buffer === this._source.END) {
+        return this.END;
+    }
+    var byte = (this._buffer & 0xFF) >>> 0;
+    this._buffer >>= 8;
+    this._left--;
+    return byte;
+};
+function ToBigEndianWords(source) {
+    var self = this instanceof ToBigEndianWords ? this : Object.create(ToBigEndianWords.prototype);
+    self._source = source;
+    self._buffer = 0x00;
+    self._left = 0;
+    return self;
 }
-
-
-
-function FromBigEndianWords(source) {
-	const self = this instanceof FromBigEndianWords ? this : Object.create(FromBigEndianWords.prototype);
-
-	self._source = source;
-	self._buffer = 0x00;
-	self._left = 0;
-
-	return self;
-}
-
-FromBigEndianWords.prototype = Object.create(Sequence.prototype);
-
-FromBigEndianWords.prototype.read = function read(recycle) {
-	if (this._left === 0) {
-		this._buffer = this._source.read(this._buffer);
-		this._left = 4;
-	}
-
-	if (this._buffer === this._source.END) { return this.END; }
-
-	const byte = (this._buffer & 0xFF000000) >>> 24;
-
-	this._buffer <<= 8;
-	this._left--;
-
-	return byte;
-}
-
-
+ToBigEndianWords.prototype = Object.create(Sequence_1.default.prototype);
+ToBigEndianWords.prototype.read = function read(recycle) {
+    if (this._left === 0) {
+        this._buffer = this._source.read(this._buffer);
+        this._left = 4;
+    }
+    if (this._buffer === this._source.END) {
+        return this.END;
+    }
+    var byte = (this._buffer & 0xFF000000) >>> 24;
+    this._buffer <<= 8;
+    this._left--;
+    return byte;
+};
 module.exports = ToWords;

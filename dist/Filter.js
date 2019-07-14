@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -19,34 +21,23 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function Filter(source, filter) {
-	const self = this instanceof Filter ? this : Object.create(Filter.prototype);
-
-	self._source = source;
-	self._filter = filter;
-	self._index = 0;
-
-	return self;
+    var self = this instanceof Filter ? this : Object.create(Filter.prototype);
+    self._source = source;
+    self._filter = filter;
+    self._index = 0;
+    return self;
 }
-
-Filter.prototype = Object.create(Sequence.prototype);
-
+Filter.prototype = Object.create(Sequence_1.default.prototype);
 Filter.prototype.read = function read(recycle) {
-
-	let val, allow;
-
-	val = this._source.read(recycle);
-
-	allow = (val === this._source.END) || this._filter(val, this._index);
-
-	while (!allow) {
-		this._index++;
-		val = this._source.read(val);
-		allow = (val === this._source.END) || this._filter(val, this._index);
-	}
-
-	val = val === this._source.END ? this.END : val;
-	
-	return val;
-}
-
+    var val, allow;
+    val = this._source.read(recycle);
+    allow = (val === this._source.END) || this._filter(val, this._index);
+    while (!allow) {
+        this._index++;
+        val = this._source.read(val);
+        allow = (val === this._source.END) || this._filter(val, this._index);
+    }
+    val = val === this._source.END ? this.END : val;
+    return val;
+};
 module.exports = Filter;

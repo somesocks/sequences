@@ -1,6 +1,8 @@
-
-const Sequence = require('./Sequence');
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
@@ -20,42 +22,36 @@ const Sequence = require('./Sequence');
 * @memberof sequences
 */
 function ToArray(source) {
-	const self = this instanceof ToArray ? this : Object.create(ToArray.prototype);
-
-	self._source = source;
-
-	return self;
+    var self = this instanceof ToArray ? this : Object.create(ToArray.prototype);
+    self._source = source;
+    return self;
 }
-
-ToArray.prototype = Object.create(Sequence.prototype);
-
+ToArray.prototype = Object.create(Sequence_1.default.prototype);
 ToArray.prototype.read = function read(recycle) {
-
-	let val, res, loop;
-
-	if (!this._source) { return this.END; }
-
-	if (Array.isArray(recycle)) {
-		res = recycle;
-		if (res.length > 0) { res.length = 0; }
-	} else {
-		res = [];
-	}
-
-	loop = (val !== this._source.END);
-
-	while (loop) {
-		val = this._source.read(val);
-		if (val !== this._source.END) {
-			res.push(val)
-		} else {
-			loop = false;
-		}
-	}
-
-	this._source = null;
-
-	return res;
-}
-
+    var val, res, loop;
+    if (!this._source) {
+        return this.END;
+    }
+    if (Array.isArray(recycle)) {
+        res = recycle;
+        if (res.length > 0) {
+            res.length = 0;
+        }
+    }
+    else {
+        res = [];
+    }
+    loop = (val !== this._source.END);
+    while (loop) {
+        val = this._source.read(val);
+        if (val !== this._source.END) {
+            res.push(val);
+        }
+        else {
+            loop = false;
+        }
+    }
+    this._source = null;
+    return res;
+};
 module.exports = ToArray;
