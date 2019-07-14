@@ -6,6 +6,7 @@ import Slice from './Slice';
 import From from './From';
 import Drain from './Drain';
 import Each from './Each';
+import ToArray from './ToArray';
 import Filter from './Filter';
 
 describe(
@@ -27,8 +28,8 @@ describe(
 				.pipe(Filter, (val, i) => (val % 3 === 0))
 				.pipe(Filter, (val, i) => (val % 5 === 0))
 				.pipe(Filter, (val, i) => (val % 7 === 0))
-				.pipe(Slice, 1, 100)
-				// .pipe(ToArray)
+				// .pipe(Slice, 1, 100)
+				.pipe(ToArray)
 				.pipe(Drain)
 				.read();
 		});

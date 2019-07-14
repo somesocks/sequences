@@ -24,7 +24,7 @@ describe(
 
 		it('test 1', () => {
 			FromObject({ a: 1, b: 2 })
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.pipe(ToArray)
 				.read();
 		});

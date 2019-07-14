@@ -25,9 +25,11 @@ describe(
 
 			let res = FromIterator(iter)
 				.pipe(ToArray)
+				.pipe(Assert, (val) => Array.isArray(val))
+				.pipe(Assert, (arr) => arr.length === 10)
 				.read();
 
-			console.log('res', res);
+			// console.log('res', res);
 		});
 
 	}

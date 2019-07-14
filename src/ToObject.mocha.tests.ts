@@ -27,9 +27,9 @@ describe(
 
 		it('test 1', () => {
 			From({ key: 'a', value: 1 }, { key: 'b', value: 2 })
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.pipe(ToObject)
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.read();
 		});
 

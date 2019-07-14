@@ -11,9 +11,9 @@ describe(
 
 		it('little-endian test', () => {
 				From(0x01234567)
-					.pipe(Each, console.log)
+					// .pipe(Each, console.log)
 					.pipe(FromWords)
-					.pipe(Each, console.log)
+					// .pipe(Each, console.log)
 					.pipe(Drain)
 					.read();
 		});
@@ -21,7 +21,7 @@ describe(
 		it('big-endian test', () => {
 				From(0x01234567)
 					.pipe(FromWords, false)
-					.pipe(Each, console.log)
+					// .pipe(Each, console.log)
 					.pipe(Drain)
 					.read();
 		});

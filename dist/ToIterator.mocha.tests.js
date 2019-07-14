@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// import Assert from './Assert';
+var Assert_1 = __importDefault(require("./Assert"));
 var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 // import Each from './Each';
@@ -28,7 +28,9 @@ describe('sequences.ToIterator', function () {
             .pipe(ToIterator_1.default);
         var res = FromIterator_1.default(iter)
             .pipe(ToArray_1.default)
+            .pipe(Assert_1.default, function (val) { return Array.isArray(val); })
+            .pipe(Assert_1.default, function (arr) { return arr.length === 10; })
             .read();
-        console.log('res', res);
+        // console.log('res', res);
     });
 });

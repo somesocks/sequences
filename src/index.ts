@@ -2,6 +2,7 @@
 
 import Assert from './Assert';
 import Count from './Count';
+import Default from './Default';
 import Drain from './Drain';
 import Each from './Each';
 import Filter from './Filter';
@@ -29,6 +30,7 @@ export {
 	Assert,
 	Count,
 	Drain,
+	Default,
 	Each,
 	Filter,
 	From,

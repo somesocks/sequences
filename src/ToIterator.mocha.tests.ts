@@ -1,6 +1,6 @@
 /* eslint-env node, mocha */
 
-// import Assert from './Assert';
+import Assert from './Assert';
 import Count from './Count';
 import Slice from './Slice';
 // import Splice from './Splice';
@@ -32,9 +32,11 @@ describe(
 
 			let res = FromIterator(iter)
 				.pipe(ToArray)
+				.pipe(Assert, (val) => Array.isArray(val))
+				.pipe(Assert, (arr) => arr.length === 10)
 				.read();
 
-			console.log('res', res);
+			// console.log('res', res);
 		});
 
 	}

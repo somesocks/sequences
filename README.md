@@ -52,6 +52,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [sequence.pipe(sequenceConstructor, ...args)](#sequences.Sequence+pipe)
     * [.Assert](#sequences.Assert) ⇒ <code>Sequence</code>
     * [.Count](#sequences.Count) ⇒ <code>Sequence</code>
+    * [.Default](#sequences.Default) ⇒ <code>Sequence</code>
     * [.Drain](#sequences.Drain) ⇒ <code>Sequence</code>
     * [.Each](#sequences.Each) ⇒ <code>Sequence</code>
     * [.Filter](#sequences.Filter) ⇒ <code>Sequence</code>
@@ -209,6 +210,29 @@ let val = Count()
 **Params**
 
 - start <code>number</code> - the number to start counting from
+
+
+* * *
+
+<a name="sequences.Default"></a>
+
+### sequences.Default ⇒ <code>Sequence</code>
+```javascript
+ // res is [0, 10, 20, 30, 40]:
+ let res = Count()
+   .pipe(Slice, 0, 50)
+   // filter out everything, so the sequence returns END
+   .pipe(Filter, (val) => val > 9999)
+   .pipe(Default, 0)
+   .read(); // returns 0
+```
+`Default` provides a default return value to the sequence, if the sequence terminates without returning any value
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a source sequence
+- _default <code>function</code> - the default value
 
 
 * * *

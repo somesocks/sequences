@@ -1,6 +1,7 @@
 /** @namespace sequences */
 import Assert from './Assert';
 import Count from './Count';
+import Default from './Default';
 import Drain from './Drain';
 import Each from './Each';
 import Filter from './Filter';
@@ -22,4 +23,4 @@ import ToObject from './ToObject';
 import ToSet from './ToSet';
 import * as bytes from './bytes';
 import * as random from './random';
-export { Assert, Count, Drain, Each, Filter, From, FromArray, FromBlocks, FromIterator, FromObject, FromSet, Map, Reduce, Sequence, Slice, Splice, ToArray, ToBlocks, ToIterator, ToObject, ToSet, bytes, random, };
+export { Assert, Count, Drain, Default, Each, Filter, From, FromArray, FromBlocks, FromIterator, FromObject, FromSet, Map, Reduce, Sequence, Slice, Splice, ToArray, ToBlocks, ToIterator, ToObject, ToSet, bytes, random, };

@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 var Drain_1 = __importDefault(require("./Drain"));
+var ToArray_1 = __importDefault(require("./ToArray"));
 var Filter_1 = __importDefault(require("./Filter"));
 describe('sequences.Filter', function () {
     it('test case 1', function () {
@@ -24,8 +25,8 @@ describe('sequences.Filter', function () {
             .pipe(Filter_1.default, function (val, i) { return (val % 3 === 0); })
             .pipe(Filter_1.default, function (val, i) { return (val % 5 === 0); })
             .pipe(Filter_1.default, function (val, i) { return (val % 7 === 0); })
-            .pipe(Slice_1.default, 1, 100)
-            // .pipe(ToArray)
+            // .pipe(Slice, 1, 100)
+            .pipe(ToArray_1.default)
             .pipe(Drain_1.default)
             .read();
     });

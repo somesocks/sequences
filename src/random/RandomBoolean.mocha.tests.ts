@@ -13,7 +13,7 @@ describe(
 		it('test 1', () => {
 			RandomBoolean()
 				.pipe(Slice, 0, 19)
-				.pipe(Each, console.log)
+				// .pipe(Each, console.log)
 				.pipe(Drain)
 				.read();
 		});

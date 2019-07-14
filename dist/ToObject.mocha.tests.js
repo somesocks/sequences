@@ -9,8 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import Slice from './Slice';
 // import Splice from './Splice';
 var From_1 = __importDefault(require("./From"));
-// import Drain from './Drain';
-var Each_1 = __importDefault(require("./Each"));
 // import Filter from './Filter';
 // import Map from './Map';
 // import Reduce from './Reduce';
@@ -27,9 +25,9 @@ var ToObject_1 = __importDefault(require("./ToObject"));
 describe('sequences.ToObject', function () {
     it('test 1', function () {
         From_1.default({ key: 'a', value: 1 }, { key: 'b', value: 2 })
-            .pipe(Each_1.default, console.log)
+            // .pipe(Each, console.log)
             .pipe(ToObject_1.default)
-            .pipe(Each_1.default, console.log)
+            // .pipe(Each, console.log)
             .read();
     });
 });
