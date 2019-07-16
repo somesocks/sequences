@@ -9,7 +9,7 @@ import Slice from './Slice';
 const isPositive = (val) => val > 0;
 
 describe(
-	'sequences.Assert',
+	'sequences/Assert',
 	() => {
 
 		it('test 1', () => {

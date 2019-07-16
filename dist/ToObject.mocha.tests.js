@@ -22,7 +22,7 @@ var From_1 = __importDefault(require("./From"));
 var ToObject_1 = __importDefault(require("./ToObject"));
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.ToObject', function () {
+describe('sequences/ToObject', function () {
     it('test 1', function () {
         From_1.default({ key: 'a', value: 1 }, { key: 'b', value: 2 })
             // .pipe(Each, console.log)

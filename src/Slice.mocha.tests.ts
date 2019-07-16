@@ -23,7 +23,7 @@ import Drain from './Drain';
 const isPositive = (val) => val > 0;
 
 describe(
-	'sequences.Slice',
+	'sequences/Slice',
 	() => {
 
 		it('test 1', () => {

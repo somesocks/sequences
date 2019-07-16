@@ -11,7 +11,7 @@ import Filter from './Filter';
 const isPositive = (val) => val > 0;
 
 describe(
-	'sequences.From',
+	'sequences/From',
 	() => {
 
 		it('test 1', () => {

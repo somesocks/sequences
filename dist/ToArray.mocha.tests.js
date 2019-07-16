@@ -24,7 +24,7 @@ var ToArray_1 = __importDefault(require("./ToArray"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.ToArray', function () {
+describe('sequences/ToArray', function () {
     it('test 1', function () {
         Count_1.default()
             .pipe(Assert_1.default, function (val) { return Number.isInteger(val); })

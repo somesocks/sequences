@@ -1,9 +1,7 @@
 
 import { Sequence, default as BaseSequence } from './Sequence';
 
-import Assert from './Assert';
-
-const isBlock = function (val) { return Array.isArray(val); };
+import Flatten from './Flatten';
 
 /**
 *
@@ -20,33 +18,6 @@ const isBlock = function (val) { return Array.isArray(val); };
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromBlocks(this : any, source : Sequence) : Sequence {
-	const self = this instanceof FromBlocks ? this : Object.create(FromBlocks.prototype);
-
-	source = Assert(source, isBlock);
-	self._source = source;
-
-	self._block = undefined;
-	self._index = undefined;
-
-	return self;
-}
-
-FromBlocks.prototype = Object.create(BaseSequence.prototype);
-
-//eslint-disable-next-line no-unused-vars
-FromBlocks.prototype.read = function read(recycle) {
-	if (!this._block || this._index >= this._block.length) {
-		this._block = this._source.read(this._block);
-		this._index = 0;
-	}
-
-	if (this._block === this._source.END) { return this.END; }
-
-	const val = this._block[this._index];
-	this._index++;
-
-	return val;
-}
+const FromBlocks = Flatten;
 
 export = FromBlocks;

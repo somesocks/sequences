@@ -2,9 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
-var Assert_1 = __importDefault(require("./Assert"));
-var isBlock = function (val) { return Array.isArray(val); };
+var Flatten_1 = __importDefault(require("./Flatten"));
 /**
 *
 * ```javascript
@@ -20,26 +18,5 @@ var isBlock = function (val) { return Array.isArray(val); };
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromBlocks(source) {
-    var self = this instanceof FromBlocks ? this : Object.create(FromBlocks.prototype);
-    source = Assert_1.default(source, isBlock);
-    self._source = source;
-    self._block = undefined;
-    self._index = undefined;
-    return self;
-}
-FromBlocks.prototype = Object.create(Sequence_1.default.prototype);
-//eslint-disable-next-line no-unused-vars
-FromBlocks.prototype.read = function read(recycle) {
-    if (!this._block || this._index >= this._block.length) {
-        this._block = this._source.read(this._block);
-        this._index = 0;
-    }
-    if (this._block === this._source.END) {
-        return this.END;
-    }
-    var val = this._block[this._index];
-    this._index++;
-    return val;
-};
+var FromBlocks = Flatten_1.default;
 module.exports = FromBlocks;

@@ -1,4 +1,4 @@
-import { Sequence } from './Sequence';
+import Flatten from './Flatten';
 /**
 *
 * ```javascript
@@ -14,8 +14,5 @@ import { Sequence } from './Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function FromBlocks(this: any, source: Sequence): Sequence;
-declare namespace FromBlocks {
-    var prototype: any;
-}
+declare const FromBlocks: typeof Flatten;
 export = FromBlocks;

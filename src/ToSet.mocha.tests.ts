@@ -22,7 +22,7 @@ import Each from './Each';
 import ToSet from './ToSet';
 
 describe(
-	'sequences.ToSet',
+	'sequences/ToSet',
 	() => {
 
 		it('test 1', () => {

@@ -15,7 +15,7 @@ import FromIterator from './FromIterator';
 import ToIterator from './ToIterator';
 
 describe(
-	'sequences.FromIterator',
+	'sequences/FromIterator',
 	() => {
 
 		it('test 1', () => {

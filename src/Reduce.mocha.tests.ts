@@ -21,7 +21,7 @@ import Reduce from './Reduce';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences.Reduce',
+	'sequences/Reduce',
 	() => {
 		it('test case 1', () => {
 			Count()

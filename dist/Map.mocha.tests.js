@@ -15,7 +15,7 @@ var Map_1 = __importDefault(require("./Map"));
 // import FromArray from './FromArray';
 var ToArray_1 = __importDefault(require("./ToArray"));
 // import ToSet from './ToSet';
-describe('sequences.Map', function () {
+describe('sequences/Map', function () {
     it('test case 1', function () {
         var stream = Count_1.default()
             // .pipe(Each, (val, i) => console.log('Each 1', val))

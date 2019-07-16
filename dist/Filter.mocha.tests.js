@@ -9,7 +9,7 @@ var Slice_1 = __importDefault(require("./Slice"));
 var Drain_1 = __importDefault(require("./Drain"));
 var ToArray_1 = __importDefault(require("./ToArray"));
 var Filter_1 = __importDefault(require("./Filter"));
-describe('sequences.Filter', function () {
+describe('sequences/Filter', function () {
     it('test case 1', function () {
         Count_1.default()
             .pipe(Slice_1.default, 0, 50)
@@ -20,7 +20,7 @@ describe('sequences.Filter', function () {
     });
     it('performance test', function () {
         Count_1.default()
-            .pipe(Slice_1.default, 0, 10000000)
+            .pipe(Slice_1.default, 0, 1000000)
             .pipe(Filter_1.default, function (val, i) { return (val % 2 === 0); })
             .pipe(Filter_1.default, function (val, i) { return (val % 3 === 0); })
             .pipe(Filter_1.default, function (val, i) { return (val % 5 === 0); })
@@ -31,7 +31,7 @@ describe('sequences.Filter', function () {
             .read();
     });
     it('performance test control group', function () {
-        var arr = Array(10000000).fill(0);
+        var arr = Array(1000000).fill(0);
         arr = arr
             .map(function (v, i) { return i; })
             .filter(function (val) { return val % 2 === 0; })

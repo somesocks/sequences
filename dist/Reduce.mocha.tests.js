@@ -23,7 +23,7 @@ var Reduce_1 = __importDefault(require("./Reduce"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.Reduce', function () {
+describe('sequences/Reduce', function () {
     it('test case 1', function () {
         Count_1.default()
             .pipe(Slice_1.default, 0, 10)

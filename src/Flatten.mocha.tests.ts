@@ -9,25 +9,25 @@ import Each from './Each';
 import Filter from './Filter';
 import FromArray from './FromArray';
 import ToArray from './ToArray';
-import FromBlocks from './FromBlocks';
-import ToBlocks from './ToBlocks';
+import Flatten from './Flatten';
+import Group from './Group';
 
 describe(
-	'sequences/FromBlocks',
+	'sequences/Flatten',
 	() => {
 
 		it('test 1', () => {
 			const result = Count()
 				.pipe(Slice, 0, 100)
-				.pipe(ToBlocks, 10)
-				.pipe(FromBlocks)
+				.pipe(Group, 10)
+				.pipe(Flatten)
 				.pipe(Drain)
 				.read();
 		});
 
 		it('test 2', () => {
 			const result = From([1, 2, 3], [4, 5, 6])
-				.pipe(FromBlocks)
+				.pipe(Flatten)
 				.pipe(ToArray)
 				.read();
 		});
@@ -36,8 +36,8 @@ describe(
 		it('performance 1', () => {
 			Count()
 				.pipe(Slice, 0, 1000000)
-				.pipe(ToBlocks, 10)
-				.pipe(FromBlocks)
+				.pipe(Group, 10)
+				.pipe(Flatten)
 				.pipe(Drain)
 				.read();
 		});

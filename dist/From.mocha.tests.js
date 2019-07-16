@@ -8,7 +8,7 @@ var Assert_1 = __importDefault(require("./Assert"));
 var From_1 = __importDefault(require("./From"));
 var Drain_1 = __importDefault(require("./Drain"));
 var isPositive = function (val) { return val > 0; };
-describe('sequences.From', function () {
+describe('sequences/From', function () {
     it('test 1', function () {
         From_1.default(1, 2, 3)
             .pipe(Assert_1.default, isPositive)

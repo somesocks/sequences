@@ -21,7 +21,7 @@ var ToArray_1 = __importDefault(require("./ToArray"));
 // import ToObject from './ToObject';
 var FromSet_1 = __importDefault(require("./FromSet"));
 // import ToSet from './ToSet';
-describe('sequences.FromSet', function () {
+describe('sequences/FromSet', function () {
     it('test 1', function () {
         FromSet_1.default(new Set([1, 2, 3]))
             // .pipe(Each, console.log)

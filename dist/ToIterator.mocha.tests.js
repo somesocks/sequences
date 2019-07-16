@@ -21,7 +21,7 @@ var ToIterator_1 = __importDefault(require("./ToIterator"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.ToIterator', function () {
+describe('sequences/ToIterator', function () {
     it('test 1', function () {
         var iter = Count_1.default()
             .pipe(Slice_1.default, 0, 10)

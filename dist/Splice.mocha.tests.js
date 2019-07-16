@@ -24,7 +24,7 @@ var ToArray_1 = __importDefault(require("./ToArray"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.Splice', function () {
+describe('sequences/Splice', function () {
     it('test case 1', function () {
         Splice_1.default(From_1.default(1, 2, 3), From_1.default(4, 5, 6), From_1.default(7, 8, 9))
             // .pipe(Each, (val, i) => console.log(val, i))

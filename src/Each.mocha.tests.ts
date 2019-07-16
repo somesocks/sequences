@@ -8,7 +8,7 @@ import Drain from './Drain';
 import Each from './Each';
 
 describe(
-	'sequences.Each',
+	'sequences/Each',
 	() => {
 
 		it('test 1', () => {

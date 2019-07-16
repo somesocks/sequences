@@ -8,7 +8,7 @@ var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 var Drain_1 = __importDefault(require("./Drain"));
 var Each_1 = __importDefault(require("./Each"));
-describe('sequences.Each', function () {
+describe('sequences/Each', function () {
     it('test 1', function () {
         Count_1.default()
             .pipe(Slice_1.default, 0, 4)

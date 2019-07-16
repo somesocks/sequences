@@ -7,7 +7,7 @@ import From from './From';
 import Drain from './Drain';
 
 describe(
-	'sequences.Drain',
+	'sequences/Drain',
 	() => {
 
 		it('test 1', () => {

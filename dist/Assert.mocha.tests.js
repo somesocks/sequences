@@ -10,7 +10,7 @@ var Drain_1 = __importDefault(require("./Drain"));
 var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 var isPositive = function (val) { return val > 0; };
-describe('sequences.Assert', function () {
+describe('sequences/Assert', function () {
     it('test 1', function () {
         From_1.default(1, 2, 3)
             .pipe(Assert_1.default, isPositive)

@@ -22,7 +22,7 @@ import ToObject from './ToObject';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences.ToObject',
+	'sequences/ToObject',
 	() => {
 
 		it('test 1', () => {

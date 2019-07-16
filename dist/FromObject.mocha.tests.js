@@ -15,7 +15,7 @@ var FromObject_1 = __importDefault(require("./FromObject"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.FromObject', function () {
+describe('sequences/FromObject', function () {
     it('test 1', function () {
         FromObject_1.default({ a: 1, b: 2 })
             // .pipe(Each, console.log)

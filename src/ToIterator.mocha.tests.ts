@@ -22,7 +22,7 @@ import ToIterator from './ToIterator';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences.ToIterator',
+	'sequences/ToIterator',
 	() => {
 
 		it('test 1', () => {

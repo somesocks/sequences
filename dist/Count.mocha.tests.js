@@ -9,7 +9,7 @@ var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 var Drain_1 = __importDefault(require("./Drain"));
 var isPositive = function (val) { return val > 0; };
-describe('sequences.Count', function () {
+describe('sequences/Count', function () {
     it('test 1', function () {
         Count_1.default()
             .pipe(Assert_1.default, function (val) { return Number.isInteger(val); })

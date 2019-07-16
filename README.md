@@ -56,12 +56,14 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.Drain](#sequences.Drain) ⇒ <code>Sequence</code>
     * [.Each](#sequences.Each) ⇒ <code>Sequence</code>
     * [.Filter](#sequences.Filter) ⇒ <code>Sequence</code>
+    * [.Flatten](#sequences.Flatten) ⇒ <code>Sequence</code>
     * [.FromArray](#sequences.FromArray) ⇒ <code>Sequence</code>
     * [.FromBlocks](#sequences.FromBlocks) ⇒ <code>Sequence</code>
     * [.FromIterator](#sequences.FromIterator) ⇒ <code>Sequence</code>
     * [.From](#sequences.From) ⇒ <code>Sequence</code>
     * [.FromObject](#sequences.FromObject) ⇒ <code>Sequence</code>
     * [.FromSet](#sequences.FromSet) ⇒ <code>Sequence</code>
+    * [.Group](#sequences.Group) ⇒ <code>Sequence</code>
     * [.Map](#sequences.Map) ⇒ <code>Sequence</code>
     * [.Reduce](#sequences.Reduce) ⇒ <code>Sequence</code>
     * [.Slice](#sequences.Slice) ⇒ <code>Sequence</code>
@@ -306,6 +308,26 @@ Useful for sequences with side-effects.
 
 * * *
 
+<a name="sequences.Flatten"></a>
+
+### sequences.Flatten ⇒ <code>Sequence</code>
+```javascript
+ // res is [1, 2, 3, 4, 5, 6]:
+ let res = From([ 1, 2, 3 ], [4, 5, 6])
+   .pipe(Flatten)
+   .pipe(ToArray)
+   .read();
+```
+`Flatten` 'flattens' a sequence of arrays into a sequence of elements.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a sequence of arrays
+
+
+* * *
+
 <a name="sequences.FromArray"></a>
 
 ### sequences.FromArray ⇒ <code>Sequence</code>
@@ -409,6 +431,27 @@ Useful for sequences with side-effects.
 **Params**
 
 - set <code>Set</code> - set to convert into a sequence
+
+
+* * *
+
+<a name="sequences.Group"></a>
+
+### sequences.Group ⇒ <code>Sequence</code>
+```javascript
+ // res is [ [1, 2, 3], [4, 5, 6] ]:
+ let res = From(1, 2, 3, 4, 5, 6)
+   .pipe(Group, 3)
+   .pipe(ToArray)
+   .read();
+```
+`Group` converts a sequence into a sequence of 'blocks' (fixed-size arrays of the elements)
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
+- size <code>number</code> - the size of blocks to emit
 
 
 * * *

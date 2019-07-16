@@ -19,7 +19,7 @@ import FromObject from './FromObject';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences.FromObject',
+	'sequences/FromObject',
 	() => {
 
 		it('test 1', () => {

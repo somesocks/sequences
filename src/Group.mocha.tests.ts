@@ -12,8 +12,8 @@ import Drain from './Drain';
 // import Reduce from './Reduce';
 // import FromArray from './FromArray';
 // import ToArray from './ToArray';
-// import FromBlocks from './FromBlocks';
-import ToBlocks from './ToBlocks';
+// import Flatten from './Flatten';
+import Group from './Group';
 // import FromIterator from './FromIterator';
 // import ToIterator from './ToIterator';
 // import FromObject from './FromObject';
@@ -22,13 +22,13 @@ import ToBlocks from './ToBlocks';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences/ToBlocks',
+	'sequences/Group',
 	() => {
 
 		it('test 1', () => {
 			let seq = Count();
 			seq = Slice(seq, 0, 99);
-			seq = ToBlocks(seq, 10);
+			seq = Group(seq, 10);
 			// seq = Each(seq, console.log);
 			seq = Drain(seq);
 
@@ -38,7 +38,7 @@ describe(
 		it('performance 1', () => {
 			let seq = Count();
 			seq = Slice(seq, 0, 1000000);
-			seq = ToBlocks(seq, 10);
+			seq = Group(seq, 10);
 			seq = Drain(seq);
 
 			seq.read();

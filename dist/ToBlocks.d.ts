@@ -1,4 +1,4 @@
-import { Sequence } from './Sequence';
+import Group from './Group';
 /**
 *
 * ```javascript
@@ -15,8 +15,5 @@ import { Sequence } from './Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function ToBlocks(this: any, source: Sequence, size?: number): Sequence;
-declare namespace ToBlocks {
-    var prototype: any;
-}
+declare const ToBlocks: typeof Group;
 export = ToBlocks;

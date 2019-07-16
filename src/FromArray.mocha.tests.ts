@@ -13,7 +13,7 @@ import FromArray from './FromArray';
 const isPositive = (val) => val > 0;
 
 describe(
-	'sequences.FromArray',
+	'sequences/FromArray',
 	() => {
 
 		it('test 1', () => {

@@ -22,7 +22,7 @@ import ToArray from './ToArray';
 // import ToSet from './ToSet';
 
 describe(
-	'sequences.Splice',
+	'sequences/Splice',
 	() => {
 		it('test case 1', () => {
 			Splice(

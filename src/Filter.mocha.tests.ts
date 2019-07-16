@@ -10,7 +10,7 @@ import ToArray from './ToArray';
 import Filter from './Filter';
 
 describe(
-	'sequences.Filter',
+	'sequences/Filter',
 	() => {
 		it('test case 1', () => {
 			Count()
@@ -23,7 +23,7 @@ describe(
 
 		it('performance test', () => {
 			Count()
-				.pipe(Slice, 0, 10000000)
+				.pipe(Slice, 0, 1000000)
 				.pipe(Filter, (val, i) => (val % 2 === 0))
 				.pipe(Filter, (val, i) => (val % 3 === 0))
 				.pipe(Filter, (val, i) => (val % 5 === 0))
@@ -35,7 +35,7 @@ describe(
 		});
 
 		it('performance test control group', () => {
-			let arr = Array(10000000).fill(0);
+			let arr = Array(1000000).fill(0);
 			arr = arr
 				.map((v, i) => i)
 				.filter((val) => val % 2 === 0)

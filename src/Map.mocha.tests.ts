@@ -22,7 +22,7 @@ import FromSet from './FromSet';
 
 
 describe(
-	'sequences.Map',
+	'sequences/Map',
 	() => {
 		it('test case 1', () => {
 			const stream = Count()

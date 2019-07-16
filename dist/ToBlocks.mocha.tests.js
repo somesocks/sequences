@@ -24,7 +24,7 @@ var ToBlocks_1 = __importDefault(require("./ToBlocks"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
-describe('sequences.ToBlocks', function () {
+describe('sequences/ToBlocks', function () {
     it('test 1', function () {
         var seq = Count_1.default();
         seq = Slice_1.default(seq, 0, 99);
