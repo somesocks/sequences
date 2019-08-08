@@ -52,6 +52,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [sequence.pipe(sequenceConstructor, ...args)](#sequences.Sequence+pipe)
     * [.Assert](#sequences.Assert) ⇒ <code>Sequence</code>
     * [.Count](#sequences.Count) ⇒ <code>Sequence</code>
+    * [.Deduplicate](#sequences.Deduplicate) ⇒ <code>Sequence</code>
     * [.Default](#sequences.Default) ⇒ <code>Sequence</code>
     * [.Drain](#sequences.Drain) ⇒ <code>Sequence</code>
     * [.Each](#sequences.Each) ⇒ <code>Sequence</code>
@@ -212,6 +213,31 @@ let val = Count()
 **Params**
 
 - start <code>number</code> - the number to start counting from
+
+
+* * *
+
+<a name="sequences.Deduplicate"></a>
+
+### sequences.Deduplicate ⇒ <code>Sequence</code>
+```javascript
+ // res is [0, 1, 2, 3]:
+ let res = Count()
+   .pipe(Slice, 0, 50)
+   .pipe(Map, (val) => val % 4)
+   .pipe(Deduplicate)
+   .pipe(ToArray)
+   .read();
+```
+`Deduplicate` removes duplicates from a sequence, while maintaining sequence order
+NOTE: `Deduplicate` uses a Set to track already-seen elements,
+so it can potentially use a large amount of memory
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a source sequence
+- projection <code>function</code> - an optional projection function, that you can use to deduplicate based off some part of values
 
 
 * * *

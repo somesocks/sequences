@@ -2,6 +2,7 @@
 
 import Assert from './Assert';
 import Count from './Count';
+import Deduplicate from './Deduplicate';
 import Default from './Default';
 import Drain from './Drain';
 import Each from './Each';
@@ -32,6 +33,7 @@ export {
 	Assert,
 	Count,
 	Drain,
+	Deduplicate,
 	Default,
 	Each,
 	Filter,
