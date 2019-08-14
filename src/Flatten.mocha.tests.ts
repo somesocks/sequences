@@ -32,6 +32,17 @@ describe(
 				.read();
 		});
 
+		it('empty arrays work correctly', () => {
+			const result = From([], [], [1, 2, 3], [], [])
+				.pipe(Flatten)
+				.pipe(ToArray)
+				.pipe(Assert, (res) => res.length === 3)
+				.pipe(Assert, (res) => res[0] === 1)
+				.pipe(Assert, (res) => res[1] === 2)
+				.pipe(Assert, (res) => res[2] === 3)
+				.read();
+		});
+
 
 		it('performance 1', () => {
 			Count()

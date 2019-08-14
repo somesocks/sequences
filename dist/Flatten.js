@@ -31,12 +31,12 @@ function Flatten(source) {
 Flatten.prototype = Object.create(Sequence_1.default.prototype);
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
-    if (!this._block || this._index >= this._block.length) {
+    while (!this._block || this._index >= this._block.length) {
         this._block = this._source.read(this._block);
+        if (this._block === this._source.END) {
+            return this.END;
+        }
         this._index = 0;
-    }
-    if (this._block === this._source.END) {
-        return this.END;
     }
     var val = this._block[this._index];
     this._index++;
