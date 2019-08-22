@@ -68,6 +68,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.Map](#sequences.Map) ⇒ <code>Sequence</code>
     * [.Reduce](#sequences.Reduce) ⇒ <code>Sequence</code>
     * [.Slice](#sequences.Slice) ⇒ <code>Sequence</code>
+    * [.Sort](#sequences.Sort) ⇒ <code>Sequence</code>
     * [.Splice](#sequences.Splice) ⇒ <code>Sequence</code>
     * [.ToArray](#sequences.ToArray) ⇒ <code>Sequence</code>
     * [.ToBlocks](#sequences.ToBlocks) ⇒ <code>Sequence</code>
@@ -544,6 +545,28 @@ Useful for sequences with side-effects.
 - source <code>Sequence</code> - a source sequence
 - start <code>integer</code> - the index to start from (inclusive)
 - end <code>integer</code> - the index to end at (exclusive)
+
+
+* * *
+
+<a name="sequences.Sort"></a>
+
+### sequences.Sort ⇒ <code>Sequence</code>
+```javascript
+ // res is [1, 2, 3]:
+ let res = From(3, 2, 1)
+   .pipe(Sort)
+   .pipe(ToArray)
+   .read();
+```
+`Sort` sorts a sequence inline.
+
+NOTE: `Sort` must buffer all values in the sequence for sorting, so it has a space complexity of O(N)
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - the source sequence
 
 
 * * *
