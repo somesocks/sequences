@@ -67,6 +67,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.Group](#sequences.Group) ⇒ <code>Sequence</code>
     * [.Map](#sequences.Map) ⇒ <code>Sequence</code>
     * [.Reduce](#sequences.Reduce) ⇒ <code>Sequence</code>
+    * [.Replace](#sequences.Replace) ⇒ <code>Sequence</code>
     * [.Slice](#sequences.Slice) ⇒ <code>Sequence</code>
     * [.Sort](#sequences.Sort) ⇒ <code>Sequence</code>
     * [.Splice](#sequences.Splice) ⇒ <code>Sequence</code>
@@ -523,6 +524,29 @@ Useful for sequences with side-effects.
 - source <code>Sequence</code> - a source sequence
 - reduce <code>function</code> - a reduce function
 - state <code>\*</code> - the initial value of the state
+
+
+* * *
+
+<a name="sequences.Replace"></a>
+
+### sequences.Replace ⇒ <code>Sequence</code>
+```javascript
+ // res is [1, 1, 2, 2, 3, 3]:
+ let res = From(1, -1, 2, -2, 3, -3)
+   .pipe(Replace, (val) => val < 0, (val) => -val)
+   .pipe(ToArray)
+   .read();
+```
+`Replace` allows you to replace some elements in a sequence dynamically.
+It acts like a mapping with a pre-selector choosing which elements to map
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a source sequence
+- selector <code>function</code> - the selector function, that chooses which elements to replace
+- mapper <code>function</code> - the mapper function, that replaces the elements
 
 
 * * *
