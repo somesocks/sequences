@@ -1,16 +1,19 @@
 /* eslint-env node, mocha */
 
+import assert from 'vet/utils/assert';
+import isShape from 'vet/objects/isShape';
+
 import Assert from './Assert';
 import Count from './Count';
 import Slice from './Slice';
 // import Splice from './Splice';
 // import From from './From';
 import Drain from './Drain';
-// import Each from './Each';
+import Each from './Each';
 // import Filter from './Filter';
-// import Map from './Map';
+import Map from './Map';
 // import Reduce from './Reduce';
-// import FromArray from './FromArray';
+import FromArray from './FromArray';
 import ToArray from './ToArray';
 // import FromBlocks from './FromBlocks';
 // import ToBlocks from './ToBlocks';
@@ -38,6 +41,29 @@ describe(
 				.pipe(Drain)
 				.read();
 		});
+
+		it('correctly recycles an array', () => {
+			const arr = [1, 2, 3, 4, 5];
+			const arr2 = FromArray(arr)
+				.pipe(Slice, 1, 3)
+				.pipe(Map, (x) => x + 1)
+				.pipe(ToArray)
+				.pipe(Each, console.log)
+				.read(arr);
+
+			assert(
+				arr === arr2,
+				'didnt correctly recycle array'
+			);
+
+			assert(
+				isShape([3, 4])(arr2),
+				'incorrect result shape'
+			);
+
+
+		});
+
 
 		it('performance 1', () => {
 			Count()

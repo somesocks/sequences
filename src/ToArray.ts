@@ -32,12 +32,12 @@ ToArray.prototype = Object.create(BaseSequence.prototype);
 ToArray.prototype.read = function read(recycle) {
 
 	let val, res, loop;
+	let index = 0;
 
 	if (!this._source) { return this.END; }
 
 	if (Array.isArray(recycle)) {
 		res = recycle;
-		if (res.length > 0) { res.length = 0; }
 	} else {
 		res = [];
 	}
@@ -47,12 +47,14 @@ ToArray.prototype.read = function read(recycle) {
 	while (loop) {
 		val = this._source.read(val);
 		if (val !== this._source.END) {
-			res.push(val)
+			res[index] = val;
+			index++;
 		} else {
 			loop = false;
 		}
 	}
 
+	res.length = index;
 	this._source = null;
 
 	return res;

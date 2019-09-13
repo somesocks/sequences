@@ -1,1 +1,1 @@
-cd ./dist && pnpm publish --dry-run
+cd ./dist && npm publish --dry-run

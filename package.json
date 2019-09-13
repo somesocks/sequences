@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/somesocks/sequences",
   "devDependencies": {
-		"@types/mocha": "^5.2.7",
+    "@types/mocha": "^5.2.7",
     "babel-eslint": "^9.0.0",
     "eslint": "^5.5.0",
     "eslint-config-esnext": "^3.0.0",
@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.14.0",
     "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.2.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "vet": "^2.6.0"
   }
 }

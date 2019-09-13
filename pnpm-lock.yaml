@@ -4,11 +4,12 @@ devDependencies:
   eslint: 5.16.0
   eslint-config-esnext: 3.0.2
   eslint-import-resolver-node: 0.3.2
-  eslint-plugin-import: 2.18.0
+  eslint-plugin-import: 2.18.0_eslint@5.16.0
   jsdoc-to-markdown: 4.0.1
   mocha: 5.2.0
   typescript: 3.5.3
-lockfileVersion: 5
+  vet: 2.6.0
+lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.0.0:
     dependencies:
@@ -690,12 +691,13 @@ packages:
       eslint: '>=4.0.0'
     resolution:
       integrity: sha512-HPuNzSPE75O+SnxHIafbW5QB45r2w78fxqwK3HmjqIUoPfPzVrq6rD+CINU3yzoDSzEhUkX07VUphbF73Lth/w==
-  /eslint-plugin-import/2.18.0:
+  /eslint-plugin-import/2.18.0_eslint@4.19.1:
     dependencies:
       array-includes: 3.0.3
       contains-path: 0.1.0
       debug: 2.6.9
       doctrine: 1.5.0
+      eslint: 4.19.1
       eslint-import-resolver-node: 0.3.2
       eslint-module-utils: 2.4.0
       has: 1.0.3
@@ -710,13 +712,13 @@ packages:
       eslint: 2.x - 6.x
     resolution:
       integrity: sha512-PZpAEC4gj/6DEMMoU2Df01C5c50r7zdGIN52Yfi7CvvWaYssG7Jt5R9nFG5gmqodxNOz9vQS87xk6Izdtpdrig==
-  /eslint-plugin-import/2.18.0_eslint@4.19.1:
+  /eslint-plugin-import/2.18.0_eslint@5.16.0:
     dependencies:
       array-includes: 3.0.3
       contains-path: 0.1.0
       debug: 2.6.9
       doctrine: 1.5.0
-      eslint: 4.19.1
+      eslint: 5.16.0
       eslint-import-resolver-node: 0.3.2
       eslint-module-utils: 2.4.0
       has: 1.0.3
@@ -2211,6 +2213,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==
+  /vet/2.6.0:
+    dev: true
+    resolution:
+      integrity: sha512-Aw6qKRwPss9TtPGYMz0xPHw4+GoGvZN3v1Q8+olIA2G021/uNKvXKx6spdzlj9wJCQsvepPAbVxuEjQ6HOupJw==
   /walk-back/2.0.1:
     dev: true
     engines:
@@ -2287,3 +2293,4 @@ specifiers:
   jsdoc-to-markdown: ^4.0.1
   mocha: ^5.2.0
   typescript: ^3.5.3
+  vet: ^2.6.0
