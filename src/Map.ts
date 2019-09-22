@@ -4,6 +4,11 @@ import { Sequence, default as BaseSequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let Count = require('sequences/Count');
+*  let Map = require('sequences/Map');
+*  let Slice = require('sequences/Slice');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [1, 2, 3]:
 *  let res = Count()
 *    .pipe(Slice, 0, 4)

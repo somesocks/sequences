@@ -2,6 +2,9 @@ import { Sequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let FromObject = require('sequences/FromObject');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [{ key: 'a', value: 1 }, { key: 'b', value: 2 }]:
 *  let res = FromObject({ a: 1, b: 2 })
 *    .pipe(ToArray)

@@ -6,6 +6,10 @@ var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
+*  let From = require('sequences/From');
+*  let Group = require('sequences/Group');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [ [1, 2, 3], [4, 5, 6] ]:
 *  let res = From(1, 2, 3, 4, 5, 6)
 *    .pipe(Group, 3)

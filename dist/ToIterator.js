@@ -2,6 +2,10 @@
 /**
 *
 * ```javascript
+*  let From = require('sequences/From');
+*  let Map = require('sequences/Map');
+*  let ToIterator = require('sequences/ToIterator');
+*
 *  // res is [1, 2, 3]:
 *  let res = From(1, 2, 3)
 *    .pipe(Map, (x) => x + 1)

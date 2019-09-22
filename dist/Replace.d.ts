@@ -2,6 +2,10 @@ import { Sequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let From = require('sequences/From');
+*  let Replace = require('sequences/Replace');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [1, 1, 2, 2, 3, 3]:
 *  let res = From(1, -1, 2, -2, 3, -3)
 *    .pipe(Replace, (val) => val < 0, (val) => -val)

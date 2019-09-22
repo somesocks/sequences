@@ -4,6 +4,9 @@ import { Sequence, default as BaseSequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let FromArray = require('sequences/FromArray');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [1, 2, 3]:
 *  let res = FromArray([ 1, 2, 3 ])
 *    .pipe(ToArray)

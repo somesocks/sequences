@@ -224,6 +224,12 @@ let val = Count()
 
 ### sequences.Deduplicate ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Deduplicate = require('sequences/Deduplicate');
+ let Map = require('sequences/Map');
+ let Slice = require('sequences/Slice');
+ let ToArray = require('sequences/ToArray');
+
  // res is [0, 1, 2, 3]:
  let res = Count()
    .pipe(Slice, 0, 50)
@@ -249,6 +255,11 @@ so it can potentially use a large amount of memory
 
 ### sequences.Default ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Default = require('sequences/Default');
+ let Filter = require('sequences/Filter');
+ let Slice = require('sequences/Slice');
+
  // res is [0, 10, 20, 30, 40]:
  let res = Count()
    .pipe(Slice, 0, 50)
@@ -272,7 +283,11 @@ so it can potentially use a large amount of memory
 
 ### sequences.Drain ⇒ <code>Sequence</code>
 ```javascript
- // returns Sequence.END
+ let Count = require('sequences/Count');
+ let Drain = require('sequences/Drain');
+ let Slice = require('sequences/Slice');
+
+ // returns sequence terminator
  Count()
    .pipe(Slice, 0, 4)
    .pipe(Drain)
@@ -293,6 +308,11 @@ Useful for sequences with side-effects.
 
 ### sequences.Each ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Drain = require('sequences/Drain');
+ let Each = require('sequences/Each');
+ let Slice = require('sequences/Slice');
+
  // should log:
  // element 0 is 1
  // element 1 is 2
@@ -319,6 +339,11 @@ Useful for logging, or performing other side-effects.
 
 ### sequences.Filter ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Filter = require('sequences/Filter');
+ let Slice = require('sequences/Slice');
+ let ToArray = require('sequences/ToArray');
+
  // res is [0, 10, 20, 30, 40]:
  let res = Count()
    .pipe(Slice, 0, 50)
@@ -341,14 +366,18 @@ Useful for logging, or performing other side-effects.
 
 ### sequences.Flatten ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let Flatten = require('sequences/Flatten');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3, 4, 5, 6]:
  let res = From(1, [], [2, 3], From(4, 5, 6))
    .pipe(Flatten)
    .pipe(ToArray)
    .read();
 ```
-`Flatten` 'flattens' a sequence of things into a sequence of elements.
-right now, `Flatten` supports flattening sequnences and array-like objects.
+`Flatten` 'flattens' a sequence of "collections" into a sequence of elements.
+right now, `Flatten` supports flattening sequences and array-like objects.
 Anything else will be passed through without modification.
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
@@ -363,6 +392,9 @@ Anything else will be passed through without modification.
 
 ### sequences.FromArray ⇒ <code>Sequence</code>
 ```javascript
+ let FromArray = require('sequences/FromArray');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = FromArray([ 1, 2, 3 ])
    .pipe(ToArray)
@@ -382,6 +414,10 @@ Anything else will be passed through without modification.
 
 ### sequences.FromBlocks ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let FromBlocks = require('sequences/FromBlocks');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3, 4, 5, 6]:
  let res = From([ 1, 2, 3 ], [4, 5, 6])
    .pipe(FromBlocks)
@@ -389,6 +425,7 @@ Anything else will be passed through without modification.
    .read();
 ```
 `FromBlocks` 'flattens' a sequence of arrays into a sequence of elements.
+`FromBlocks` is a legacy alias for `Flatten`
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
 **Params**
@@ -417,6 +454,9 @@ Anything else will be passed through without modification.
 
 ### sequences.From ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = From(1, 2, 3)
    .pipe(ToArray)
@@ -436,6 +476,9 @@ Anything else will be passed through without modification.
 
 ### sequences.FromObject ⇒ <code>Sequence</code>
 ```javascript
+ let FromObject = require('sequences/FromObject');
+ let ToArray = require('sequences/ToArray');
+
  // res is [{ key: 'a', value: 1 }, { key: 'b', value: 2 }]:
  let res = FromObject({ a: 1, b: 2 })
    .pipe(ToArray)
@@ -470,6 +513,10 @@ Anything else will be passed through without modification.
 
 ### sequences.Group ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let Group = require('sequences/Group');
+ let ToArray = require('sequences/ToArray');
+
  // res is [ [1, 2, 3], [4, 5, 6] ]:
  let res = From(1, 2, 3, 4, 5, 6)
    .pipe(Group, 3)
@@ -491,6 +538,11 @@ Anything else will be passed through without modification.
 
 ### sequences.Map ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Map = require('sequences/Map');
+ let Slice = require('sequences/Slice');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = Count()
    .pipe(Slice, 0, 4)
@@ -513,6 +565,10 @@ Anything else will be passed through without modification.
 
 ### sequences.Reduce ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Reduce = require('sequences/Reduce');
+ let Slice = require('sequences/Slice');
+
  // res is 6:
  let res = Count()
    .pipe(Slice, 0, 4)
@@ -535,6 +591,10 @@ Anything else will be passed through without modification.
 
 ### sequences.Replace ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let Replace = require('sequences/Replace');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 1, 2, 2, 3, 3]:
  let res = From(1, -1, 2, -2, 3, -3)
    .pipe(Replace, (val) => val < 0, (val) => -val)
@@ -558,6 +618,10 @@ It acts like a mapping with a pre-selector choosing which elements to map
 
 ### sequences.Slice ⇒ <code>Sequence</code>
 ```javascript
+ let Count = require('sequences/Count');
+ let Slice = require('sequences/Slice');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = Count()
    .pipe(Slice, 0, 4)
@@ -580,6 +644,10 @@ It acts like a mapping with a pre-selector choosing which elements to map
 
 ### sequences.Sort ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let Sort = require('sequences/Sort');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = From(3, 2, 1)
    .pipe(Sort)
@@ -602,6 +670,10 @@ NOTE: `Sort` must buffer all values in the sequence for sorting, so it has a spa
 
 ### sequences.Splice ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let Splice = require('sequences/Splice');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3, 4, 5, 6]:
  let res = Splice(From(1, 2, 3), From(4, 5, 6))
    .pipe(ToArray)
@@ -621,6 +693,9 @@ NOTE: `Sort` must buffer all values in the sequence for sorting, so it has a spa
 
 ### sequences.ToArray ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let ToArray = require('sequences/ToArray');
+
  // res is [1, 2, 3]:
  let res = From(1, 2, 3)
    .pipe(ToArray)
@@ -643,6 +718,10 @@ NOTE: `ToArray` will always return exactly once. If the source sequence is empty
 
 ### sequences.ToBlocks ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let ToBlocks = require('sequences/ToBlocks');
+ let ToArray = require('sequences/ToArray');
+
  // res is [ [1, 2, 3], [4, 5, 6] ]:
  let res = From(1, 2, 3, 4, 5, 6)
    .pipe(ToBlocks, 3)
@@ -650,6 +729,7 @@ NOTE: `ToArray` will always return exactly once. If the source sequence is empty
    .read();
 ```
 `ToBlocks` converts a sequence into a sequence of 'blocks' (fixed-size arrays of the elements)
+`ToBlocks` is a legacy alias for `Group`
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
 **Params**
@@ -664,6 +744,10 @@ NOTE: `ToArray` will always return exactly once. If the source sequence is empty
 
 ### sequences.ToIterator ⇒ <code>Iterator</code>
 ```javascript
+ let From = require('sequences/From');
+ let Map = require('sequences/Map');
+ let ToIterator = require('sequences/ToIterator');
+
  // res is [1, 2, 3]:
  let res = From(1, 2, 3)
    .pipe(Map, (x) => x + 1)
@@ -686,6 +770,9 @@ NOTE: `ToArray` will always return exactly once. If the source sequence is empty
 
 ### sequences.ToObject ⇒ <code>Sequence</code>
 ```javascript
+ let From = require('sequences/From');
+ let ToObject = require('sequences/ToObject');
+
  // res is { a: 1, b: 2 }:
  let res = From({ key: 'a', value: 1 }, { key: 'b', value: 2 })
    .pipe(ToObject)

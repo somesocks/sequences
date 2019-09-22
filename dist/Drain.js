@@ -6,7 +6,11 @@ var Sequence_1 = __importDefault(require("./Sequence"));
 /**
 *
 * ```javascript
-*  // returns Sequence.END
+*  let Count = require('sequences/Count');
+*  let Drain = require('sequences/Drain');
+*  let Slice = require('sequences/Slice');
+*
+*  // returns sequence terminator
 *  Count()
 *    .pipe(Slice, 0, 4)
 *    .pipe(Drain)

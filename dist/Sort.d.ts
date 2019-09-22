@@ -2,6 +2,10 @@ import { Sequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let From = require('sequences/From');
+*  let Sort = require('sequences/Sort');
+*  let ToArray = require('sequences/ToArray');
+*
 *  // res is [1, 2, 3]:
 *  let res = From(3, 2, 1)
 *    .pipe(Sort)

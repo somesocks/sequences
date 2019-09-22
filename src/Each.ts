@@ -4,6 +4,11 @@ import { Sequence, default as BaseSequence } from './Sequence';
 /**
 *
 * ```javascript
+*  let Count = require('sequences/Count');
+*  let Drain = require('sequences/Drain');
+*  let Each = require('sequences/Each');
+*  let Slice = require('sequences/Slice');
+*
 *  // should log:
 *  // element 0 is 1
 *  // element 1 is 2
