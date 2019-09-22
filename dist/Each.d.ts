@@ -12,8 +12,8 @@ import { Sequence } from './Sequence';
 *    .pipe(Drain)
 *    .read();
 * ```
-* `Each` is a sequence constructor wraps a source sequence, and when read is called it reads the entire sequence and throws it away.
-* Useful for sequences with side-effects.
+* `Each` takes a function, and called it once per every element in a sequence.
+* Useful for logging, or performing other side-effects.
 * @name Each
 * @param {Sequence} source - the source sequence to drain
 * @param {function} each - a function to get called for each value

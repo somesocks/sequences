@@ -303,8 +303,8 @@ Useful for sequences with side-effects.
    .pipe(Drain)
    .read();
 ```
-`Each` is a sequence constructor wraps a source sequence, and when read is called it reads the entire sequence and throws it away.
-Useful for sequences with side-effects.
+`Each` takes a function, and called it once per every element in a sequence.
+Useful for logging, or performing other side-effects.
 
 **Kind**: static property of [<code>sequences</code>](#sequences)  
 **Params**
@@ -342,7 +342,7 @@ Useful for sequences with side-effects.
 ### sequences.Flatten ⇒ <code>Sequence</code>
 ```javascript
  // res is [1, 2, 3, 4, 5, 6]:
- let res = From([ 1, 2, 3 ], [4, 5, 6])
+ let res = From(1, [], [2, 3], From(4, 5, 6))
    .pipe(Flatten)
    .pipe(ToArray)
    .read();

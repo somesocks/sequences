@@ -13,7 +13,7 @@ var MODE_SEQUENCE = 0x2;
 *
 * ```javascript
 *  // res is [1, 2, 3, 4, 5, 6]:
-*  let res = From([ 1, 2, 3 ], [4, 5, 6])
+*  let res = From(1, [], [2, 3], From(4, 5, 6))
 *    .pipe(Flatten)
 *    .pipe(ToArray)
 *    .read();
