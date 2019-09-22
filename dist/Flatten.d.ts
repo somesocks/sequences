@@ -8,7 +8,9 @@ import { Sequence } from './Sequence';
 *    .pipe(ToArray)
 *    .read();
 * ```
-* `Flatten` 'flattens' a sequence of arrays into a sequence of elements.
+* `Flatten` 'flattens' a sequence of things into a sequence of elements.
+* right now, `Flatten` supports flattening sequnences and array-like objects.
+* Anything else will be passed through without modification.
 * @name Flatten
 * @param {Sequence} source - a sequence of arrays
 * @returns {Sequence}

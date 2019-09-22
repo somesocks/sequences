@@ -1,9 +1,13 @@
 
 import { Sequence, default as BaseSequence } from './Sequence';
 
-import Assert from './Assert';
+const isArrayLike = function (val) {
+	return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
+};
 
-const isBlock = function (val) { return Array.isArray(val); };
+const MODE_EMPTY = 0x0;
+const MODE_ARRAY = 0x1;
+const MODE_SEQUENCE = 0x2;
 
 /**
 *
@@ -14,7 +18,9 @@ const isBlock = function (val) { return Array.isArray(val); };
 *    .pipe(ToArray)
 *    .read();
 * ```
-* `Flatten` 'flattens' a sequence of arrays into a sequence of elements.
+* `Flatten` 'flattens' a sequence of things into a sequence of elements.
+* right now, `Flatten` supports flattening sequnences and array-like objects.
+* Anything else will be passed through without modification.
 * @name Flatten
 * @param {Sequence} source - a sequence of arrays
 * @returns {Sequence}
@@ -23,10 +29,10 @@ const isBlock = function (val) { return Array.isArray(val); };
 function Flatten(this : any, source : Sequence) : Sequence {
 	const self = this instanceof Flatten ? this : Object.create(Flatten.prototype);
 
-	source = Assert(source, isBlock);
 	self._source = source;
 
-	self._block = undefined;
+	self._mode = MODE_EMPTY;
+	self._buffer = undefined;
 	self._index = undefined;
 
 	return self;
@@ -36,16 +42,66 @@ Flatten.prototype = Object.create(BaseSequence.prototype);
 
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
-	while (!this._block || this._index >= this._block.length) {
-		this._block = this._source.read(this._block);
-		if (this._block === this._source.END) { return this.END; }
-		this._index = 0;
+	while (1) {
+		switch (this._mode) {
+			case MODE_EMPTY: {
+				this._buffer = this._source.read(this._buffer);
+				if (this._buffer === this._source.END) {
+					// if the source is empty, return our END signal
+					return this.END;
+				} else if (isArrayLike(this._buffer)) {
+					// if the source is an array-like object, switch to array mode
+					this._mode = MODE_ARRAY;
+					this._index = 0;
+					break;
+				} else if (this._buffer instanceof BaseSequence) {
+					this._mode = MODE_SEQUENCE;
+					break;
+				} else {
+					// if the source is anything else, return it directly
+					const result = this._buffer;
+					this._buffer = null;
+					return result;
+				}
+			}
+			case MODE_ARRAY: {
+				if (this._index < this._buffer.length) {
+					// return the next element in the buffer
+					const result = this._buffer[this._index];
+					this._index++;
+					return result;
+				} else {
+					// if array is finished, reset to 'empty' mode and loop around
+					this._mode = MODE_EMPTY;
+					break;
+				}
+			}
+			case MODE_SEQUENCE: {
+				const result = this._buffer.read();
+				if (result === this._buffer.END) {
+					// if sequence is finished, reset to 'empty' mode and loop around
+					this._mode = MODE_EMPTY;
+					break;
+				} else {
+					return result;
+				}
+			}
+			default: {
+				throw new Error('invalid state for sequences/Flatten');
+			}
+		}
 	}
-
-	const val = this._block[this._index];
-	this._index++;
-
-	return val;
+	//
+	// while (!this._buffer || this._index >= this._buffer.length) {
+	// 	this._buffer = this._source.read(this._buffer);
+	// 	if (this._buffer === this._source.END) { return this.END; }
+	// 	this._index = 0;
+	// }
+	//
+	// const val = this._buffer[this._index];
+	// this._index++;
+	//
+	// return val;
 }
 
 export = Flatten;

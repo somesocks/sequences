@@ -3,8 +3,8 @@
 ## About
 
 `sequences` is a collection of utilities for working with lazily-evaluated
-sequences of data in a functional way.  Working with a lazily-evaluated sequence
-can often be faster than other ways of working with data, as it minimizes intermediate
+sequences of data.  Working with a lazily-evaluated sequence
+can often be more efficient than other alternatives in JS, as it minimizes intermediate
 memory allocations where possible.
 
 ```javascript
@@ -27,11 +27,11 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
 
 ## Why not ES6 Iterators?
 
-- ES6 Iterators require a temporary `{ done, value }` object to be created with every call, which hurts performance.
+- ES6 Iterators require a temporary `{ done, value }` object to be created with every call, which requires one object allocation per element.
 
-- `Sequence().read()` accepts a 'recycle' parameter when called, which allows you to re-use values when possible for even better performance.
+- `Sequence().read()` accepts a 'recycle' parameter when called, which allows you to re-use allocated values when possible.
 
-- `Sequence().read()` returns the next result or the Sequence terminator, which can simplify code under some circumstances.
+- `Sequence().read()` returns the next result or the Sequence terminator, which can simplify code compared to having an "independent" control channel (the `done` parameter).
 
 ## Why ES6 Iterators?
 

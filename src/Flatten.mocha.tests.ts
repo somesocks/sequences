@@ -43,6 +43,36 @@ describe(
 				.read();
 		});
 
+		it('can handle mixed results', () => {
+			const result = From(1, [], [ 2 ], 3, [4, 5])
+				.pipe(Flatten)
+				.pipe(ToArray)
+				.pipe(Assert, (res) => res.length === 5)
+				.pipe(Assert, (res) => res[0] === 1)
+				.pipe(Assert, (res) => res[1] === 2)
+				.pipe(Assert, (res) => res[2] === 3)
+				.pipe(Assert, (res) => res[3] === 4)
+				.pipe(Assert, (res) => res[4] === 5)
+				// .pipe(Each, console.log)
+				.read();
+		});
+
+		it('can flatten sequences', () => {
+			const result = From(1, From(2), 3, FromArray([ 4, 5 ]))
+				.pipe(Flatten)
+				// .pipe(Each, console.log)
+				.pipe(ToArray)
+				// .pipe(Each, console.log)
+				.pipe(Assert, (res) => res.length === 5)
+				.pipe(Assert, (res) => res[0] === 1)
+				.pipe(Assert, (res) => res[1] === 2)
+				.pipe(Assert, (res) => res[2] === 3)
+				.pipe(Assert, (res) => res[3] === 4)
+				.pipe(Assert, (res) => res[4] === 5)
+				// .pipe(Each, console.log)
+				.read();
+		});
+
 
 		it('performance 1', () => {
 			Count()
