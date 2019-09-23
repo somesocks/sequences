@@ -82,7 +82,7 @@ Flatten.prototype.read = function read(recycle) {
 			}
 			case MODE_SEQUENCE: {
 				const result = this._buffer.read();
-				if (result === this._buffer.END) {
+				if (result === this._source.END) {
 					// if sequence is finished, reset to 'empty' mode and loop around
 					this._mode = MODE_EMPTY;
 					break;

@@ -44,14 +44,14 @@ Replace.prototype = Object.create(BaseSequence.prototype);
 Replace.prototype.read = function read(recycle) {
 	let val = this._source.read(recycle);
 
-	if (val !== this._source.END) {
-		val =
-			this._selector(val, this._index) ?
-			this._mapper(val, this._index) :
-			val;
+	if (val === this._source.END) { return this.END; }
 
-		this._index++;
-	}
+	val =
+		this._selector(val, this._index) ?
+		this._mapper(val, this._index) :
+		val;
+
+	this._index++;
 
 	return val;
 }

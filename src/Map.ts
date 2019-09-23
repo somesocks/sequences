@@ -38,10 +38,10 @@ Map.prototype = Object.create(BaseSequence.prototype);
 Map.prototype.read = function read(recycle) {
 	let val = this._source.read(recycle);
 
-	if (val !== this._source.END) {
-		val = this._map(val, this._index);
-		this._index++;
-	}
+	if (val === this._source.END) { return this.END; }
+
+	val = this._map(val, this._index);
+	this._index++;
 
 	return val;
 }

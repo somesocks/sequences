@@ -35,10 +35,11 @@ function Map(source, mapper) {
 Map.prototype = Object.create(Sequence_1.default.prototype);
 Map.prototype.read = function read(recycle) {
     var val = this._source.read(recycle);
-    if (val !== this._source.END) {
-        val = this._map(val, this._index);
-        this._index++;
+    if (val === this._source.END) {
+        return this.END;
     }
+    val = this._map(val, this._index);
+    this._index++;
     return val;
 };
 module.exports = Map;

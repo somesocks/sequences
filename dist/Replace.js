@@ -36,13 +36,14 @@ function Replace(source, selector, mapper) {
 Replace.prototype = Object.create(Sequence_1.default.prototype);
 Replace.prototype.read = function read(recycle) {
     var val = this._source.read(recycle);
-    if (val !== this._source.END) {
-        val =
-            this._selector(val, this._index) ?
-                this._mapper(val, this._index) :
-                val;
-        this._index++;
+    if (val === this._source.END) {
+        return this.END;
     }
+    val =
+        this._selector(val, this._index) ?
+            this._mapper(val, this._index) :
+            val;
+    this._index++;
     return val;
 };
 module.exports = Replace;
