@@ -17,7 +17,7 @@ import { Sequence } from './Sequence';
  * @returns {Array}
  * @memberof sequences
  */
-declare function Join(this: any, outerSource: Array<any>, innerSource: Array<any>): Sequence;
+declare function Join(this: any, outerSource: Array<any> | Sequence, innerSource: Array<any> | Sequence): Sequence;
 declare namespace Join {
     var prototype: any;
 }

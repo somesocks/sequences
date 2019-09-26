@@ -3,6 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var Sequence_1 = __importDefault(require("./Sequence"));
+var ToArray_1 = __importDefault(require("./ToArray"));
+var isArrayLike = function (val) {
+    return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
+};
 /**
  *
  * ```javascript
@@ -23,15 +27,18 @@ var Sequence_1 = __importDefault(require("./Sequence"));
  */
 function Join(outerSource, innerSource) {
     var self = this instanceof Join ? this : Object.create(Join.prototype);
-    self._outerSource = outerSource;
-    self._innerSource = innerSource;
+    self._outerSource = isArrayLike(outerSource) ?
+        outerSource :
+        ToArray_1.default(outerSource).read();
+    self._innerSource = isArrayLike(innerSource) ?
+        innerSource :
+        ToArray_1.default(innerSource).read();
     self._outerIndex = 0;
     self._innerIndex = 0;
     return self;
 }
 Join.prototype = Object.create(Sequence_1.default.prototype);
 Join.prototype.read = function read(recycle) {
-    var res;
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;
         this._outerIndex++;
@@ -39,12 +46,7 @@ Join.prototype.read = function read(recycle) {
     if (this._outerIndex > this._outerSource.length - 1) {
         return this.END;
     }
-    if (recycle) {
-        res = recycle;
-    }
-    else {
-        res = [];
-    }
+    var res = recycle ? recycle : Array(2);
     res[0] = this._outerSource[this._outerIndex];
     res[1] = this._innerSource[this._innerIndex];
     this._innerIndex++;

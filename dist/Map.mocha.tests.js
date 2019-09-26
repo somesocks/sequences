@@ -14,6 +14,13 @@ var Drain_1 = __importDefault(require("./Drain"));
 var Map_1 = __importDefault(require("./Map"));
 // import FromArray from './FromArray';
 var ToArray_1 = __importDefault(require("./ToArray"));
+// import FromBlocks from './FromBlocks';
+// import ToBlocks from './ToBlocks';
+// import FromIterator from './FromIterator';
+// import ToIterator from './ToIterator';
+// import FromObject from './FromObject';
+// import ToObject from './ToObject';
+// import FromSet from './FromSet';
 // import ToSet from './ToSet';
 describe('sequences/Map', function () {
     it('test case 1', function () {
@@ -30,6 +37,16 @@ describe('sequences/Map', function () {
         // stream.read();
         // stream.read();
         // stream.read();
+    });
+    it('performance test baseline', function () {
+        var arr = Count_1.default()
+            .pipe(Slice_1.default, 0, 1000000)
+            .pipe(Map_1.default, function (val) { return val + 1; })
+            .pipe(Map_1.default, function (val) { return val + 1; })
+            .pipe(Map_1.default, function (val) { return val + 1; })
+            .pipe(Map_1.default, function (val) { return val + 1; })
+            .pipe(Drain_1.default)
+            .read();
     });
     it('performance test', function () {
         var arr = Count_1.default()

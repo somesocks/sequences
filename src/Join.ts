@@ -1,6 +1,12 @@
 
 import { Sequence, default as BaseSequence } from './Sequence';
 
+import ToArray from './ToArray';
+
+const isArrayLike = function (val) {
+	return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
+};
+
 /**
  *
  * ```javascript
@@ -19,11 +25,16 @@ import { Sequence, default as BaseSequence } from './Sequence';
  * @returns {Array}
  * @memberof sequences
  */
-function Join(this : any, outerSource : Array<any> , innerSource : Array<any>) : Sequence {
+function Join(this : any, outerSource : Array<any> | Sequence , innerSource : Array<any> | Sequence) : Sequence {
     const self = this instanceof Join ? this : Object.create(Join.prototype);
 
-    self._outerSource = outerSource;
-    self._innerSource = innerSource;
+    self._outerSource = isArrayLike(outerSource) ?
+			outerSource :
+			ToArray(outerSource as Sequence).read();
+
+    self._innerSource = isArrayLike(innerSource) ?
+			innerSource :
+			ToArray(innerSource as Sequence).read();
 
     self._outerIndex = 0;
     self._innerIndex = 0;
@@ -34,9 +45,7 @@ function Join(this : any, outerSource : Array<any> , innerSource : Array<any>) :
 
 Join.prototype = Object.create(BaseSequence.prototype);
 
-
 Join.prototype.read = function read(recycle) {
-    let res;
 
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;
@@ -47,11 +56,7 @@ Join.prototype.read = function read(recycle) {
         return this.END;
     }
 
-    if (recycle) {
-        res = recycle;
-    } else {
-        res = [];
-    }
+		const res = recycle ? recycle : Array(2);
 
     res[0] = this._outerSource[this._outerIndex];
     res[1] = this._innerSource[this._innerIndex];

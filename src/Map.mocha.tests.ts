@@ -16,7 +16,7 @@ import ToArray from './ToArray';
 // import ToIterator from './ToIterator';
 // import FromObject from './FromObject';
 // import ToObject from './ToObject';
-import FromSet from './FromSet';
+// import FromSet from './FromSet';
 // import ToSet from './ToSet';
 
 
@@ -41,6 +41,17 @@ describe(
 			// stream.read();
 			// stream.read();
 
+		});
+
+		it('performance test baseline', () => {
+			const arr = Count()
+				.pipe(Slice, 0, 1000000)
+				.pipe(Map, (val) => val + 1)
+				.pipe(Map, (val) => val + 1)
+				.pipe(Map, (val) => val + 1)
+				.pipe(Map, (val) => val + 1)
+				.pipe(Drain)
+				.read();
 		});
 
 		it('performance test', () => {

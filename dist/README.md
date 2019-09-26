@@ -59,10 +59,10 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.Each](#sequences.Each) ⇒ <code>Sequence</code>
     * [.Filter](#sequences.Filter) ⇒ <code>Sequence</code>
     * [.Flatten](#sequences.Flatten) ⇒ <code>Sequence</code>
-    * [.From](#sequences.From) ⇒ <code>Sequence</code>
     * [.FromArray](#sequences.FromArray) ⇒ <code>Sequence</code>
     * [.FromBlocks](#sequences.FromBlocks) ⇒ <code>Sequence</code>
     * [.FromIterator](#sequences.FromIterator) ⇒ <code>Sequence</code>
+    * [.From](#sequences.From) ⇒ <code>Sequence</code>
     * [.FromObject](#sequences.FromObject) ⇒ <code>Sequence</code>
     * [.FromSet](#sequences.FromSet) ⇒ <code>Sequence</code>
     * [.Group](#sequences.Group) ⇒ <code>Sequence</code>
@@ -84,9 +84,9 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [.ToHex](#sequences.bytes.ToHex) ⇒ <code>Sequence</code>
         * [.ToWords](#sequences.bytes.ToWords) ⇒ <code>Sequence</code>
     * [.random](#sequences.random) : <code>object</code>
-        * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
         * [.RandomBoolean](#sequences.random.RandomBoolean) ⇒ <code>Sequence</code>
         * [.RandomInteger](#sequences.random.RandomInteger) ⇒ <code>Sequence</code>
+        * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
         * [.RandomSelection](#sequences.random.RandomSelection) ⇒ <code>Sequence</code>
         * [.XORShift32](#sequences.random.XORShift32) ⇒ <code>Sequence</code>
 
@@ -389,28 +389,6 @@ Anything else will be passed through without modification.
 
 * * *
 
-<a name="sequences.From"></a>
-
-### sequences.From ⇒ <code>Sequence</code>
-```javascript
- let From = require('sequences/From');
- let ToArray = require('sequences/ToArray');
-
- // res is [1, 2, 3]:
- let res = From(1, 2, 3)
-   .pipe(ToArray)
-   .read();
-```
-`From` builds a sequence from its arguments.
-
-**Kind**: static property of [<code>sequences</code>](#sequences)  
-**Params**
-
-- ...values <code>\*</code> - values to return in the sequence, in order
-
-
-* * *
-
 <a name="sequences.FromArray"></a>
 
 ### sequences.FromArray ⇒ <code>Sequence</code>
@@ -469,6 +447,28 @@ Anything else will be passed through without modification.
 **Params**
 
 - iterator <code>Iterator</code> - iterator to convert into a sequence
+
+
+* * *
+
+<a name="sequences.From"></a>
+
+### sequences.From ⇒ <code>Sequence</code>
+```javascript
+ let From = require('sequences/From');
+ let ToArray = require('sequences/ToArray');
+
+ // res is [1, 2, 3]:
+ let res = From(1, 2, 3)
+   .pipe(ToArray)
+   .read();
+```
+`From` builds a sequence from its arguments.
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- ...values <code>\*</code> - values to return in the sequence, in order
 
 
 * * *
@@ -939,33 +939,11 @@ NOTE: `ToHex` will always return exactly once. If the source sequence is empty,
 **Kind**: static namespace of [<code>sequences</code>](#sequences)  
 
 * [.random](#sequences.random) : <code>object</code>
-    * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
     * [.RandomBoolean](#sequences.random.RandomBoolean) ⇒ <code>Sequence</code>
     * [.RandomInteger](#sequences.random.RandomInteger) ⇒ <code>Sequence</code>
+    * [.Random](#sequences.random.Random) ⇒ <code>Sequence</code>
     * [.RandomSelection](#sequences.random.RandomSelection) ⇒ <code>Sequence</code>
     * [.XORShift32](#sequences.random.XORShift32) ⇒ <code>Sequence</code>
-
-
-* * *
-
-<a name="sequences.random.Random"></a>
-
-#### random.Random ⇒ <code>Sequence</code>
-```javascript
-
-let Random = require('sequences/random/Random');
-*
-```
-`Random` is a Sequence pseudo-random number generator that returns a random number between min and max, inclusive.
-Random returns in the range [0, 1] by default.
-Random has 32 bits of precision.
-
-**Kind**: static property of [<code>random</code>](#sequences.random)  
-**Params**
-
-- min <code>number</code>
-- max <code>number</code>
-- seed <code>number</code> - an optional 32 bit seed
 
 
 * * *
@@ -1005,6 +983,28 @@ RandomInteger has 32 bits of precision.
 
 - min <code>number</code> - the minimum possible integer to return
 - max <code>number</code> - the maximum possible integer to return
+- seed <code>number</code> - an optional 32 bit seed
+
+
+* * *
+
+<a name="sequences.random.Random"></a>
+
+#### random.Random ⇒ <code>Sequence</code>
+```javascript
+
+let Random = require('sequences/random/Random');
+*
+```
+`Random` is a Sequence pseudo-random number generator that returns a random number between min and max, inclusive.
+Random returns in the range [0, 1] by default.
+Random has 32 bits of precision.
+
+**Kind**: static property of [<code>random</code>](#sequences.random)  
+**Params**
+
+- min <code>number</code>
+- max <code>number</code>
 - seed <code>number</code> - an optional 32 bit seed
 
 
