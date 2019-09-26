@@ -15,6 +15,7 @@ import FromIterator from './FromIterator';
 import FromObject from './FromObject';
 import FromSet from './FromSet';
 import Group from './Group';
+import Join from './Join';
 import Map from './Map';
 import Reduce from './Reduce';
 import Slice from './Slice';
@@ -36,6 +37,7 @@ export {
 	Deduplicate,
 	Default,
 	Each,
+	Flatten,
 	Filter,
 	From,
 	FromArray,
@@ -43,6 +45,8 @@ export {
 	FromIterator,
 	FromObject,
 	FromSet,
+	Group,
+	Join,
 	Map,
 	Reduce,
 	Sequence,
