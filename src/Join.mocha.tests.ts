@@ -18,6 +18,7 @@ describe(
 				const result = Join([1, 2, 3], [4, 5, 6])
 					// .pipe(Each, (item) => console.log('item', item))
 					.pipe(ToArray)
+					.pipe(Each, (item) => console.log('item', item))
 					.pipe(Assert, (results) => results.length === 9)
 					.read();
 			}
@@ -47,35 +48,35 @@ describe(
 
 
 
-		const PERF_ARRAY = Array(2000);
+		const PERF_ARRAY = Array(10000);
 
-		it(
-			'performance',
-			() => {
-				const result = Join(
-						PERF_ARRAY,
-						PERF_ARRAY,
-					)
-					// .pipe(Each, (item) => console.log('item', item))
-					.pipe(Drain)
-					.read();
-			}
-		);
-
-		it(
-			'performance control group',
-			() => {
-				let arr : any[] = [];
-
-				for (let i = 0; i < PERF_ARRAY.length; i++) {
-					for (let j = 0; j < PERF_ARRAY.length; j++) {
-						arr[0] = PERF_ARRAY[i];
-						arr[1] = PERF_ARRAY[j];
-					}
-				}
-
-			}
-		);
+		// it(
+		// 	'performance',
+		// 	() => {
+		// 		const result = Join(
+		// 				PERF_ARRAY,
+		// 				PERF_ARRAY,
+		// 			)
+		// 			// .pipe(Each, (item) => console.log('item', item))
+		// 			.pipe(Drain)
+		// 			.read();
+		// 	}
+		// );
+		//
+		// it(
+		// 	'performance control group',
+		// 	() => {
+		// 		let arr : any[] = [];
+		//
+		// 		for (let i = 0; i < PERF_ARRAY.length; i++) {
+		// 			for (let j = 0; j < PERF_ARRAY.length; j++) {
+		// 				arr[0] = PERF_ARRAY[i];
+		// 				arr[1] = PERF_ARRAY[j];
+		// 			}
+		// 		}
+		//
+		// 	}
+		// );
 
 	}
 

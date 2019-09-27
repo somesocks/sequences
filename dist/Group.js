@@ -32,7 +32,7 @@ function Group(source, size) {
 Group.prototype = Object.create(Sequence_1.default.prototype);
 Group.prototype.read = function read(recycle) {
     var val, res;
-    val = this._source.read(val);
+    val = this._source.read();
     if (val === this._source.END) {
         return this.END;
     }
@@ -47,7 +47,7 @@ Group.prototype.read = function read(recycle) {
     }
     res[0] = val;
     for (var i = 1; i < this._size; i++) {
-        val = (val !== this._source.END) ? this._source.read(val) : val;
+        val = (val !== this._source.END) ? this._source.read() : val;
         if (val !== this._source.END) {
             res[i] = val;
         }

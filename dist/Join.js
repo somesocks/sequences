@@ -39,6 +39,7 @@ function Join(outerSource, innerSource) {
 }
 Join.prototype = Object.create(Sequence_1.default.prototype);
 Join.prototype.read = function read(recycle) {
+    console.log('Join.prototype.read', recycle);
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;
         this._outerIndex++;

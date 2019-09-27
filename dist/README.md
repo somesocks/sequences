@@ -30,7 +30,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
 
 - ES6 Iterators require a temporary `{ done, value }` object to be allocated with every call, which reduces performace.
 
-- `Sequence().read()` accepts a 'recycle' parameter when called, which allows you to re-use previously allocated values.
+- `Sequence().read()` accepts a 'recycle' parameter when called, which allows you to re-use previously allocated values, to minimize allocations.
 
 - `Sequence().read()` returns the next result or the terminator `Sequence().END`, which can simplify control flow compared to having an "independent" control channel (the iterator `done` parameter).
 

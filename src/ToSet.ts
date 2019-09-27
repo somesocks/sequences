@@ -41,7 +41,7 @@ ToSet.prototype.read = function read(recycle) {
 	loop = (val !== this._source.END);
 
 	while (loop) {
-		val = this._source.read(val);
+		val = this._source.read();
 		if (val !== this._source.END) {
 			res.add(val);
 		} else {

@@ -35,7 +35,7 @@ Group.prototype = Object.create(BaseSequence.prototype);
 Group.prototype.read = function read(recycle) {
 	let val, res;
 
-	val = this._source.read(val);
+	val = this._source.read();
 	if (val === this._source.END) { return this.END; }
 
 	if (Array.isArray(recycle)) {
@@ -48,7 +48,7 @@ Group.prototype.read = function read(recycle) {
 	res[0] = val;
 
 	for (let i = 1; i < this._size; i++) {
-		val = (val !== this._source.END) ? this._source.read(val) : val;
+		val = (val !== this._source.END) ? this._source.read() : val;
 		if (val !== this._source.END) {
 			res[i] = val;
 		}

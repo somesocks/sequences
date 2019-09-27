@@ -46,6 +46,7 @@ function Join(this : any, outerSource : Array<any> | Sequence , innerSource : Ar
 Join.prototype = Object.create(BaseSequence.prototype);
 
 Join.prototype.read = function read(recycle) {
+		console.log('Join.prototype.read', recycle);
 
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;

@@ -36,11 +36,11 @@ function Map(this : any, source : Sequence, mapper : (val : any, ind : number) =
 Map.prototype = Object.create(BaseSequence.prototype);
 
 Map.prototype.read = function read(recycle) {
-	let val = this._source.read(recycle);
+	let val = this._source.read();
 
 	if (val === this._source.END) { return this.END; }
 
-	val = this._map(val, this._index);
+	val = this._map(val, this._index, recycle);
 	this._index++;
 
 	return val;
