@@ -46,37 +46,35 @@ describe(
 			}
 		);
 
+		const PERF_ARRAY = Array(10000).fill(0);
 
+		it(
+			'performance',
+			() => {
+				const result = Join(
+						PERF_ARRAY,
+						PERF_ARRAY,
+					)
+					// .pipe(Each, (item) => console.log('item', item))
+					.pipe(Drain)
+					.read();
+			}
+		);
 
-		const PERF_ARRAY = Array(10000);
+		it(
+			'performance control group',
+			() => {
+				let arr : any[] = [];
 
-		// it(
-		// 	'performance',
-		// 	() => {
-		// 		const result = Join(
-		// 				PERF_ARRAY,
-		// 				PERF_ARRAY,
-		// 			)
-		// 			// .pipe(Each, (item) => console.log('item', item))
-		// 			.pipe(Drain)
-		// 			.read();
-		// 	}
-		// );
-		//
-		// it(
-		// 	'performance control group',
-		// 	() => {
-		// 		let arr : any[] = [];
-		//
-		// 		for (let i = 0; i < PERF_ARRAY.length; i++) {
-		// 			for (let j = 0; j < PERF_ARRAY.length; j++) {
-		// 				arr[0] = PERF_ARRAY[i];
-		// 				arr[1] = PERF_ARRAY[j];
-		// 			}
-		// 		}
-		//
-		// 	}
-		// );
+				for (let i = 0; i < PERF_ARRAY.length; i++) {
+					for (let j = 0; j < PERF_ARRAY.length; j++) {
+						arr[0] = PERF_ARRAY[i];
+						arr[1] = PERF_ARRAY[j];
+					}
+				}
+
+			}
+		);
 
 	}
 

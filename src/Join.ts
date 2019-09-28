@@ -1,5 +1,6 @@
 
-import { Sequence, default as BaseSequence } from './Sequence';
+import { Sequence } from './types/Sequence';
+import BaseSequence from './BaseSequence';
 
 import ToArray from './ToArray';
 
@@ -46,8 +47,6 @@ function Join(this : any, outerSource : Array<any> | Sequence , innerSource : Ar
 Join.prototype = Object.create(BaseSequence.prototype);
 
 Join.prototype.read = function read(recycle) {
-		console.log('Join.prototype.read', recycle);
-
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;
         this._outerIndex++;

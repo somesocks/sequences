@@ -5,7 +5,7 @@ import Count from './Count';
 import Slice from './Slice';
 // import From from './From';
 import Drain from './Drain';
-// import Each from './Each';
+import Each from './Each';
 // import Filter from './Filter';
 import Map from './Map';
 // import FromArray from './FromArray';
@@ -19,7 +19,10 @@ import ToArray from './ToArray';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
 
-
+const _array = () => {
+	console.log('allocating array');
+	return [];
+};
 
 describe(
 	'sequences/Map',
@@ -65,6 +68,46 @@ describe(
 				.read();
 		});
 
+		it('recycling performance test', () => {
+			const arr = Count()
+				.pipe(Slice, 0, 1000000)
+				// .pipe(Each, (val, i) => console.log('Each 1', val))
+				.pipe(Map, (val, i, recycle) => {
+					const res = recycle || _array();
+					res[0] = val + 1;
+					return res;
+				})
+				// .pipe(Each, (val, i) => console.log('Each 2', val))
+				.pipe(Map, ([ val ], i, recycle) => {
+					const res = recycle || _array();
+					res[0] = val + 1;
+					return res;
+				})
+				// .pipe(Each, (val, i) => console.log('Each 3', val))
+				.pipe(Map, ([ val ], i, recycle) => {
+					const res = recycle || _array();
+					res[0] = val + 1;
+					return res;
+				})
+				// .pipe(Each, (val, i) => console.log('Each 4', val))
+				.pipe(Map, ([ val ], i, recycle) => {
+					const res = recycle || _array();
+					res[0] = val + 1;
+					return res;
+				})
+				// .pipe(Each, (val, i) => console.log('Each 5', val))
+				.pipe(Map, ([ val ], i, recycle) => {
+					const res = recycle || _array();
+					res[0] = val + 1;
+					return res;
+				})
+				// .pipe(Each, (val, i) => console.log('Each 6', val))
+				.pipe(Map, ([ val ], i, recycle) => val + 1)
+				// .pipe(Each, (val, i) => console.log('Each 7', val))
+				.pipe(ToArray)
+				.read();
+		});
+
 		it('performance test control group', () => {
 			let arr = Array(1000000).fill(0);
 			arr = arr
@@ -73,6 +116,7 @@ describe(
 				.map((val) => val + 1)
 				.map((val) => val + 1);
 		});
+
 
 	}
 );

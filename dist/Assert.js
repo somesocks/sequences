@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 var DEFAULT_ASSERT = function (val, index) { return true; };
 var DEFAULT_ERROR = function (val, index) { return new Error("Assert: val " + val + " at index " + index + " failed assertion"); };
 /**
@@ -44,7 +44,7 @@ function Assert(source, assert, error) {
     self._index = 0;
     return self;
 }
-Assert.prototype = Object.create(Sequence_1.default.prototype);
+Assert.prototype = Object.create(BaseSequence_1.default.prototype);
 Assert.prototype.read = function read(recycle) {
     var val = this._source.read(recycle);
     if (val === this._source.END) {

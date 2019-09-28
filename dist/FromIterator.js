@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 /**
 *
 * ```javascript
@@ -18,7 +18,7 @@ function FromIterator(iterator) {
     self._source = iterator;
     return self;
 }
-FromIterator.prototype = Object.create(Sequence_1.default.prototype);
+FromIterator.prototype = Object.create(BaseSequence_1.default.prototype);
 FromIterator.prototype.read = function read(recycle) {
     var val = this._source.next();
     if (val.done) {

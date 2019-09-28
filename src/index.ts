@@ -22,7 +22,6 @@ import Slice from './Slice';
 import Splice from './Splice';
 import ToArray from './ToArray';
 import ToBlocks from './ToBlocks';
-import Sequence from './Sequence';
 import ToIterator from './ToIterator';
 import ToObject from './ToObject';
 import ToSet from './ToSet';
@@ -49,7 +48,6 @@ export {
 	Join,
 	Map,
 	Reduce,
-	Sequence,
 	Slice,
 	Splice,
 	ToArray,

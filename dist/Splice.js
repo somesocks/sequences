@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 /**
 *
 * ```javascript
@@ -31,7 +31,7 @@ function Splice() {
     self._index = 0;
     return self;
 }
-Splice.prototype = Object.create(Sequence_1.default.prototype);
+Splice.prototype = Object.create(BaseSequence_1.default.prototype);
 Splice.prototype.read = function read(recycle) {
     while (true) {
         if (this._index >= this._sequences.length) {

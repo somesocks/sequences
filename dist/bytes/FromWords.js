@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("../Sequence"));
+var BaseSequence_1 = __importDefault(require("../BaseSequence"));
 /**
 *
 * ```javascript
@@ -30,7 +30,7 @@ function FromLittleEndianWords(source) {
     self._left = 0;
     return self;
 }
-FromLittleEndianWords.prototype = Object.create(Sequence_1.default.prototype);
+FromLittleEndianWords.prototype = Object.create(BaseSequence_1.default.prototype);
 FromLittleEndianWords.prototype.read = function read(recycle) {
     if (this._left === 0) {
         this._buffer = this._source.read(this._buffer);
@@ -51,7 +51,7 @@ function FromBigEndianWords(source) {
     self._left = 0;
     return self;
 }
-FromBigEndianWords.prototype = Object.create(Sequence_1.default.prototype);
+FromBigEndianWords.prototype = Object.create(BaseSequence_1.default.prototype);
 FromBigEndianWords.prototype.read = function read(recycle) {
     if (this._left === 0) {
         this._buffer = this._source.read(this._buffer);

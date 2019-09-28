@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 var ToArray_1 = __importDefault(require("./ToArray"));
 var isArrayLike = function (val) {
     return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
@@ -37,9 +37,8 @@ function Join(outerSource, innerSource) {
     self._innerIndex = 0;
     return self;
 }
-Join.prototype = Object.create(Sequence_1.default.prototype);
+Join.prototype = Object.create(BaseSequence_1.default.prototype);
 Join.prototype.read = function read(recycle) {
-    console.log('Join.prototype.read', recycle);
     if (this._innerIndex > this._innerSource.length - 1) {
         this._innerIndex = 0;
         this._outerIndex++;

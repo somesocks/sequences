@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 var Assert_1 = __importDefault(require("./Assert"));
 function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 /**
@@ -33,7 +33,7 @@ function ToObject(source) {
     self._source = Assert_1.default(source, isKVP);
     return self;
 }
-ToObject.prototype = Object.create(Sequence_1.default.prototype);
+ToObject.prototype = Object.create(BaseSequence_1.default.prototype);
 ToObject.prototype.read = function read(recycle) {
     var val, res, loop;
     if (!this._source) {

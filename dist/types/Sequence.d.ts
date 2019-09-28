@@ -31,14 +31,4 @@ declare type Sequence = {
     */
     pipe: (next: SequenceConstructor, ...args: any[]) => Sequence;
 };
-/**
-* `Sequence` is the base sequence class.
-* it should always be subclassed.
-* sequence constructors should never require new.
-* @name Sequence
-* @class
-* @constructor
-* @memberof sequences
-*/
-declare function BaseSequence(this: any): Sequence;
-export { Sequence, SequenceConstructor, BaseSequence as default };
+export { Sequence, SequenceConstructor, };

@@ -1,6 +1,6 @@
 {
   "name": "sequences",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "A set of tools for quickly processing data in a streaming way",
   "main": "index.js",
   "scripts": {},

@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 /**
 *
 * ```javascript
@@ -28,7 +28,7 @@ function Drain(source) {
     self._source = source;
     return self;
 }
-Drain.prototype = Object.create(Sequence_1.default.prototype);
+Drain.prototype = Object.create(BaseSequence_1.default.prototype);
 Drain.prototype.read = function read(recycle) {
     var val, loop;
     val = recycle;

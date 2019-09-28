@@ -1,5 +1,6 @@
 
-import { Sequence, default as BaseSequence } from './Sequence';
+import { Sequence } from './types/Sequence';
+import BaseSequence from './BaseSequence';
 
 /**
 *
@@ -28,6 +29,7 @@ function Map(this : any, source : Sequence, mapper : (val : any, ind : number) =
 
 	self._source = source;
 	self._map = mapper;
+	self._value = undefined;
 	self._index = 0;
 
 	return self;
@@ -36,14 +38,14 @@ function Map(this : any, source : Sequence, mapper : (val : any, ind : number) =
 Map.prototype = Object.create(BaseSequence.prototype);
 
 Map.prototype.read = function read(recycle) {
-	let val = this._source.read();
+	this._value = this._source.read(this._value);
 
-	if (val === this._source.END) { return this.END; }
+	if (this._value === this._source.END) { return this.END; }
 
-	val = this._map(val, this._index, recycle);
+	const result = this._map(this._value, this._index, recycle);
 	this._index++;
 
-	return val;
+	return result;
 }
 
 export = Map;

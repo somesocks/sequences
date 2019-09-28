@@ -1,5 +1,6 @@
 
-import { Sequence, default as BaseSequence } from './Sequence';
+import { Sequence } from './types/Sequence';
+import BaseSequence from './BaseSequence';
 
 var DEFAULT_ASSERT = function (val, index) { return true; };
 

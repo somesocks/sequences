@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-env mocha */
 var Assert_1 = __importDefault(require("./Assert"));
+var Drain_1 = __importDefault(require("./Drain"));
 var Each_1 = __importDefault(require("./Each"));
 var From_1 = __importDefault(require("./From"));
 var Join_1 = __importDefault(require("./Join"));
@@ -32,32 +33,20 @@ describe('sequences/Join', function () {
             .pipe(Assert_1.default, function (results) { return results.length === 9; })
             .read();
     });
-    var PERF_ARRAY = Array(10000);
-    // it(
-    // 	'performance',
-    // 	() => {
-    // 		const result = Join(
-    // 				PERF_ARRAY,
-    // 				PERF_ARRAY,
-    // 			)
-    // 			// .pipe(Each, (item) => console.log('item', item))
-    // 			.pipe(Drain)
-    // 			.read();
-    // 	}
-    // );
-    //
-    // it(
-    // 	'performance control group',
-    // 	() => {
-    // 		let arr : any[] = [];
-    //
-    // 		for (let i = 0; i < PERF_ARRAY.length; i++) {
-    // 			for (let j = 0; j < PERF_ARRAY.length; j++) {
-    // 				arr[0] = PERF_ARRAY[i];
-    // 				arr[1] = PERF_ARRAY[j];
-    // 			}
-    // 		}
-    //
-    // 	}
-    // );
+    var PERF_ARRAY = Array(10000).fill(0);
+    it('performance', function () {
+        var result = Join_1.default(PERF_ARRAY, PERF_ARRAY)
+            // .pipe(Each, (item) => console.log('item', item))
+            .pipe(Drain_1.default)
+            .read();
+    });
+    it('performance control group', function () {
+        var arr = [];
+        for (var i = 0; i < PERF_ARRAY.length; i++) {
+            for (var j = 0; j < PERF_ARRAY.length; j++) {
+                arr[0] = PERF_ARRAY[i];
+                arr[1] = PERF_ARRAY[j];
+            }
+        }
+    });
 });

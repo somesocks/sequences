@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 /**
 *
 * ```javascript
@@ -33,7 +33,7 @@ function Replace(source, selector, mapper) {
     self._index = 0;
     return self;
 }
-Replace.prototype = Object.create(Sequence_1.default.prototype);
+Replace.prototype = Object.create(BaseSequence_1.default.prototype);
 Replace.prototype.read = function read(recycle) {
     var val = this._source.read(recycle);
     if (val === this._source.END) {

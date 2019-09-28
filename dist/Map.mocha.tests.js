@@ -9,7 +9,6 @@ var Count_1 = __importDefault(require("./Count"));
 var Slice_1 = __importDefault(require("./Slice"));
 // import From from './From';
 var Drain_1 = __importDefault(require("./Drain"));
-// import Each from './Each';
 // import Filter from './Filter';
 var Map_1 = __importDefault(require("./Map"));
 // import FromArray from './FromArray';
@@ -22,6 +21,10 @@ var ToArray_1 = __importDefault(require("./ToArray"));
 // import ToObject from './ToObject';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
+var _array = function () {
+    console.log('allocating array');
+    return [];
+};
 describe('sequences/Map', function () {
     it('test case 1', function () {
         var stream = Count_1.default()
@@ -55,6 +58,52 @@ describe('sequences/Map', function () {
             .pipe(Map_1.default, function (val) { return val + 1; })
             .pipe(Map_1.default, function (val) { return val + 1; })
             .pipe(Map_1.default, function (val) { return val + 1; })
+            .pipe(ToArray_1.default)
+            .read();
+    });
+    it('recycling performance test', function () {
+        var arr = Count_1.default()
+            .pipe(Slice_1.default, 0, 1000000)
+            // .pipe(Each, (val, i) => console.log('Each 1', val))
+            .pipe(Map_1.default, function (val, i, recycle) {
+            var res = recycle || _array();
+            res[0] = val + 1;
+            return res;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 2', val))
+            .pipe(Map_1.default, function (_a, i, recycle) {
+            var val = _a[0];
+            var res = recycle || _array();
+            res[0] = val + 1;
+            return res;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 3', val))
+            .pipe(Map_1.default, function (_a, i, recycle) {
+            var val = _a[0];
+            var res = recycle || _array();
+            res[0] = val + 1;
+            return res;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 4', val))
+            .pipe(Map_1.default, function (_a, i, recycle) {
+            var val = _a[0];
+            var res = recycle || _array();
+            res[0] = val + 1;
+            return res;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 5', val))
+            .pipe(Map_1.default, function (_a, i, recycle) {
+            var val = _a[0];
+            var res = recycle || _array();
+            res[0] = val + 1;
+            return res;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 6', val))
+            .pipe(Map_1.default, function (_a, i, recycle) {
+            var val = _a[0];
+            return val + 1;
+        })
+            // .pipe(Each, (val, i) => console.log('Each 7', val))
             .pipe(ToArray_1.default)
             .read();
     });

@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("../Sequence"));
+var BaseSequence_1 = __importDefault(require("../BaseSequence"));
 /**
 *
 * ```javascript
@@ -22,7 +22,7 @@ function FromHex(hex) {
     self._offset = 0;
     return self;
 }
-FromHex.prototype = Object.create(Sequence_1.default.prototype);
+FromHex.prototype = Object.create(BaseSequence_1.default.prototype);
 FromHex.prototype.read = function read(recycle) {
     var byte = 0;
     if (this._offset >= this._hex.length) {

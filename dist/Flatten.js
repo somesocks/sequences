@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 var isArrayLike = function (val) {
     return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
 };
@@ -38,7 +38,7 @@ function Flatten(source) {
     self._index = undefined;
     return self;
 }
-Flatten.prototype = Object.create(Sequence_1.default.prototype);
+Flatten.prototype = Object.create(BaseSequence_1.default.prototype);
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
     while (1) {
@@ -55,7 +55,7 @@ Flatten.prototype.read = function read(recycle) {
                     this._index = 0;
                     break;
                 }
-                else if (this._buffer instanceof Sequence_1.default) {
+                else if (this._buffer instanceof BaseSequence_1.default) {
                     this._mode = MODE_SEQUENCE;
                     break;
                 }

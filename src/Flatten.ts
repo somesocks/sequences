@@ -1,5 +1,6 @@
 
-import { Sequence, default as BaseSequence } from './Sequence';
+import { Sequence } from './types/Sequence';
+import BaseSequence from './BaseSequence';
 
 const isArrayLike = function (val) {
 	return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);

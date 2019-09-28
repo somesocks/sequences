@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("./Sequence"));
+var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 /**
 *
 * ```javascript
@@ -29,17 +29,18 @@ function Map(source, mapper) {
     var self = this instanceof Map ? this : Object.create(Map.prototype);
     self._source = source;
     self._map = mapper;
+    self._value = undefined;
     self._index = 0;
     return self;
 }
-Map.prototype = Object.create(Sequence_1.default.prototype);
+Map.prototype = Object.create(BaseSequence_1.default.prototype);
 Map.prototype.read = function read(recycle) {
-    var val = this._source.read();
-    if (val === this._source.END) {
+    this._value = this._source.read(this._value);
+    if (this._value === this._source.END) {
         return this.END;
     }
-    val = this._map(val, this._index, recycle);
+    var result = this._map(this._value, this._index, recycle);
     this._index++;
-    return val;
+    return result;
 };
 module.exports = Map;

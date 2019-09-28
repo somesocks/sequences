@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("../Sequence"));
+var BaseSequence_1 = __importDefault(require("../BaseSequence"));
 var LOOKUP_TABLE = [];
 for (var i = 0; i < 255; i++) {
     if (i < 16) {
@@ -35,7 +35,7 @@ function ToHex(source) {
     self._source = source;
     return self;
 }
-ToHex.prototype = Object.create(Sequence_1.default.prototype);
+ToHex.prototype = Object.create(BaseSequence_1.default.prototype);
 ToHex.prototype.read = function read(recycle) {
     var val, loop;
     var res = '';

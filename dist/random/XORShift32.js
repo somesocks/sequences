@@ -2,7 +2,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var Sequence_1 = __importDefault(require("../Sequence"));
+var BaseSequence_1 = __importDefault(require("../BaseSequence"));
 /**
 *
 * ```javascript
@@ -22,7 +22,7 @@ function XORShift32(seed) {
     self._state &= 0xFFFFFFFF;
     return self;
 }
-XORShift32.prototype = Object.create(Sequence_1.default.prototype);
+XORShift32.prototype = Object.create(BaseSequence_1.default.prototype);
 XORShift32.prototype.read = function read(recycle) {
     var x = this._state;
     x ^= (x << 13);
