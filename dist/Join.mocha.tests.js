@@ -26,6 +26,20 @@ describe('sequences/Join', function () {
             .pipe(Assert_1.default, function (results) { return results.length === 0; })
             .read();
     });
+    it('handles empty arrays correctly 2', function () {
+        var result = Join_1.default([1, 2, 3], [])
+            // .pipe(Each, (item) => console.log('item', item))
+            .pipe(ToArray_1.default)
+            .pipe(Assert_1.default, function (results) { return results.length === 0; })
+            .read();
+    });
+    it('handles empty arrays correctly 3', function () {
+        var result = Join_1.default([], [1, 2, 3])
+            // .pipe(Each, (item) => console.log('item', item))
+            .pipe(ToArray_1.default)
+            .pipe(Assert_1.default, function (results) { return results.length === 0; })
+            .read();
+    });
     it('handles sequences correctly', function () {
         var result = Join_1.default(From_1.default(1, 2, 3), From_1.default(4, 5, 6))
             // .pipe(Each, (item) => console.log('item', item))

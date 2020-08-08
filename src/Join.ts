@@ -2,6 +2,7 @@
 import { Sequence } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
+import From from './From';
 import ToArray from './ToArray';
 
 const isArrayLike = function (val) {
@@ -39,6 +40,11 @@ function Join(this : any, outerSource : Array<any> | Sequence , innerSource : Ar
 
     self._outerIndex = 0;
     self._innerIndex = 0;
+
+		// handle edge cases with 0-length arrays
+		if (self._outerSource.length === 0 || self._innerSource.length === 0) {
+			return From();
+		}
 
     return self;
 }
