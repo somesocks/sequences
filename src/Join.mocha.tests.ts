@@ -36,6 +36,28 @@ describe(
 		);
 
 		it(
+			'handles empty arrays correctly 2',
+			() => {
+				const result = Join([1, 2, 3], [])
+					// .pipe(Each, (item) => console.log('item', item))
+					.pipe(ToArray)
+					.pipe(Assert, (results) => results.length === 0)
+					.read();
+			}
+		);
+
+		it(
+			'handles empty arrays correctly 3',
+			() => {
+				const result = Join([], [1, 2, 3])
+					// .pipe(Each, (item) => console.log('item', item))
+					.pipe(ToArray)
+					.pipe(Assert, (results) => results.length === 0)
+					.read();
+			}
+		);
+
+		it(
 			'handles sequences correctly',
 			() => {
 				const result = Join(From(1, 2, 3), From(4, 5, 6))
