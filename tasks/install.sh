@@ -1,6 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# set -x #echo on
+#
+# turn this on to debug script
+# set -x
+
+#
+# abort on error
+set -e
 
 
 # `test-mocha` runs mocha tests

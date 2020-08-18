@@ -19,7 +19,7 @@ function BaseSequence() {
 * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
 * @memberof sequences.Sequence#
 */
-BaseSequence.prototype.read = function read(recycle) { };
+BaseSequence.prototype.read = function read(recycle) { return this.END; };
 /**
 * ```javascript
 * // this

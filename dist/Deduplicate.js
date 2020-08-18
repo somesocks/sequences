@@ -45,5 +45,4 @@ function Deduplicate(source, projection) {
     };
     return Filter_1.default(source, filter);
 }
-;
 module.exports = Deduplicate;

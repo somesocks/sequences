@@ -1,10 +1,18 @@
 module.exports = {
-	parser: 'babel-eslint',
-	extends: [
-		'esnext'
-	],
+  'root': true,
+  'parser': '@typescript-eslint/parser',
+  'plugins': [
+    '@typescript-eslint'
+  ],
+  'extends': [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
 	rules: {
-		'eqeqeq': ["error", "smart"],
+    '@typescript-eslint/no-var-requires': [ 'warn' ],
+
+		'eqeqeq': ['error', 'smart'],
 		'import/no-commonjs': [ 'off' ],
 		'no-console': [ 'warn' ],
 		'no-else-return': [ 'off' ],

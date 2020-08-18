@@ -32,7 +32,8 @@ function Splice(this : any, ...sequences : Sequence[]) : Sequence {
 Splice.prototype = Object.create(BaseSequence.prototype);
 
 Splice.prototype.read = function read(recycle) {
-	while (true) {
+  // this infinite loop is a driver for a state machine
+	while (true) { // eslint-disable-line no-constant-condition
 		if (this._index >= this._sequences.length) {
 			return this.END;
 		}

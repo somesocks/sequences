@@ -1,7 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# set -x #echo on
+#
+# turn this on to debug script
+# set -x
 
+#
+# abort on error
+set -e
 
 # `test-mocha` runs mocha tests
 
@@ -9,10 +14,6 @@
 ROOT_DIR=.
 SRC_DIR=$ROOT_DIR/src
 DIST_DIR=$ROOT_DIR/dist
-
-# add local node_modules bin to path
-NODE_BIN=$ROOT_DIR/node_modules/.bin
-PATH=$PATH:$NODE_BIN
 
 # this would be the simple case, but it misses
 # *.mocha.tests dirs, which I want to support
@@ -38,7 +39,7 @@ PATH=$PATH:$NODE_BIN
 		--key=2.1 \
 	| \
 	xargs \
-		mocha \
+		npx mocha \
 			--exit \
 			--sort \
 			--timeout=60000 \

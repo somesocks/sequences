@@ -21,12 +21,14 @@ import FromArray from './FromArray';
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromObject(this : any, obj : object) : Sequence {
+function FromObject(this : any, obj : object) : Sequence { // eslint-disable-line @typescript-eslint/ban-types
 	const self = this instanceof FromObject ? this : Object.create(FromObject.prototype);
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
 	var entries : object[] = [];
 
 	for (var key in obj) {
+    // eslint-disable-next-line no-prototype-builtins
 		if(obj.hasOwnProperty(key)) {
 			var value = obj[key];
 			entries.push({ key, value });

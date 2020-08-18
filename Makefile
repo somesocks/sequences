@@ -25,22 +25,25 @@ help:
 ##		make setup - setup for local development
 ##
 setup:
-	sh $(TASKS)/install.sh
+	$(TASKS)/install.sh
 
 
 ##		make build - build the package
 ##
 build:
-	sh $(TASKS)/build.sh
+	$(TASKS)/build.sh
 
 
 
 ##		make test - run test cases against the built package
 ##
-test: test-mocha
+test: test-mocha test-eslint
 
 test-mocha:
-	sh $(TASKS)/test-mocha.sh
+	$(TASKS)/test-mocha.sh
+
+test-eslint:
+	$(TASKS)/test-eslint.sh
 
 
 
@@ -48,12 +51,12 @@ test-mocha:
 ##		make package-check - list the files that will be present in the package
 ##
 package-check:
-	sh $(TASKS)/package-check.sh
+	$(TASKS)/package-check.sh
 
 ##		make package-publish - publish the current dist dir
 ##
 package-publish:
-	sh $(TASKS)/package-publish.sh
+	$(TASKS)/package-publish.sh
 
 ##
 ##

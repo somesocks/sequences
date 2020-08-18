@@ -45,6 +45,6 @@ function Deduplicate (source : Sequence, projection = DEFAULT_PROJECTION) {
 	};
 
 	return Filter(source, filter);
-};
+}
 
 export = Deduplicate;

@@ -22,8 +22,10 @@ var FromArray_1 = __importDefault(require("./FromArray"));
 */
 function FromObject(obj) {
     var self = this instanceof FromObject ? this : Object.create(FromObject.prototype);
+    // eslint-disable-next-line @typescript-eslint/ban-types
     var entries = [];
     for (var key in obj) {
+        // eslint-disable-next-line no-prototype-builtins
         if (obj.hasOwnProperty(key)) {
             var value = obj[key];
             entries.push({ key: key, value: value });

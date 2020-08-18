@@ -22,7 +22,7 @@ function BaseSequence(this : any) : Sequence {
 * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
 * @memberof sequences.Sequence#
 */
-BaseSequence.prototype.read = function read(recycle : any) { };
+BaseSequence.prototype.read = function read(recycle : any) { return this.END; };
 
 /**
 * ```javascript
