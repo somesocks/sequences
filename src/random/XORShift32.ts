@@ -15,7 +15,7 @@ import BaseSequence from '../BaseSequence';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-function XORShift32(this : any, seed ?: number) : Sequence {
+function XORShift32(this : any, seed ?: number) : Sequence<number> {
 	var self = this instanceof XORShift32 ? this : Object.create(XORShift32.prototype);
 
 	self._state = seed != null ? seed : Date.now();

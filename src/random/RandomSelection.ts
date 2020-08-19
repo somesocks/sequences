@@ -20,12 +20,12 @@ import Map from '../Map';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-function RandomSelection(choices : any[], seed ?: number) {
+function RandomSelection<T>(choices : T[], seed ?: number) : Sequence<T> {
 	var min = 0;
 	var max = choices.length - 1;
 
 	return RandomInteger(min, max, seed)
-		.pipe(Map, (x) => choices[x]);
+		.pipe<T>(Map, (x) => choices[x]);
 }
 
 export = RandomSelection;

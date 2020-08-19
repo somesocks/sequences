@@ -19,9 +19,9 @@ import Map from '../Map';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-function RandomBoolean(seed ?: number) : Sequence {
+function RandomBoolean(seed ?: number) : Sequence<boolean> {
 	return Random(0, 1, seed)
-		.pipe(Map, (x) => (x < 0.5));
+		.pipe<boolean>(Map, (x) => (x < 0.5));
 }
 
 export = RandomBoolean;

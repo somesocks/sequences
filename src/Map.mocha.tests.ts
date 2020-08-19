@@ -30,7 +30,7 @@ describe(
 		it('test case 1', () => {
 			const stream = Count()
 				// .pipe(Each, (val, i) => console.log('Each 1', val))
-				.pipe(Map, (val, i) => val + 1)
+				.pipe<number>(Map, (val, i) => val + 1)
 				// .pipe(Each, (val, i) => console.log('Each 2', val))
 				.pipe(Slice, 0, 3)
 				.pipe(Drain)

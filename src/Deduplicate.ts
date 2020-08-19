@@ -32,7 +32,7 @@ const DEFAULT_PROJECTION = (val) => val;
 * @returns {Sequence}
 * @memberof sequences
 */
-function Deduplicate (source : Sequence, projection = DEFAULT_PROJECTION) {
+function Deduplicate<T>(source : Sequence<T>, projection = DEFAULT_PROJECTION) : Sequence<T> {
 	const _filterSet = new Set();
 	const filter = (val) => {
 		val = projection(val);

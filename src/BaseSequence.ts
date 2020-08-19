@@ -1,5 +1,5 @@
 
-import { Sequence, SequenceConstructor } from './types/Sequence';
+import { Sequence, SequenceConstructor, SequenceEnd } from './types/Sequence';
 
 
 /**
@@ -22,7 +22,7 @@ function BaseSequence(this : any) : Sequence {
 * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
 * @memberof sequences.Sequence#
 */
-BaseSequence.prototype.read = function read(recycle : any) { return this.END; };
+BaseSequence.prototype.read = function read(recycle) { return this.END; };
 
 /**
 * ```javascript
@@ -55,7 +55,7 @@ BaseSequence.prototype.pipe = function pipe() {
 	return sequenceConstructor.apply(sequenceConstructor, arguments);
 };
 
-BaseSequence.prototype.END = { 'Sequence.prototype.END': true };
+BaseSequence.prototype.END = { 'Sequence.prototype.END': true } as SequenceEnd;
 
 
 export default BaseSequence;

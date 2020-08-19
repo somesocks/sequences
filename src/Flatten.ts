@@ -31,7 +31,7 @@ const MODE_SEQUENCE = 0x2;
 * @returns {Sequence}
 * @memberof sequences
 */
-function Flatten(this : any, source : Sequence) : Sequence {
+function Flatten<T>(this : any, source : Sequence<T>) : Sequence<any> {
 	const self = this instanceof Flatten ? this : Object.create(Flatten.prototype);
 
 	self._source = source;
@@ -47,7 +47,7 @@ Flatten.prototype = Object.create(BaseSequence.prototype);
 
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
-  // this infinite loop is a driver for a state machine 
+  // this infinite loop is a driver for a state machine
   // eslint-disable-next-line no-constant-condition
 	while (1) {
 		switch (this._mode) {

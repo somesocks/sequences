@@ -23,11 +23,11 @@ import Random from './Random';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-function RandomInteger(min ?: number, max ?: number, seed ?: number) : Sequence {
+function RandomInteger(min ?: number, max ?: number, seed ?: number) : Sequence<number> {
 	min = min || 0;
 	max = max || 1;
 	return Random(min, max + 1, seed)
-		.pipe(Map, (x) => Math.floor(x));
+		.pipe<number>(Map, (x) => Math.floor(x));
 }
 
 export = RandomInteger;

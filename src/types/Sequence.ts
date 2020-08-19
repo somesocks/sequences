@@ -1,7 +1,27 @@
 
-type SequenceConstructor = (...args : any[]) => Sequence;
+type SequenceConstructor<T = any> = (...args : any[]) => Sequence<T>;
+type SQC<T = any> = SequenceConstructor<T>;
 
-type Sequence = {
+type SequenceTransformer<T = any, U = any> = ((source: Sequence<U>, ...args: any[]) => Sequence<T>);
+type SQT<T = any, U = any> = SequenceTransformer<T, U>;
+
+type SequenceSelector<T = any> = SequenceTransformer<T, T>;
+type SQS<T = any> = SequenceSelector<T>;
+
+// let check1 : SequenceTransformer<number, number> = {} as SequenceSelector<number>; // should work
+// let check2 : SequenceTransformer<string, number> = {} as SequenceSelector<number>; // should fail
+// let check3 : SequenceTransformer<number, string> = {} as SequenceSelector<number>; // should fail
+//
+// let check4 : SequenceSelector<number> = {} as SequenceTransformer<number, number>; // should work
+// let check5 : SequenceSelector<number> = {} as SequenceTransformer<string, number>; // should fail
+// let check6 : SequenceSelector<number> = {} as SequenceTransformer<number, string>; // should fail
+
+
+// eslint-disable-next-line
+type SequenceEnd = object & { _sequenceENDBrand: undefined };
+type SQE = SequenceEnd;
+
+type Sequence<T = any> = {
 
 	/**
 	* read is the core method of a sequence.  read should return the next value in the sequence.
@@ -10,7 +30,7 @@ type Sequence = {
 	* @param recycle - a 'container' value to re-use when returning the next value.  always optional.
 	* @memberof sequences.Sequence#
 	*/
-	read : (recycle ?: any) => any,
+	read: (recycle ?: T) => T | SequenceEnd,
 
 	/**
 	* ```javascript
@@ -33,10 +53,21 @@ type Sequence = {
 	* @param {...*} args - any number of additional args to pass into sequenceConstructor
 	* @memberof sequences.Sequence#
 	*/
-	pipe : (next : SequenceConstructor, ...args : any[]) => Sequence,
+  pipe: <U>(next : SequenceTransformer<U, T>, ...args : any[]) => Sequence<U>,
+
+  END: SequenceEnd,
 };
+type SQ = Sequence;
 
 export {
-	Sequence,
+  Sequence,
+  SQ,
 	SequenceConstructor,
+  SQC,
+  SequenceTransformer,
+  SQT,
+  SequenceSelector,
+  SQS,
+  SequenceEnd,
+  SQE,
 };

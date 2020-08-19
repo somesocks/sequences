@@ -25,7 +25,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Default(this : any, source : Sequence, _default : any) : Sequence {
+function Default<T>(this : any, source : Sequence<T>, _default : T) : Sequence<T> {
 	const self = this instanceof Default ? this : Object.create(Default.prototype);
 
 	self._source = source;

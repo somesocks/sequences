@@ -19,7 +19,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromArray(this : any, array : any[]) : Sequence {
+function FromArray<T>(this : any, array : T[]) : Sequence<T> {
 	const self = this instanceof FromArray ? this : Object.create(FromArray.prototype);
 
 	self._array = array;

@@ -15,7 +15,7 @@ import BaseSequence from '../BaseSequence';
 * @returns {Sequence}
 * @memberof sequences.bytes
 */
-function FromHex(this : any, hex : string) : Sequence {
+function FromHex(this : any, hex : string) : Sequence<number> {
 	var self = this instanceof FromHex ? this : Object.create(FromHex.prototype);
 
 	self._hex = hex;

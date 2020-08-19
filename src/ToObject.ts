@@ -6,6 +6,11 @@ import Assert from './Assert';
 
 function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 
+type KVP<T = any> = {
+  key: string | number,
+  value: T,
+};
+
 /**
 *
 * ```javascript
@@ -29,7 +34,7 @@ function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 * @returns {Sequence}
 * @memberof sequences
 */
-function ToObject(this : any, source : Sequence) : Sequence {
+function ToObject<T, U = KVP<T>>(this : any, source : Sequence<U>) : Sequence<Record<string, T>> {
 	const self = this instanceof ToObject ? this : Object.create(ToObject.prototype);
 
 	self._source = Assert(source, isKVP);

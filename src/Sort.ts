@@ -28,7 +28,7 @@ import Flatten from './Flatten';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Sort(this : any, source : Sequence, comparison : () => any) : Sequence {
+function Sort<T>(this : any, source : Sequence<T>, comparison : () => any) : Sequence<T> {
 
 	const mapper = (array) => array.sort(comparison);
 

@@ -18,11 +18,11 @@ import BaseSequence from '../BaseSequence';
 * @returns {Sequence} - a sequence of bytes
 * @memberof sequences.bytes
 */
-function FromWords(source : Sequence, isLittleEndian = true) : Sequence {
+function FromWords(source : Sequence<number>, isLittleEndian = true) : Sequence<number> {
 	return isLittleEndian ? FromLittleEndianWords(source) : FromBigEndianWords(source);
 }
 
-function FromLittleEndianWords(this : any, source : Sequence) : Sequence {
+function FromLittleEndianWords(this : any, source : Sequence<number>) : Sequence<number> {
 	const self = this instanceof FromLittleEndianWords ? this : Object.create(FromLittleEndianWords.prototype);
 
 	self._source = source;
@@ -52,7 +52,7 @@ FromLittleEndianWords.prototype.read = function read(recycle) {
 
 
 
-function FromBigEndianWords(this : any, source : Sequence) : Sequence {
+function FromBigEndianWords(this : any, source : Sequence<number>) : Sequence<number> {
 	const self = this instanceof FromBigEndianWords ? this : Object.create(FromBigEndianWords.prototype);
 
 	self._source = source;

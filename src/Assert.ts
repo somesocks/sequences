@@ -1,5 +1,5 @@
 
-import { Sequence } from './types/Sequence';
+import { Sequence, SequenceTransformer } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
 var DEFAULT_ASSERT = function (val, index) { return true; };
@@ -37,7 +37,7 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 * @returns {Sequence}
 * @memberof sequences
 */
-function Assert(this : any, source : Sequence, assert : (val : any) => boolean, error ?: (val) => any) : Sequence {
+function Assert<T, U>(this : any, source : Sequence<U>, assert : (val : any) => boolean, error ?: (val) => any) : Sequence<T> {
 	var self = this instanceof Assert ? this : Object.create(Assert.prototype);
 
 	self._source = source;
