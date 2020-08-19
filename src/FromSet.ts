@@ -14,7 +14,7 @@ import FromIterator from './FromIterator';
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromSet(set) : Sequence {
+function FromSet<T>(set : Set<T>) : Sequence<T> {
 	var iterator = set.values();
 
 	return FromIterator(iterator);

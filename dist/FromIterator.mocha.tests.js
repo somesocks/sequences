@@ -14,7 +14,8 @@ describe('sequences/FromIterator', function () {
     it('test 1', function () {
         var iter = Count_1.default()
             .pipe(Slice_1.default, 0, 10)
-            .pipe(ToIterator_1.default);
+            .pipe(ToIterator_1.default)
+            .read();
         var res = FromIterator_1.default(iter)
             .pipe(ToArray_1.default)
             .pipe(Assert_1.default, function (val) { return Array.isArray(val); })

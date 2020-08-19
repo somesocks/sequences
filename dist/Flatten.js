@@ -41,7 +41,7 @@ function Flatten(source) {
 Flatten.prototype = Object.create(BaseSequence_1.default.prototype);
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
-    // this infinite loop is a driver for a state machine 
+    // this infinite loop is a driver for a state machine
     // eslint-disable-next-line no-constant-condition
     while (1) {
         switch (this._mode) {

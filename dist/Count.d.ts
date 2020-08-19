@@ -1,4 +1,4 @@
-import { Sequence } from './types/Sequence';
+import { SequenceConstructor } from './types/Sequence';
 /**
 *
 * ```javascript
@@ -21,8 +21,5 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Count(this: any, start?: number): Sequence;
-declare namespace Count {
-    var prototype: any;
-}
+declare const Count: SequenceConstructor<number>;
 export = Count;

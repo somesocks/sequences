@@ -25,7 +25,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Each(this: any, source: Sequence, each: () => any): Sequence;
+declare function Each<T>(this: any, source: Sequence<T>, each: () => any): Sequence<T>;
 declare namespace Each {
     var prototype: any;
 }

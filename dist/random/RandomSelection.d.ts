@@ -13,5 +13,5 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-declare function RandomSelection(choices: any[], seed?: number): Sequence;
+declare function RandomSelection<T>(choices: T[], seed?: number): Sequence<T>;
 export = RandomSelection;

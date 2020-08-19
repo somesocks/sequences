@@ -1,4 +1,4 @@
-import { Sequence } from './types/Sequence';
+import { Sequence } from './types';
 /**
 *
 * ```javascript
@@ -22,7 +22,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Default(this: any, source: Sequence, _default: any): Sequence;
+declare function Default<T>(this: any, source: Sequence<T>, _default: T | unknown): Sequence<T>;
 declare namespace Default {
     var prototype: any;
 }

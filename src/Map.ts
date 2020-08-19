@@ -24,7 +24,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Map(this : any, source : Sequence, mapper : (val : any, ind : number) => any) : Sequence {
+function Map<T, U>(this : any, source : Sequence<U>, mapper : (val : U, ind : number, recycle ?: T) => T) : Sequence<T> {
 	const self = this instanceof Map ? this : Object.create(Map.prototype);
 
 	self._source = source;

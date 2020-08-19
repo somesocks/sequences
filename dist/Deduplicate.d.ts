@@ -25,5 +25,5 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Deduplicate(source: Sequence, projection?: (val: any) => any): Sequence;
+declare function Deduplicate<T>(source: Sequence<T>, projection?: (val: any) => any): Sequence<T>;
 export = Deduplicate;

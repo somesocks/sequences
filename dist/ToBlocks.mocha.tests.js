@@ -26,18 +26,17 @@ var ToBlocks_1 = __importDefault(require("./ToBlocks"));
 // import ToSet from './ToSet';
 describe('sequences/ToBlocks', function () {
     it('test 1', function () {
-        var seq = Count_1.default();
-        seq = Slice_1.default(seq, 0, 99);
-        seq = ToBlocks_1.default(seq, 10);
-        // seq = Each(seq, console.log);
-        seq = Drain_1.default(seq);
-        seq.read();
+        var res = Count_1.default()
+            .pipe(Slice_1.default, 0, 99)
+            .pipe(ToBlocks_1.default, 10)
+            .pipe(Drain_1.default)
+            .read();
     });
     it('performance 1', function () {
-        var seq = Count_1.default();
-        seq = Slice_1.default(seq, 0, 1000000);
-        seq = ToBlocks_1.default(seq, 10);
-        seq = Drain_1.default(seq);
-        seq.read();
+        var res = Count_1.default()
+            .pipe(Slice_1.default, 0, 1000000)
+            .pipe(ToBlocks_1.default, 10)
+            .pipe(Drain_1.default)
+            .read();
     });
 });

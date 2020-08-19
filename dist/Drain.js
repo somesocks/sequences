@@ -23,11 +23,11 @@ var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 * @returns {Sequence}
 * @memberof sequences
 */
-function Drain(source) {
+var Drain = function Drain(source) {
     var self = this instanceof Drain ? this : Object.create(Drain.prototype);
     self._source = source;
     return self;
-}
+};
 Drain.prototype = Object.create(BaseSequence_1.default.prototype);
 Drain.prototype.read = function read(recycle) {
     var val, loop;

@@ -23,7 +23,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function ToArray(this : any, source : Sequence) : Sequence {
+function ToArray<T>(this : any, source : Sequence<T>) : Sequence<T[]> {
 	const self = this instanceof ToArray ? this : Object.create(ToArray.prototype);
 
 	self._source = source;

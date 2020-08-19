@@ -16,7 +16,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function From(this: any, ...args: any[]): Sequence;
+declare function From<T>(this: any, ...args: T[]): Sequence<T>;
 declare namespace From {
     var prototype: any;
 }

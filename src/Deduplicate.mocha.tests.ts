@@ -17,7 +17,7 @@ describe(
 		it('test case 1', () => {
 			Count()
 				.pipe(Slice, 0, 50)
-				.pipe(Map, (val) => val % 4)
+				.pipe<number>(Map, (val) => val % 4)
 				.pipe(Deduplicate)
 				// .pipe(Each, console.log)
 				.pipe(ToArray)
@@ -32,7 +32,7 @@ describe(
 		it('performance test case 1', () => {
 			Count()
 				.pipe(Slice, 0, 1000000)
-				.pipe(Map, (val) => val % 4)
+				.pipe<number>(Map, (val) => val % 4)
 				.pipe(Deduplicate)
 				// .pipe(Each, console.log)
 				.pipe(ToArray)

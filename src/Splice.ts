@@ -20,7 +20,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Splice(this : any, ...sequences : Sequence[]) : Sequence {
+function Splice<T>(this : any, ...sequences : Sequence<T>[]) : Sequence<T> {
 	const self = this instanceof Splice ? this : Object.create(Splice.prototype);
 
 	self._sequences = sequences;

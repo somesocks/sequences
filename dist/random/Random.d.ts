@@ -16,5 +16,5 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-declare function Random(min?: number, max?: number, seed?: number): Sequence;
+declare function Random(min?: number, max?: number, seed?: number): Sequence<number>;
 export = Random;

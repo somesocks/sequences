@@ -17,7 +17,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Splice(this: any, ...sequences: Sequence[]): Sequence;
+declare function Splice<T>(this: any, ...sequences: Sequence<T>[]): Sequence<T>;
 declare namespace Splice {
     var prototype: any;
 }

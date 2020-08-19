@@ -1,5 +1,8 @@
 /* eslint-env mocha */
 
+import { Sequence, SequenceTransformer, SQT } from './types';
+
+
 import Assert from './Assert';
 import From from './From';
 import Drain from './Drain';
@@ -32,9 +35,9 @@ describe(
 		});
 
 		it('performance 1', () => {
-			Count()
+			Count(1)
+        .pipe(Assert, isPositive)
 				.pipe(Slice, 1, 10000000)
-				.pipe(Assert, isPositive)
 				.pipe(Drain)
 				.read();
 		});

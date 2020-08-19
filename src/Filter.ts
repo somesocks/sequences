@@ -1,6 +1,7 @@
 
-import { Sequence } from './types/Sequence';
+import { Sequence } from './types';
 import BaseSequence from './BaseSequence';
+
 
 /**
 *
@@ -24,7 +25,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Filter(this : any, source : Sequence, filter : (val : any) => boolean) : Sequence {
+function Filter<T>(this : any, source : Sequence<T>, filter : (val : any) => boolean) : Sequence<T> {
 	const self = this instanceof Filter ? this : Object.create(Filter.prototype);
 
 	self._source = source;

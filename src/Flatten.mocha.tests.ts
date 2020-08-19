@@ -1,5 +1,7 @@
 /* eslint-env mocha */
 
+import { Sequence } from './types';
+
 import Assert from './Assert';
 import Count from './Count';
 import Slice from './Slice';
@@ -26,7 +28,7 @@ describe(
 		});
 
 		it('test 2', () => {
-			const result = From([1, 2, 3], [4, 5, 6])
+			const result = From(1, 2, 3)
 				.pipe(Flatten)
 				.pipe(ToArray)
 				.read();
@@ -44,7 +46,7 @@ describe(
 		});
 
 		it('can handle mixed results', () => {
-			const result = From(1, [], [ 2 ], 3, [4, 5])
+			const result = From<number | number[]>(1, [], [ 2 ], 3, [4, 5])
 				.pipe(Flatten)
 				.pipe(ToArray)
 				.pipe(Assert, (res) => res.length === 5)
@@ -58,7 +60,7 @@ describe(
 		});
 
 		it('can flatten sequences', () => {
-			const result = From(1, From(2), 3, FromArray([ 4, 5 ]))
+			const result = From<number | Sequence<number>>(1, From(2), 3, FromArray([ 4, 5 ]))
 				.pipe(Flatten)
 				// .pipe(Each, console.log)
 				.pipe(ToArray)

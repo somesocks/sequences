@@ -28,7 +28,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Each(this : any, source : Sequence, each : () => any) : Sequence {
+function Each<T>(this : any, source : Sequence<T>, each : () => any) : Sequence<T> {
 	const self = this instanceof Each ? this : Object.create(Each.prototype);
 
 	self._source = source;

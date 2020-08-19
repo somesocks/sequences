@@ -14,10 +14,10 @@ describe(
 	() => {
 		it('test case 1', () => {
 			Count()
+        .pipe(Filter, (val) => (val % 10 === 0))
 				.pipe(Slice, 0, 50)
-				.pipe(Filter, (val) => (val % 10 === 0))
 				// .pipe(Each, console.log)
-				.pipe(Drain)
+				.pipe(ToArray)
 				.read();
 		});
 

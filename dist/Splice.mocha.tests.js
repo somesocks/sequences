@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import Slice from './Slice';
 var Splice_1 = __importDefault(require("./Splice"));
 var From_1 = __importDefault(require("./From"));
-var Drain_1 = __importDefault(require("./Drain"));
 // import Each from './Each';
 // import Filter from './Filter';
 // import Map from './Map';
@@ -30,7 +29,7 @@ describe('sequences/Splice', function () {
             // .pipe(Each, (val, i) => console.log(val, i))
             .pipe(ToArray_1.default)
             // .pipe(Each, (val, i) => console.log(val, i))
-            .pipe(Drain_1.default)
+            // .pipe(Drain)
             .read();
     });
 });

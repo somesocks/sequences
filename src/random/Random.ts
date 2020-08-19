@@ -25,12 +25,12 @@ var CONST = Math.pow(2, -32);
 * @returns {Sequence}
 * @memberof sequences.random
 */
-function Random(min ?: number, max ?: number, seed ?: number) : Sequence {
+function Random(min ?: number, max ?: number, seed ?: number) : Sequence<number> {
 	const _min : number = min != null ? min : 0;
 	const _max : number = max != null ? max : 1;
 
 	return XORShift32(seed)
-		.pipe(Map, (x) => ((x * CONST) * (_max - _min) + _min))
+		.pipe<number>(Map, (x) => ((x * CONST) * (_max - _min) + _min))
 }
 
 export = Random;

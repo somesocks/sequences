@@ -16,7 +16,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function ToSet(this : any, source : Sequence) : Sequence {
+function ToSet<T>(this : any, source : Sequence<T>) : Sequence<Set<T>> {
 	const self = this instanceof ToSet ? this : Object.create(ToSet.prototype);
 
 	self._source = source;

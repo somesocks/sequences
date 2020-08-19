@@ -1,4 +1,10 @@
 import { Sequence } from './types/Sequence';
+declare type Iterator<T> = {
+    next: () => ({
+        done: boolean;
+        value?: T;
+    });
+};
 /**
 *
 * ```javascript
@@ -9,7 +15,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function FromIterator(this: any, iterator: any): Sequence;
+declare function FromIterator<T>(this: any, iterator: Iterator<T>): Sequence<T>;
 declare namespace FromIterator {
     var prototype: any;
 }

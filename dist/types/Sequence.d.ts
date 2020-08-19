@@ -1,5 +1,14 @@
-declare type SequenceConstructor = (...args: any[]) => Sequence;
-declare type Sequence = {
+declare type SequenceConstructor<T = any> = (...args: any[]) => Sequence<T>;
+declare type SQC<T = any> = SequenceConstructor<T>;
+declare type SequenceTransformer<T = any, U = any> = ((source: Sequence<U>, ...args: any[]) => Sequence<T>);
+declare type SQT<T = any, U = any> = SequenceTransformer<T, U>;
+declare type SequenceSelector<T = any> = SequenceTransformer<T, T>;
+declare type SQS<T = any> = SequenceSelector<T>;
+declare type SequenceEnd = object & {
+    _sequenceENDBrand: undefined;
+};
+declare type SQE = SequenceEnd;
+declare type Sequence<T = any> = {
     /**
     * read is the core method of a sequence.  read should return the next value in the sequence.
     * if there are no more values to read, read should return Sequence.END
@@ -7,7 +16,7 @@ declare type Sequence = {
     * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
     * @memberof sequences.Sequence#
     */
-    read: (recycle?: any) => any;
+    read: (recycle?: T | unknown) => T | SequenceEnd;
     /**
     * ```javascript
     * // this
@@ -29,6 +38,8 @@ declare type Sequence = {
     * @param {...*} args - any number of additional args to pass into sequenceConstructor
     * @memberof sequences.Sequence#
     */
-    pipe: (next: SequenceConstructor, ...args: any[]) => Sequence;
+    pipe: <U>(next: SequenceTransformer<U, T>, ...args: any[]) => Sequence<U>;
+    END: SequenceEnd;
 };
-export { Sequence, SequenceConstructor, };
+declare type SQ = Sequence;
+export { Sequence, SQ, SequenceConstructor, SQC, SequenceTransformer, SQT, SequenceSelector, SQS, SequenceEnd, SQE, };

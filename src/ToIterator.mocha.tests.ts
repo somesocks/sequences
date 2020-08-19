@@ -21,6 +21,8 @@ import ToIterator from './ToIterator';
 // import FromSet from './FromSet';
 // import ToSet from './ToSet';
 
+import { Iterator } from './types';
+
 describe(
 	'sequences/ToIterator',
 	() => {
@@ -28,7 +30,8 @@ describe(
 		it('test 1', () => {
 			let iter = Count()
 				.pipe(Slice, 0, 10)
-				.pipe(ToIterator);
+				.pipe(ToIterator)
+        .read() as Iterator<number>;
 
 			let res = FromIterator(iter)
 				.pipe(ToArray)

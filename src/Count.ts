@@ -1,5 +1,4 @@
-
-import { Sequence } from './types/Sequence';
+import { Sequence, SequenceConstructor } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
 /**
@@ -24,7 +23,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Count(this : any, start ?: number) : Sequence  {
+const Count : SequenceConstructor<number> = function Count(this : any, start ?: number) : Sequence<number>  {
 	const self = this instanceof Count ? this : Object.create(Count.prototype);
 
 	self._index = start || 0;

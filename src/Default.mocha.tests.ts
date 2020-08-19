@@ -16,7 +16,7 @@ describe(
 			Count()
 				.pipe(Slice, 1, 3)
 				.pipe(Filter, val => val > 10)
-				.pipe(Default, 0)
+        .pipe(Default, 0)
 				// .pipe(Each, console.log)
 				.pipe(ToArray)
 				// .pipe(Each, console.log)

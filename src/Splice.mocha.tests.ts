@@ -33,7 +33,7 @@ describe(
 				// .pipe(Each, (val, i) => console.log(val, i))
 				.pipe(ToArray)
 				// .pipe(Each, (val, i) => console.log(val, i))
-				.pipe(Drain)
+				// .pipe(Drain)
 				.read();
 		});
 	}

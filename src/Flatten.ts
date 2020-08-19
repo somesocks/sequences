@@ -2,6 +2,8 @@
 import { Sequence } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
+import From from './From';
+
 const isArrayLike = function (val) {
 	return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
 };
@@ -31,7 +33,7 @@ const MODE_SEQUENCE = 0x2;
 * @returns {Sequence}
 * @memberof sequences
 */
-function Flatten(this : any, source : Sequence) : Sequence {
+function Flatten<T>(this : any, source : Sequence<(T | T[] | Sequence<T>)>) : Sequence<T> {
 	const self = this instanceof Flatten ? this : Object.create(Flatten.prototype);
 
 	self._source = source;
@@ -47,7 +49,7 @@ Flatten.prototype = Object.create(BaseSequence.prototype);
 
 //eslint-disable-next-line no-unused-vars
 Flatten.prototype.read = function read(recycle) {
-  // this infinite loop is a driver for a state machine 
+  // this infinite loop is a driver for a state machine
   // eslint-disable-next-line no-constant-condition
 	while (1) {
 		switch (this._mode) {

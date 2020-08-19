@@ -23,7 +23,7 @@ describe('sequences/Flatten', function () {
             .read();
     });
     it('test 2', function () {
-        var result = From_1.default([1, 2, 3], [4, 5, 6])
+        var result = From_1.default(1, 2, 3)
             .pipe(Flatten_1.default)
             .pipe(ToArray_1.default)
             .read();

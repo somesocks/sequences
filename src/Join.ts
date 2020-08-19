@@ -27,7 +27,7 @@ const isArrayLike = function (val) {
  * @returns {Array}
  * @memberof sequences
  */
-function Join(this : any, outerSource : Array<any> | Sequence , innerSource : Array<any> | Sequence) : Sequence {
+function Join<T, U>(this : any, outerSource : Array<T> | Sequence<T> , innerSource : Array<U> | Sequence<U>) : Sequence<[T, U]> {
     const self = this instanceof Join ? this : Object.create(Join.prototype);
 
     self._outerSource = isArrayLike(outerSource) ?

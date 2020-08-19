@@ -20,7 +20,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function ToArray(this: any, source: Sequence): Sequence;
+declare function ToArray<T>(this: any, source: Sequence<T>): Sequence<T[]>;
 declare namespace ToArray {
     var prototype: any;
 }

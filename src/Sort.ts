@@ -28,13 +28,13 @@ import Flatten from './Flatten';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Sort(this : any, source : Sequence, comparison : () => any) : Sequence {
+function Sort<T>(this : any, source : Sequence<T>, comparison : () => any) : Sequence<T> {
 
 	const mapper = (array) => array.sort(comparison);
 
 	const sequence = source
 		.pipe(ToArray)
-		.pipe(Map, mapper)
+		.pipe<T[]>(Map, mapper)
 		.pipe(Flatten);
 
 	return sequence;

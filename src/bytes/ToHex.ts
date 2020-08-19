@@ -29,7 +29,7 @@ for (let i = 0; i < 255; i++) {
 * @returns {Sequence}
 * @memberof sequences.bytes
 */
-function ToHex(this : any, source : Sequence) : Sequence {
+function ToHex(this : any, source : Sequence<number>) : Sequence<string> {
 	const self = this instanceof ToHex ? this : Object.create(ToHex.prototype);
 
 	self._source = source;

@@ -1,5 +1,5 @@
 
-import { Sequence } from './types/Sequence';
+import { Sequence, SequenceTransformer, SequenceEnd } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
 /**
@@ -22,7 +22,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Drain(this : any, source) {
+const Drain : SequenceTransformer<SequenceEnd, any> = function Drain(this : any, source) {
 	var self = this instanceof Drain ? this : Object.create(Drain.prototype);
 
 	self._source = source;

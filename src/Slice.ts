@@ -23,7 +23,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Slice(this : any, source : Sequence, start ?: number, end ?: number) : Sequence {
+function Slice<T>(this : any, source : Sequence<T>, start ?: number, end ?: number) : Sequence<T> {
 	const self = this instanceof Slice ? this : Object.create(Slice.prototype);
 
 	self._source = source;
