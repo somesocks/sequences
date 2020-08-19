@@ -12,7 +12,7 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-declare function XORShift32(this: any, seed?: number): Sequence;
+declare function XORShift32(this: any, seed?: number): Sequence<number>;
 declare namespace XORShift32 {
     var prototype: any;
 }

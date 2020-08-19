@@ -24,15 +24,22 @@
 function ToIterator(source) {
     var self = this instanceof ToIterator ? this : Object.create(ToIterator.prototype);
     self._source = source;
+    self._iterator = {
+        next: function next() {
+            var value = self._source.read();
+            if (value === self._source.END) {
+                return { done: true, value: undefined };
+            }
+            else {
+                return { done: false, value: value };
+            }
+        }
+    };
     return self;
 }
-ToIterator.prototype.next = function next() {
-    var value = this._source.read();
-    if (value === this._source.END) {
-        return { done: true, value: undefined };
-    }
-    else {
-        return { done: false, value: value };
-    }
+ToIterator.prototype.read = function read() {
+    var res = this._iterator;
+    this._iterator = this.END;
+    return res;
 };
 module.exports = ToIterator;

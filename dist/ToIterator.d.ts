@@ -1,4 +1,10 @@
 import { Sequence } from './types/Sequence';
+declare type Iterator<T> = {
+    next: () => ({
+        done: boolean;
+        value?: T;
+    });
+};
 /**
 *
 * ```javascript
@@ -21,5 +27,5 @@ import { Sequence } from './types/Sequence';
 * @returns {Iterator}
 * @memberof sequences
 */
-declare function ToIterator(this: any, source: Sequence): Sequence;
+declare function ToIterator<T>(this: any, source: Sequence<T>): Sequence<Iterator<T>>;
 export = ToIterator;

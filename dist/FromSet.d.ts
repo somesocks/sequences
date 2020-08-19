@@ -9,5 +9,5 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function FromSet(set: any): Sequence;
+declare function FromSet<T>(set: Set<T>): Sequence<T>;
 export = FromSet;

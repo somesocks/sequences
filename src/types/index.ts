@@ -12,6 +12,8 @@ import {
   SQE,
 } from './Sequence';
 
+import { Iterator } from './Iterators';
+
 export {
   Sequence,
   SQ,
@@ -23,4 +25,6 @@ export {
   SQS,
   SequenceEnd,
   SQE,
+
+  Iterator,
 }

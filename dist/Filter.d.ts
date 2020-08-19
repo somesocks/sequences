@@ -1,4 +1,4 @@
-import { Sequence } from './types/Sequence';
+import { Sequence } from './types';
 /**
 *
 * ```javascript
@@ -21,7 +21,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Filter(this: any, source: Sequence, filter: (val: any) => boolean): Sequence;
+declare function Filter<T>(this: any, source: Sequence<T>, filter: (val: any) => boolean): Sequence<T>;
 declare namespace Filter {
     var prototype: any;
 }

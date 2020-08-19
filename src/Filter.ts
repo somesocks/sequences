@@ -1,5 +1,5 @@
 
-import { Sequence, SequenceSelector } from './types/Sequence';
+import { Sequence } from './types';
 import BaseSequence from './BaseSequence';
 
 

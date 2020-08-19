@@ -20,7 +20,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Reduce(this: any, source: Sequence, reducer: (state: any, val: any, index: number) => any, state: any): Sequence;
+declare function Reduce<T, U>(this: any, source: Sequence<U>, reducer: (state: T, val: U, index: number) => T, state: T): Sequence<T>;
 declare namespace Reduce {
     var prototype: any;
 }

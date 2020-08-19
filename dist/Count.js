@@ -25,11 +25,11 @@ var BaseSequence_1 = __importDefault(require("./BaseSequence"));
 * @returns {Sequence}
 * @memberof sequences
 */
-function Count(start) {
+var Count = function Count(start) {
     var self = this instanceof Count ? this : Object.create(Count.prototype);
     self._index = start || 0;
     return self;
-}
+};
 Count.prototype = Object.create(BaseSequence_1.default.prototype);
 Count.prototype.read = function read(recycle) {
     var val = this._index;

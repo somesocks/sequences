@@ -20,7 +20,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Slice(this: any, source: Sequence, start?: number, end?: number): Sequence;
+declare function Slice<T>(this: any, source: Sequence<T>, start?: number, end?: number): Sequence<T>;
 declare namespace Slice {
     var prototype: any;
 }

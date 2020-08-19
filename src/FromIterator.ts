@@ -2,6 +2,13 @@
 import { Sequence } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
+type Iterator<T> = {
+  next: () => ({
+    done: boolean,
+    value?: T
+  })
+}
+
 /**
 *
 * ```javascript
@@ -12,7 +19,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function FromIterator(this : any, iterator : any) : Sequence {
+function FromIterator<T>(this : any, iterator : Iterator<T>) : Sequence<T> {
 	const self = this instanceof FromIterator ? this : Object.create(FromIterator.prototype);
 
 	self._source = iterator;

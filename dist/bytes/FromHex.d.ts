@@ -12,7 +12,7 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.bytes
 */
-declare function FromHex(this: any, hex: string): Sequence;
+declare function FromHex(this: any, hex: string): Sequence<number>;
 declare namespace FromHex {
     var prototype: any;
 }

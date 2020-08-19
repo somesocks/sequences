@@ -12,5 +12,5 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.random
 */
-declare function RandomBoolean(seed?: number): Sequence;
+declare function RandomBoolean(seed?: number): Sequence<boolean>;
 export = RandomBoolean;

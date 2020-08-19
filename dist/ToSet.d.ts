@@ -13,7 +13,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function ToSet(this: any, source: Sequence): Sequence;
+declare function ToSet<T>(this: any, source: Sequence<T>): Sequence<Set<T>>;
 declare namespace ToSet {
     var prototype: any;
 }

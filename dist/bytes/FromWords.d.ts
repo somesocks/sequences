@@ -15,5 +15,5 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence} - a sequence of bytes
 * @memberof sequences.bytes
 */
-declare function FromWords(source: Sequence, isLittleEndian?: boolean): Sequence;
+declare function FromWords(source: Sequence<number>, isLittleEndian?: boolean): Sequence<number>;
 export = FromWords;

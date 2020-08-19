@@ -37,7 +37,7 @@ describe('sequences/ToArray', function () {
             // .pipe(Each, console.log)
             .pipe(Assert_1.default, function (val) { return Array.isArray(val); })
             .pipe(Assert_1.default, function (val) { return val.length === 99; })
-            .pipe(Drain_1.default)
+            // .pipe(Drain)
             .read();
     });
     it('correctly recycles an array', function () {

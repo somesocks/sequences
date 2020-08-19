@@ -30,7 +30,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Assert(this: any, source: Sequence, assert: (val: any) => boolean, error?: (val: any) => any): Sequence;
+declare function Assert<T>(this: any, source: Sequence<T>, assert: (val: any) => boolean, error?: (val: any) => any): Sequence<T>;
 declare namespace Assert {
     var prototype: any;
 }

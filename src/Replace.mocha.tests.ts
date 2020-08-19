@@ -27,7 +27,7 @@ describe(
 		it('test case 1', () => {
 			const stream = From(1, -2, 3)
 				// .pipe(Each, (val, i) => console.log('Each 1', val))
-				.pipe(
+				.pipe<number>(
 					Replace,
 					(val) => val < 0,
 					(val) => -val

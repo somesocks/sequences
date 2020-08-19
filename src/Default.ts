@@ -1,5 +1,5 @@
 
-import { Sequence } from './types/Sequence';
+import { Sequence } from './types';
 import BaseSequence from './BaseSequence';
 
 /**
@@ -25,7 +25,7 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Default<T>(this : any, source : Sequence<T>, _default : T) : Sequence<T> {
+function Default<T>(this : any, source : Sequence<T>, _default : T | unknown) : Sequence<T> {
 	const self = this instanceof Default ? this : Object.create(Default.prototype);
 
 	self._source = source;

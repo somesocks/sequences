@@ -20,7 +20,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Flatten(this: any, source: Sequence): Sequence;
+declare function Flatten<T>(this: any, source: Sequence<(T | T[] | Sequence<T>)>): Sequence<T>;
 declare namespace Flatten {
     var prototype: any;
 }

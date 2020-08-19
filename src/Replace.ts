@@ -24,12 +24,12 @@ import BaseSequence from './BaseSequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-function Replace(
+function Replace<T, U>(
 	this : any,
-	source : Sequence,
-	selector : (val : any, index : number) => boolean,
-	mapper : (val : any, index : number) => any
-) : Sequence {
+	source : Sequence<U>,
+	selector : (val : U, index : number) => boolean,
+	mapper : (val : U, index : number) => T
+) : Sequence<T> {
 	const self = this instanceof Replace ? this : Object.create(Replace.prototype);
 
 	self._source = source;

@@ -38,7 +38,7 @@ describe(
 				// .pipe(Each, console.log)
 				.pipe(Assert, (val) => Array.isArray(val))
 				.pipe(Assert, (val) => val.length === 99)
-				.pipe(Drain)
+				// .pipe(Drain)
 				.read();
 		});
 

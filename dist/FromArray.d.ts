@@ -16,7 +16,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function FromArray(this: any, array: any[]): Sequence;
+declare function FromArray<T>(this: any, array: T[]): Sequence<T>;
 declare namespace FromArray {
     var prototype: any;
 }

@@ -1,3 +1,4 @@
+import { SequenceTransformer, SequenceEnd } from './types/Sequence';
 /**
 *
 * ```javascript
@@ -18,8 +19,5 @@
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Drain(this: any, source: any): any;
-declare namespace Drain {
-    var prototype: any;
-}
+declare const Drain: SequenceTransformer<SequenceEnd, any>;
 export = Drain;

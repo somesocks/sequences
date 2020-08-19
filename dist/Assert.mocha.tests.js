@@ -30,9 +30,9 @@ describe('sequences/Assert', function () {
         }
     });
     it('performance 1', function () {
-        Count_1.default()
-            .pipe(Slice_1.default, 1, 10000000)
+        Count_1.default(1)
             .pipe(Assert_1.default, isPositive)
+            .pipe(Slice_1.default, 1, 10000000)
             .pipe(Drain_1.default)
             .read();
     });

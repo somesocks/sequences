@@ -21,7 +21,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Map(this: any, source: Sequence, mapper: (val: any, ind: number) => any): Sequence;
+declare function Map<T, U>(this: any, source: Sequence<U>, mapper: (val: U, ind: number, recycle?: T) => T): Sequence<T>;
 declare namespace Map {
     var prototype: any;
 }

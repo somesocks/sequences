@@ -34,7 +34,7 @@ function Sort<T>(this : any, source : Sequence<T>, comparison : () => any) : Seq
 
 	const sequence = source
 		.pipe(ToArray)
-		.pipe(Map, mapper)
+		.pipe<T[]>(Map, mapper)
 		.pipe(Flatten);
 
 	return sequence;

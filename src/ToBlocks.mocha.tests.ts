@@ -26,22 +26,19 @@ describe(
 	() => {
 
 		it('test 1', () => {
-			let seq = Count();
-			seq = Slice(seq, 0, 99);
-			seq = ToBlocks(seq, 10);
-			// seq = Each(seq, console.log);
-			seq = Drain(seq);
-
-			seq.read();
+			let res = Count()
+        .pipe(Slice, 0, 99)
+        .pipe(ToBlocks, 10)
+        .pipe(Drain)
+        .read();
 		});
 
 		it('performance 1', () => {
-			let seq = Count();
-			seq = Slice(seq, 0, 1000000);
-			seq = ToBlocks(seq, 10);
-			seq = Drain(seq);
-
-			seq.read();
+			let res = Count()
+			.pipe(Slice, 0, 1000000)
+			.pipe(ToBlocks, 10)
+			.pipe(Drain)
+      .read();
 		});
 
 	}

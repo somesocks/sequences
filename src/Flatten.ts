@@ -2,6 +2,8 @@
 import { Sequence } from './types/Sequence';
 import BaseSequence from './BaseSequence';
 
+import From from './From';
+
 const isArrayLike = function (val) {
 	return (typeof val === 'object' && val != null) && (typeof val.length === 'number' && val.length >= 0);
 };
@@ -31,7 +33,7 @@ const MODE_SEQUENCE = 0x2;
 * @returns {Sequence}
 * @memberof sequences
 */
-function Flatten<T>(this : any, source : Sequence<T>) : Sequence<any> {
+function Flatten<T>(this : any, source : Sequence<(T | T[] | Sequence<T>)>) : Sequence<T> {
 	const self = this instanceof Flatten ? this : Object.create(Flatten.prototype);
 
 	self._source = source;

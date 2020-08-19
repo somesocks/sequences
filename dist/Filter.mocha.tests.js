@@ -12,10 +12,10 @@ var Filter_1 = __importDefault(require("./Filter"));
 describe('sequences/Filter', function () {
     it('test case 1', function () {
         Count_1.default()
-            .pipe(Slice_1.default, 0, 50)
             .pipe(Filter_1.default, function (val) { return (val % 10 === 0); })
+            .pipe(Slice_1.default, 0, 50)
             // .pipe(Each, console.log)
-            .pipe(Drain_1.default)
+            .pipe(ToArray_1.default)
             .read();
     });
     it('performance test', function () {

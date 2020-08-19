@@ -37,7 +37,7 @@ var DEFAULT_ERROR = function (val, index) { return new Error(`Assert: val ${val}
 * @returns {Sequence}
 * @memberof sequences
 */
-function Assert<T, U>(this : any, source : Sequence<U>, assert : (val : any) => boolean, error ?: (val) => any) : Sequence<T> {
+function Assert<T>(this : any, source : Sequence<T>, assert : (val : any) => boolean, error ?: (val) => any) : Sequence<T> {
 	var self = this instanceof Assert ? this : Object.create(Assert.prototype);
 
 	self._source = source;

@@ -17,7 +17,7 @@ import { Sequence } from '../types/Sequence';
 * @returns {Sequence}
 * @memberof sequences.bytes
 */
-declare function ToHex(this: any, source: Sequence): Sequence;
+declare function ToHex(this: any, source: Sequence<number>): Sequence<string>;
 declare namespace ToHex {
     var prototype: any;
 }

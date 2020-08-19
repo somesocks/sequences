@@ -6,8 +6,8 @@ import Assert from './Assert';
 
 function isKVP(val) { return val && ('key' in val) && ('value' in val); }
 
-type KVP<T = any> = {
-  key: string | number,
+type KVP<T = any, U = any> = {
+  key: U,
   value: T,
 };
 
@@ -34,7 +34,7 @@ type KVP<T = any> = {
 * @returns {Sequence}
 * @memberof sequences
 */
-function ToObject<T, U = KVP<T>>(this : any, source : Sequence<U>) : Sequence<Record<string, T>> {
+function ToObject<T extends KVP>(this : any, source : Sequence<T>) : Sequence<Record<T['key'], T['value']>> {
 	const self = this instanceof ToObject ? this : Object.create(ToObject.prototype);
 
 	self._source = Assert(source, isKVP);

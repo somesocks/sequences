@@ -21,5 +21,5 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Sort(this: any, source: Sequence, comparison: () => any): Sequence;
+declare function Sort<T>(this: any, source: Sequence<T>, comparison: () => any): Sequence<T>;
 export = Sort;

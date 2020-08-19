@@ -17,7 +17,7 @@ describe(
         .pipe(Filter, (val) => (val % 10 === 0))
 				.pipe(Slice, 0, 50)
 				// .pipe(Each, console.log)
-				.pipe(Drain)
+				.pipe(ToArray)
 				.read();
 		});
 

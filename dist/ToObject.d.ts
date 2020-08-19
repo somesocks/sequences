@@ -1,4 +1,8 @@
 import { Sequence } from './types/Sequence';
+declare type KVP<T = any, U = any> = {
+    key: U;
+    value: T;
+};
 /**
 *
 * ```javascript
@@ -22,7 +26,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function ToObject(this: any, source: Sequence): Sequence;
+declare function ToObject<T extends KVP>(this: any, source: Sequence<T>): Sequence<Record<T['key'], T['value']>>;
 declare namespace ToObject {
     var prototype: any;
 }

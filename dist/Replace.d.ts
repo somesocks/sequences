@@ -21,7 +21,7 @@ import { Sequence } from './types/Sequence';
 * @returns {Sequence}
 * @memberof sequences
 */
-declare function Replace(this: any, source: Sequence, selector: (val: any, index: number) => boolean, mapper: (val: any, index: number) => any): Sequence;
+declare function Replace<T, U>(this: any, source: Sequence<U>, selector: (val: U, index: number) => boolean, mapper: (val: U, index: number) => T): Sequence<T>;
 declare namespace Replace {
     var prototype: any;
 }

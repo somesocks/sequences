@@ -25,23 +25,20 @@ describe(
 	'sequences/Group',
 	() => {
 
-		it('test 1', () => {
-			let seq = Count();
-			seq = Slice(seq, 0, 99);
-			seq = Group(seq, 10);
-			// seq = Each(seq, console.log);
-			seq = Drain(seq);
-
-			seq.read();
+    it('test 1', () => {
+			let res = Count()
+        .pipe(Slice, 0, 99)
+        .pipe(Group, 10)
+        .pipe(Drain)
+        .read();
 		});
 
 		it('performance 1', () => {
-			let seq = Count();
-			seq = Slice(seq, 0, 1000000);
-			seq = Group(seq, 10);
-			seq = Drain(seq);
-
-			seq.read();
+			let res = Count()
+			.pipe(Slice, 0, 1000000)
+			.pipe(Group, 10)
+			.pipe(Drain)
+      .read();
 		});
 
 	}
