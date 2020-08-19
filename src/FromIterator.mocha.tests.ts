@@ -24,7 +24,7 @@ describe(
 			let iter = Count()
 				.pipe(Slice, 0, 10)
 				.pipe(ToIterator)
-        .read() as Iterator<number>;
+        .read<Iterator<number>>();
 
 			let res = FromIterator(iter)
 				.pipe(ToArray)

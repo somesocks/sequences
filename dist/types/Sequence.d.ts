@@ -16,7 +16,7 @@ declare type Sequence<T = any> = {
     * @param recycle - a 'container' value to re-use when returning the next value.  always optional.
     * @memberof sequences.Sequence#
     */
-    read: (recycle?: T | unknown) => T | SequenceEnd;
+    read: <U = (T | SequenceEnd)>(recycle?: U) => U;
     /**
     * ```javascript
     * // this
