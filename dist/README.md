@@ -52,6 +52,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
         * [sequence.read(recycle)](#sequences.Sequence+read)
         * [sequence.pipe(sequenceConstructor, ...args)](#sequences.Sequence+pipe)
     * [.Assert](#sequences.Assert) ⇒ <code>Sequence</code>
+    * [.Concat](#sequences.Concat) ⇒ <code>Sequence</code>
     * [.Count](#sequences.Count) ⇒ <code>Sequence</code>
     * [.Deduplicate](#sequences.Deduplicate) ⇒ <code>Sequence</code>
     * [.Default](#sequences.Default) ⇒ <code>Sequence</code>
@@ -190,6 +191,31 @@ let val2 = From(1, 2, 3, "4")
 - source <code>Sequence</code> - a source sequence
 - assert <code>function</code> - an assertion function
 - error <code>function</code> - an error builder function
+
+
+* * *
+
+<a name="sequences.Concat"></a>
+
+### sequences.Concat ⇒ <code>Sequence</code>
+```javascript
+ let Count = require('sequences/Count');
+ let Slice = require('sequences/Slice');
+ let Concat = require('sequences/Concat');
+
+ // res is '0 - 1 - 2 - 3 - 4':
+ let res = Count()
+   .pipe(Slice, 0, 5)
+   .pipe(Concat, ' - ')
+   .read();
+```
+`Concat` performs string concatenation of all elements in a sequence
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a source sequence
+- separator <code>string</code> - an optional separator string, to be placed in
 
 
 * * *
