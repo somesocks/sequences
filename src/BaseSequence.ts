@@ -55,7 +55,7 @@ BaseSequence.prototype.pipe = function pipe() {
 	return sequenceConstructor.apply(sequenceConstructor, arguments);
 };
 
-BaseSequence.prototype.END = { 'Sequence.prototype.END': true } as SequenceEnd;
+BaseSequence.prototype.END = { _sequenceENDBrand: undefined } as SequenceEnd;
 
 
 export default BaseSequence;

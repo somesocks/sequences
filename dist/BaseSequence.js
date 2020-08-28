@@ -48,5 +48,5 @@ BaseSequence.prototype.pipe = function pipe() {
     arguments.length = arguments.length < 1 ? 1 : arguments.length;
     return sequenceConstructor.apply(sequenceConstructor, arguments);
 };
-BaseSequence.prototype.END = { 'Sequence.prototype.END': true };
+BaseSequence.prototype.END = { _sequenceENDBrand: undefined };
 exports.default = BaseSequence;

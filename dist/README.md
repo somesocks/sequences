@@ -79,6 +79,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.ToIterator](#sequences.ToIterator) ⇒ <code>Iterator</code>
     * [.ToObject](#sequences.ToObject) ⇒ <code>Sequence</code>
     * [.ToSet](#sequences.ToSet) ⇒ <code>Sequence</code>
+    * [.Window](#sequences.Window) ⇒ <code>Sequence</code>
     * [.bytes](#sequences.bytes) : <code>object</code>
         * [.FromHex](#sequences.bytes.FromHex) ⇒ <code>Sequence</code>
         * [.FromWords](#sequences.bytes.FromWords) ⇒ <code>Sequence</code>
@@ -857,6 +858,42 @@ NOTE: `ToSet` will always return exactly once. If the source sequence is empty,
 **Params**
 
 - source <code>Sequence</code> - the source sequence
+
+
+* * *
+
+<a name="sequences.Window"></a>
+
+### sequences.Window ⇒ <code>Sequence</code>
+```javascript
+
+let From = require('sequences/From');
+let ToArray = require('sequences/ToArray');
+let Window = require('sequences/Window');
+
+let isInteger = (val) => Number.isInteger(val);
+
+// val is [ [ 1, 2, 3 ], [ 2, 3, 4 ], [ 3, 4, 5 ] ]
+let val = From(1, 2, 3, 4, 5)
+  .pipe(Window, 3)
+  .pipe(ToArray)
+  .read();
+
+// val2 is [ [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 2, 3, 4 ], [ 3, 4, 5 ], [ 4, 5 ], [ 5 ] ]
+let val2 = From(1, 2, 3, 4, 5)
+  .pipe(Window, 3, true)
+  .pipe(ToArray)
+  .read();
+
+```
+`Window` is a sequence wrapper that returns a fixed-length sliding window of a source sequence
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
+**Params**
+
+- source <code>Sequence</code> - a source sequence
+- size <code>number</code> - the size of the window buffer
+- edges <code>boolean</code> - allow edges (a not-full buffer)
 
 
 * * *
