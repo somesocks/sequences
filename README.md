@@ -80,6 +80,7 @@ let val2 = FromArray([-3, -2, -1, 0, 1, 2, 3])
     * [.ToObject](#sequences.ToObject) ⇒ <code>Sequence</code>
     * [.ToSet](#sequences.ToSet) ⇒ <code>Sequence</code>
     * [.Window](#sequences.Window) ⇒ <code>Sequence</code>
+    * [.Zip](#sequences.Zip)
     * [.bytes](#sequences.bytes) : <code>object</code>
         * [.FromHex](#sequences.bytes.FromHex) ⇒ <code>Sequence</code>
         * [.FromWords](#sequences.bytes.FromWords) ⇒ <code>Sequence</code>
@@ -895,6 +896,50 @@ let val2 = From(1, 2, 3, 4, 5)
 - size <code>number</code> - the size of the window buffer
 - edges <code>boolean</code> - allow edges (a not-full buffer)
 
+
+* * *
+
+<a name="sequences.Zip"></a>
+
+### sequences.Zip
+```javascript
+
+ let Zip = require('sequences/Zip');
+ let From = require('sequences/From');
+ let ToArray = require('sequences/ToArray');
+
+
+ // res is [ [1, 4], [2, 5], [3, 6] ]:
+ let res = Zip([1, 2, 3], [4, 5, 6])
+   .pipe(ToArray)
+   .read();
+
+
+ // Zip takes in sequences or arrays as sources
+ // res is [ [1, 4], [2, 5], [3, 6] ]:
+ let res = Zip([1, 2, 3], From(4, 5, 6))
+   .pipe(ToArray)
+   .read();
+
+
+ // the zipped sequence will be the length of the _longest_ source
+ // if any source sequences end early, their result will be undefined
+ // res is [ [1, 4], [2, 5], [undefined, 6] ]:
+ let res = Zip([1, 2], [4, 5, 6])
+   .pipe(ToArray)
+   .read();
+
+
+ // if you need to clip your results to the shortest sequence, use Zip.Short
+ // res is [ [1, 4], [2, 5] ]:
+ let res = Zip.Short([1, 2], [4, 5, 6])
+   .pipe(ToArray)
+   .read();
+
+```
+`Zip` combines any number of arrays or sequences into a single sequence of tuples of elements at the same index
+
+**Kind**: static property of [<code>sequences</code>](#sequences)  
 
 * * *
 
